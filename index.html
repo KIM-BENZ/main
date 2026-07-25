@@ -428,6 +428,7 @@
     .action-buttons {
       display: flex;
       gap: 0.5rem;
+      flex-wrap: wrap;
     }
 
     .btn-action {
@@ -450,6 +451,17 @@
       background-color: #fee500;
       color: #191919;
       border: 1px solid #facc15;
+    }
+
+    .btn-card {
+      background-color: #e2e8f0;
+      color: var(--text-dark);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-store {
+      background-color: #0f172a;
+      color: #ffffff;
     }
 
     .btn-phone {
@@ -486,7 +498,7 @@
         margin-top: 0.5rem;
       }
       .btn-action {
-        flex: 1;
+        flex: 1 1 45%;
         text-align: center;
       }
     }
@@ -514,7 +526,7 @@
     
     <!-- 카드 2종 -->
     <div class="hub-grid">
-      <!-- 1번째: 7월 프로모션 (promotion.html) -->
+      <!-- 1번째: 프로모션 (promotion.html) -->
       <a href="promotion.html" class="hub-card">
         <img src="images/promo-banner.jpg" alt="이달의 프로모션" class="hub-card-img" onerror="this.src='images/hero-main.jpg'">
         <div class="hub-card-body">
@@ -529,7 +541,7 @@
       </a>
 
       <!-- 2번째: GLC EV 사전계약 카드 (외부 URL 연결) -->
-      <a href="https://kim-benz.github.io/GLC_EV/" target="_blank" class="hub-card">
+      <a href="https://kim-benz.github.io/GLC_EV/" target="_blank" rel="noopener noreferrer" class="hub-card">
         <img src="images/glc-hero.jpg" alt="The All-New Electric GLC Pre-order" class="hub-card-img" onerror="this.src='images/hero-main.jpg'">
         <div class="hub-card-body">
           <span class="hub-card-tag">NEW CAR & PRE-ORDER</span>
@@ -546,7 +558,7 @@
     <!-- 화이트 모던 프로필 카드 -->
     <div class="profile-card-container">
       <div class="profile-card-left">
-        <div class="ribbon-badge">언제나 친절왕</div>
+        <div class="ribbon-badge">롤플레이 경진대회 대표</div>
         <div class="profile-photo-wrapper">
           <img src="images/profile-photo.jpg" alt="김석현 과장" class="profile-photo">
         </div>
@@ -575,6 +587,7 @@
           <img src="images/mb-logo.png" alt="Mercedes-Benz Logo" class="mb-logo-img" onerror="this.style.display='none'">
         </div>
 
+        <!-- 경력사항 및 자격/수상 내역 -->
         <div class="info-block">
           <h4>경력사항</h4>
           <ul class="career-list">
@@ -585,9 +598,11 @@
             <li>C-SALES 인증사원 자격 취득</li>
             <li>EQ SALES EXPERT</li>
             <li>AMG SALES EXPERT</li>
+            <li>2026 전국 영업직원 롤플레이 경진대회 포항전시장 대표</li>
           </ul>
         </div>
 
+        <!-- 고객약속 -->
         <div class="info-block">
           <h4>고객님께 드리는 약속</h4>
           <ul class="promise-list">
@@ -612,7 +627,9 @@
           <a href="tel:01093790999" class="phone">📞 010-9379-0999</a>
         </div>
         <div class="action-buttons">
-          <a href="https://open.kakao.com/" target="_blank" class="btn-action btn-kakao">💬 카카오톡 문의</a>
+          <a href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener noreferrer" class="btn-action btn-kakao">💬 카카오톡 문의</a>
+          <a href="https://m.site.naver.com/2cFo4" target="_blank" rel="noopener noreferrer" class="btn-action btn-card">📇 디지털 명함</a>
+          <a href="https://webs1.co.kr/forms/benz/ksh3/" target="_blank" rel="noopener noreferrer" class="btn-action btn-store">🛒 벤츠 스토어</a>
           <a href="tel:01093790999" class="btn-action btn-phone">전화 문의</a>
           <a href="sms:01093790999" class="btn-action btn-sms">문자 문의</a>
         </div>
