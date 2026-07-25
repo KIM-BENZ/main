@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메르세데스-벤츠 보증 & 고객 프리미엄 케어 서비스</title>
+  <style>
+    :root {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --accent-blue: #0284c7;
+      --border-color: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1.6; }
+
+    header {
+      background: #ffffff; padding: 1.2rem 2rem; border-bottom: 1px solid var(--border-color);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    header h1 { font-size: 1.1rem; font-weight: 800; }
+    .back-btn { text-decoration: none; color: var(--accent-blue); font-weight: 700; font-size: 0.9rem; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+
+    .page-title { text-align: center; margin-bottom: 2.5rem; }
+    .page-title h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .page-title p { color: var(--text-muted); font-size: 0.95rem; }
+
+    .section-card {
+      background: #ffffff; border-radius: 16px; padding: 1.8rem;
+      border: 1px solid var(--border-color); margin-bottom: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+    .section-card h3 {
+      font-size: 1.3rem; font-weight: 800; margin-bottom: 1.2rem;
+      border-left: 4px solid var(--accent-blue); padding-left: 0.7rem; color: var(--text-dark);
+    }
+
+    /* 테이블 스타일 */
+    .table-container { overflow-x: auto; margin-bottom: 1rem; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
+    th, td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+    th { background: #f1f5f9; font-weight: 700; color: var(--text-dark); }
+    
+    .highlight-red { color: #dc2626; font-weight: 700; }
+    .highlight-blue { color: var(--accent-blue); font-weight: 700; }
+    
+    /* 상세 리스트 및 배지 디자인 */
+    .parts-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 0.4rem;
+    }
+    .parts-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.88rem;
+    }
+    .parts-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-blue);
+      font-weight: bold;
+    }
+    .badge-sub {
+      display: inline-block;
+      background-color: #f1f5f9;
+      color: #475569;
+      font-size: 0.78rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-top: 0.4rem;
+      font-weight: 600;
+    }
+    .badge-alert {
+      display: inline-block;
+      background-color: #fef2f2;
+      color: #dc2626;
+      font-size: 0.78rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-top: 0.3rem;
+      font-weight: 600;
+    }
+
+    /* 리스트 및 카드 스타일 */
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .info-card { background: #f8fafc; border-radius: 12px; padding: 1.2rem; border: 1px solid var(--border-color); }
+    .info-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-blue); }
+    .info-card ul { padding-left: 1.2rem; font-size: 0.88rem; color: var(--text-muted); }
+    .info-card li { margin-bottom: 0.4rem; }
+
+    .notice-text { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.8rem; }
+
+    .cta-btn {
+      display: block; text-align: center; background: var(--accent-blue); color: #fff;
+      padding: 1rem; border-radius: 10px; font-weight: 700; text-decoration: none; margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MERCEDES-BENZ SERVICE</h1>
+    <a href="index.html" class="back-btn">← 메인으로 돌아가기</a>
+  </header>
+
+  <main class="container">
+    <div class="page-title">
+      <h2>메르세데스-벤츠 보증 & 프리미엄 케어</h2>
+      <p>차량 구입 후에도 안심하고 운행하실 수 있도록 제공되는 공식 보증 및 케어 서비스 안내입니다.</p>
+    </div>
+
+    <!-- 1. 보증 서비스 (선도래 기준) -->
+    <div class="section-card">
+      <h3>🛡️ Mercedes-Benz 보증서비스 (선도래 기준)</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 28%;">구분</th>
+              <th style="width: 25%;">보증 기간 / 주행거리</th>
+              <th style="width: 47%;">주요 항목 및 상세 안내</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>차체 및 일반부품</strong></td>
+              <td>3년 또는 10만km</td>
+              <td>전반적인 차량 일반 부품 보증</td>
+            </tr>
+            <tr>
+              <td><strong>엔진 및 동력전달</strong></td>
+              <td>3년 또는 10만km</td>
+              <td>엔진 및 미션 등 동력계통 주요부품</td>
+            </tr>
+            <tr>
+              <td><strong>배출가스 주요부품</strong></td>
+              <td>5년 또는 8만km</td>
+              <td>배출가스 관련 정해진 수리부품</td>
+            </tr>
+            <tr>
+              <td><strong>정화용 촉매 및 전자제어</strong></td>
+              <td>7년 또는 12만km</td>
+              <td>촉매 및 핵심 배출가스 전자 제어장치</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>일반 소모품</strong><br>
+                <span class="badge-alert">A, CLA, GLA, GLB 제외: 와이퍼, 브레이크 디스크 및 패드</span><br>
+                <span class="badge-sub">[교환주기 외 소모품 자체 결함시 보증제외]</span>
+              </td>
+              <td>3년 또는 10만km</td>
+              <td>
+                <span class="highlight-red">• 엔진오일 및 오일필터 (1년 또는 1.5만km 선도래 교환)</span>
+                <ul class="parts-list">
+                  <li>정기점검 서비스</li>
+                  <li>에어필터, 실내공기정화필터</li>
+                  <li>인테리어 필터 (콤비네이션 필터)</li>
+                  <li>와이퍼 블레이드</li>
+                  <li>자동변속기 오일</li>
+                  <li>브레이크 오일</li>
+                  <li>브레이크 디스크 및 패드</li>
+                  <li>점화플러그 / 배터리 등</li>
+                </ul>
+                <div style="margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-color);" class="highlight-blue">
+                  🎁 타이어공기압, 워셔액, 냉각수는 평생무상 제공
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>전기차 전용 부품</strong><br><small>(순수 전기차)</small></td>
+              <td>6년 또는 15만km<br><small>(24개월 이내 주행거리 무제한)</small></td>
+              <td>배터리 제어장치, 전동기, 인버터 및 컨버터 / 전기차 관련 소모품</td>
+            </tr>
+            <tr>
+              <td><strong>PHEV & 고전압 배터리</strong><br><small>(E350e, S580e, GLE 400e, EQA, EQB)</small></td>
+              <td>8년 또는 16만km</td>
+              <td>고전압 배터리 최대 충전 용량이 162 Ah 미만일 경우 (70% 미만)</td>
+            </tr>
+            <tr>
+              <td><strong>EQE, EQS 고전압 배터리</strong></td>
+              <td>10년 또는 25만km</td>
+              <td>EQE, EQS 전용 고전압 배터리 보증</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="notice-text">* 차량에 점검 시기가 되면 계기판에 표시됩니다.</p>
+      <p class="notice-text">* 국내 법규에 의한 보증은 당사에 의해 공식 수입되지 않은 차량(직수입)에는 적용되지 않습니다.</p>
+    </div>
+
+    <!-- 2. 프리미엄 고객 케어 서비스 -->
+    <div class="section-card">
+      <h3>🚗 프리미엄 고객 케어 서비스</h3>
+      <div class="info-grid">
+        
+        <div class="info-card">
+          <h4>24시간 긴급출동 서비스</h4>
+          <ul>
+            <li><strong>수신자 부담 전화:</strong> 080-001-1886 (차량 내 SOS 버튼)</li>
+            <li><strong>안전 구호:</strong> 큰 사고 발생 시 자동 전화연결, 안전벨트 착용 인원 파악 후 위치 추적 및 긴급 지원 요청 (e-call 보험료 할인 효과)</li>
+            <li><strong>출동 운영:</strong> 주간(09시~19시) 공식 서비스센터 직원 출동 / 야간 및 주말·공휴일 협력업체 출동</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h4>픽업 & 딜리버리 서비스</h4>
+          <ul>
+            <li>차량 정기점검 시 서비스센터 방문 없이 전용 픽업트럭으로 원하는 장소에서 픽업 및 정비 후 가져다 드리는 서비스</li>
+            <li><strong>운영 시간:</strong> 09:00~10:00 픽업 / 16:00~18:00 딜리버리</li>
+            <li>* 서비스센터 관할 지역 내 해당하며 사전 예약 필수입니다.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3. Airport 서비스 -->
+    <div class="section-card">
+      <h3>✈️ Airport 서비스 (인천공항 이용고객)</h3>
+      <div class="info-card" style="background:#fff;">
+        <p style="font-size:0.9rem; margin-bottom:0.8rem;"><strong>대상 조건:</strong> 보증기간 내 전 차종 (23년 11월 이후 출고 고객 대상)</p>
+        <ul>
+          <li>1) 무료 셔틀버스 및 발렛 서비스 제공</li>
+          <li>2) 안심 주차 (실내 주차)</li>
+          <li>3) 차량 정기점검 및 소모품 교환 (주기 도래 시)</li>
+          <li>4) 차량 클리닝 서비스</li>
+          <li>5) 전기차 충전 서비스 (유료)</li>
+        </ul>
+        <p class="notice-text" style="margin-top:1rem;">
+          * 보증기간 내 3회 이용 가능 (전기차는 횟수 제한 없음)<br>
+          * 주차비용: 77,000원 (4박 5일 기준) / 6일째부터 11,000원/일 추가<br>
+          * 전기차 모델은 주차비용 50% 할인 적용 (사전 예약제)
+        </p>
+      </div>
+    </div>
+
+    <a href="tel:01093790999" class="cta-btn">📞 보증 및 서비스 관련 전화 문의하기</a>
+  </main>
+
+</body>
+</html>
