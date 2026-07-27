@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MERCEDES-BENZ 포항전시장 김석현 과장 | 공식 구매 & 시승 가이드</title>
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="메르세데스-벤츠 포항전시장 김석현 과장 | 신차, 프로모션 & 시승신청">
+  <meta property="og:description" content="이달의 특별 프로모션, 신차 정보, 사전계약 및 프라이빗 1:1 시승/견적/서비스 예약 신청 가이드">
+  <meta property="og:image" content="images/hero-main.jpg">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --accent-blue: #0284c7;
+      --accent-hover: #0369a1;
+      --accent-green: #059669;
+      --accent-green-hover: #047857;
+      --accent-gold: #d97706;
+      --border-color: #e2e8f0;
+      --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --shadow-hover: 0 12px 30px rgba(2, 132, 199, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* 최상단 메인 헤더 바 */
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .header-brand h1 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--text-dark);
+      white-space: nowrap;
+    }
+
+    .header-brand .advisor-info {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .header-brand .advisor-info span {
+      color: var(--accent-blue);
+      font-weight: 700;
+    }
+
+    /* PC 최상단 바로가기 메뉴 */
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+    }
+
+    .header-nav-btn {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .header-nav-btn:hover {
+      color: var(--text-dark);
+    }
+
+    .header-nav-btn.btn-kakao {
+      color: #191919;
+      font-weight: 700;
+      background-color: #fee500;
+      padding: 0.4rem 0.85rem;
+      border-radius: 20px;
+      transition: background-color 0.2s ease;
+    }
+
+    .header-nav-btn.btn-kakao:hover {
+      background-color: #facc15;
+    }
+
+    /* 히어로 타이틀 영역 */
+    .hero-main {
+      position: relative;
+      text-align: center;
+      padding: 4.5rem 1.5rem 4rem 1.5rem;
+      background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), url('images/hero-main.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero-main .hero-badge {
+      display: inline-block;
+      background-color: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .hero-main h2 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
+
+    .hero-main p {
+      font-size: 1rem;
+      color: #cbd5e1;
+      max-width: 620px;
+      margin: 0 auto;
+      word-break: keep-all;
+    }
+
+    /* 메인 컨테이너 */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    /* 카드 3종 그리드 */
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hub-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow-light);
+      cursor: pointer;
+    }
+
+    .hub-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-blue);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .hub-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background-color: #f1f5f9;
+    }
+
+    .hub-card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .hub-card-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .hub-card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      color: var(--text-dark);
+    }
+
+    .hub-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .hub-card-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      border: 1px solid var(--border-color);
+      transition: all 0.2s ease;
+    }
+
+    .hub-card:hover .hub-card-btn {
+      background-color: var(--accent-blue);
+      color: #ffffff;
+      border-color: var(--accent-blue);
+    }
+
+    /* 슬림 배너 스타일 공통 */
+    .price-banner {
+      background-color: #ffffff;
+      border: 1.5px solid var(--accent-blue);
+      border-radius: 16px;
+      padding: 1.2rem 1.8rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      box-shadow: var(--shadow-light);
+      scroll-margin-top: 20px;
+    }
+
+    .price-banner-text .tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      letter-spacing: 1px;
+    }
+
+    .price-banner-text h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-top: 0.2rem;
+    }
+
+    .price-banner-text p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .btn-pdf {
+      background-color: var(--accent-blue);
+      color: #ffffff;
+      padding: 0.75rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-pdf:hover {
+      background-color: var(--accent-hover);
+    }
+
+    /* 화이트 모던 프로필 카드 */
+    .profile-card-container {
+      background-color: var(--bg-card);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-light);
+    }
+
+    .profile-card-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-right: 1px solid var(--border-color);
+      padding-right: 1.5rem;
+    }
+
+    .ribbon-badge {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.35rem 1.2rem;
+      border-radius: 20px;
+      margin-bottom: -15px;
+      z-index: 2;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
+    }
+
+    .profile-photo-wrapper {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--accent-blue);
+      margin-bottom: 0.8rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .star-rating {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: var(--accent-gold);
+    }
+
+    .profile-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .profile-name {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-contact-list {
+      width: 100%;
+      text-align: left;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      font-size: 0.88rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-item .label {
+      width: 50px;
+      font-weight: 800;
+      color: var(--accent-blue);
+    }
+
+    .contact-item .val {
+      color: var(--text-dark);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .contact-item a.val:hover {
+      color: var(--accent-blue);
+      text-decoration: underline;
+    }
+
+    .profile-card-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .mb-brand-logo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-align: right;
+      opacity: 0.85;
+    }
+
+    .mb-logo-img {
+      width: 38px;
+      height: auto;
+    }
+
+    .info-block h4 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 0.8rem;
+      border-left: 3.5px solid var(--accent-blue);
+      padding-left: 0.6rem;
+    }
+
+    .career-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .career-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .career-list strong {
+      color: var(--text-dark);
+      margin-right: 0.8rem;
+    }
+
+    .cert-list {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+    }
+
+    .cert-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .promise-list {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .promise-list li {
+      margin-bottom: 0.8rem;
+      word-break: keep-all;
+    }
+
+    /* 폼 그리드 */
+    .forms-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      align-items: start;
+    }
+
+    .form-section {
+      background-color: var(--bg-card);
+      border: 1.5px solid var(--accent-blue);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow-light);
+      scroll-margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .form-section.service-theme {
+      border-color: var(--accent-green);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title span {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      letter-spacing: 1px;
+    }
+
+    .service-theme .section-title span {
+      color: var(--accent-green);
+    }
+
+    .section-title h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-top: 0.2rem;
+    }
+
+    .section-title p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      word-break: keep-all;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--text-dark);
+    }
+
+    .form-group label .required {
+      color: #ef4444;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      background-color: #f8fafc;
+      transition: all 0.2s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+    }
+
+    .service-theme .form-control:focus {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+    }
+
+    .radio-group, .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .radio-label, .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      color: var(--text-dark);
+    }
+
+    .terms-box {
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      padding: 0.75rem 0.8rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      height: 70px;
+      overflow-y: auto;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 0.9rem;
+      background-color: var(--accent-blue);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      margin-top: 1rem;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-submit.btn-green {
+      background-color: var(--accent-green);
+    }
+
+    .btn-submit.btn-green:hover {
+      background-color: var(--accent-green-hover);
+    }
+
+    /* 하단 실시간 상담 박스 */
+    .contact-box {
+      background-color: #ffffff;
+      border: 1.5px solid var(--accent-blue);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      color: var(--text-dark);
+      box-shadow: var(--shadow-light);
+    }
+
+    .contact-notice h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-notice p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding-top: 0.8rem;
+      margin-top: 0.8rem;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .advisor-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .advisor-detail .showroom {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .advisor-detail .name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .advisor-detail .phone {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-action:hover {
+      opacity: 0.9;
+    }
+
+    .btn-action.btn-kakao-action {
+      background-color: #fee500;
+      color: #191919;
+      border: 1px solid #facc15;
+    }
+
+    .btn-phone {
+      background-color: var(--accent-blue);
+      color: #ffffff;
+    }
+
+    .btn-sms {
+      background-color: #ffffff;
+      color: var(--text-dark);
+      border: 1px solid var(--border-color);
+    }
+
+    /* 📱 모바일 전용 플로팅 메뉴 */
+    .mobile-quick-menu {
+      display: none;
+      position: fixed;
+      right: 1rem;
+      bottom: 2rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .quick-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      border-radius: 25px;
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(4px);
+      transition: transform 0.2s ease;
+    }
+
+    .quick-btn:active {
+      transform: scale(0.95);
+    }
+
+    .quick-btn.qb-blue {
+      background-color: rgba(2, 132, 199, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .quick-btn.qb-green {
+      background-color: rgba(5, 150, 105, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 900px) {
+      .header-nav {
+        display: none !important;
+      }
+
+      header {
+        justify-content: center;
+        text-align: center;
+        padding: 0.8rem 1rem;
+      }
+
+      .header-brand h1 {
+        font-size: 1.05rem;
+        letter-spacing: 1px;
+        white-space: nowrap;
+      }
+
+      .header-brand .advisor-info {
+        display: block !important;
+        font-size: 0.78rem;
+        margin-top: 2px;
+      }
+
+      .hub-grid, .forms-wrapper, .profile-card-container {
+        grid-template-columns: 1fr;
+      }
+      .price-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-pdf {
+        width: 100%;
+        text-align: center;
+      }
+      .profile-card-left {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-right: 0;
+        padding-bottom: 1.5rem;
+      }
+      .contact-main {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .action-buttons {
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+      .btn-action {
+        flex: 1 1 30%;
+        text-align: center;
+      }
+
+      .mobile-quick-menu {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 최상단 헤더 -->
+  <header>
+    <div class="header-brand">
+      <h1>MERCEDES-BENZ</h1>
+      <div class="advisor-info">
+        포항전시장 <span>김석현 과장 (010-9379-0999)</span>
+      </div>
+    </div>
+    
+    <nav class="header-nav">
+      <a href="#test-drive" class="header-nav-btn">시승 & 견적</a>
+      <a href="#service-care" class="header-nav-btn">서비스 예약</a>
+      <a href="#price-section" class="header-nav-btn">공식 가격표</a>
+      <a href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener noreferrer" class="header-nav-btn btn-kakao">카톡 상담</a>
+    </nav>
+  </header>
+
+  <!-- 📱 모바일 전용 바로가기 플로팅 버튼 -->
+  <div class="mobile-quick-menu">
+    <a href="#test-drive" class="quick-btn qb-blue">🏎️ 시승신청</a>
+    <a href="#service-care" class="quick-btn qb-green">🛠️ 서비스예약</a>
+  </div>
+
+  <!-- 히어로 타이틀 영역 -->
+  <section class="hero-main">
+    <span class="hero-badge">PRIVATE PORTFOLIO GUIDE</span>
+    <h2>메르세데스-벤츠 프리미엄 가이드</h2>
+    <p>김석현 과장이 전해드리는 이달의 최신 프로모션, 신차 정보 및 사전계약 종합 안내입니다.</p>
+  </section>
+
+  <!-- 메인 컨텐츠 -->
+  <main class="container">
+    
+    <!-- 카드 3종 그리드 -->
+    <div class="hub-grid">
+      <!-- 1번째: 프로모션 -->
+      <a href="promotion.html" class="hub-card">
+        <img src="images/promo-banner.jpg" alt="이달의 프로모션" class="hub-card-img" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Mercedes-Benz+Promotion'">
+        <div class="hub-card-body">
+          <span class="hub-card-tag">MONTHLY PROMOTION</span>
+          <h3 class="hub-card-title">이달의 차종별 특별 프로모션</h3>
+          <p class="hub-card-desc">차종별 최신 구매 혜택, 무이자/저금리 금융 프로그램 및 주요 인기 모델 할인 혜택을 안내해 드립니다.</p>
+          <div class="hub-card-btn">
+            <span>이달의 혜택 확인하기</span>
+            <span>→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 2번째: GLC EV 사전계약 카드 -->
+      <a href="https://kim-benz.github.io/GLC_EV/" target="_blank" rel="noopener noreferrer" class="hub-card">
+        <img src="images/glc-hero.jpg" alt="The All-New Electric GLC Pre-order" class="hub-card-img" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=The+All-New+Electric+GLC'">
+        <div class="hub-card-body">
+          <span class="hub-card-tag">NEW CAR & PRE-ORDER</span>
+          <h3 class="hub-card-title">The All-New Electric GLC 사전계약</h3>
+          <p class="hub-card-desc">The All-New Electric GLC 사전계약 정보부터 트림별 제원, 예상 가격 및 세부 옵션 비교 안내입니다.</p>
+          <div class="hub-card-btn">
+            <span>The All-New Electric GLC 가이드</span>
+            <span>→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 3번째: 포항전시장 오시는 길 (네이버 지도 단축 링크 적용) -->
+      <a href="https://naver.me/xAf1U2G5" target="_blank" rel="noopener noreferrer" class="hub-card">
+        <img src="images/hero-main.jpg" alt="포항 전시장 안내" class="hub-card-img" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Pohang+Showroom'">
+        <div class="hub-card-body">
+          <span class="hub-card-tag">SHOWROOM & LOCATION</span>
+          <h3 class="hub-card-title">포항전시장 오시는 길 & 안내</h3>
+          <p class="hub-card-desc">메르세데스-벤츠 포항전시장 위치(새천년대로 210), 운영 시간 및 프라이빗 주차 서비스를 안내해 드립니다.</p>
+          <div class="hub-card-btn">
+            <span>네이버 지도로 위치 확인하기</span>
+            <span>→</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 1. 가격표 상단 보증 & 고객 케어 안내 배너 -->
+    <div class="price-banner" style="border-color: var(--accent-green);">
+      <div class="price-banner-text">
+        <span class="tag" style="color: var(--accent-green);">WARRANTY & CARE</span>
+        <h3>🛡️ 벤츠 공식 보증기간 & 고객 케어 서비스</h3>
+        <p>차종별 보증기간, 24시간 긴급출동, 픽업&딜리버리, 공항 서비스 혜택을 확인하세요.</p>
+      </div>
+      <a href="service.html" class="btn-pdf" style="background-color: var(--accent-green);">
+        서비스 안내 보기 →
+      </a>
+    </div>
+
+    <!-- 2. 슬림 가격표 다운로드 배너 -->
+    <div id="price-section" class="price-banner">
+      <div class="price-banner-text">
+        <span class="tag">OFFICIAL DOCUMENT</span>
+        <h3>📄 메르세데스-벤츠 전 차종 공식 가격표</h3>
+        <p>최신 차종별 공식 출고가 및 기본 사양 가격표를 PDF로 확인하실 수 있습니다.</p>
+      </div>
+      <a href="pdf/price_list.pdf" target="_blank" class="btn-pdf">
+        가격표 PDF 다운로드 ↓
+      </a>
+    </div>
+
+    <!-- 3. 화이트 모던 프로필 카드 -->
+    <div class="profile-card-container">
+      <div class="profile-card-left">
+        <div class="ribbon-badge">언제나 친절왕</div>
+        <div class="profile-photo-wrapper">
+          <img src="images/profile-photo.jpg" alt="김석현 과장" class="profile-photo" onerror="this.src='https://via.placeholder.com/160?text=Profile'">
+        </div>
+        <div class="star-rating">⭐⭐⭐⭐⭐</div>
+        <div class="profile-title">메르세데스 벤츠 인증사원</div>
+        <div class="profile-name">김석현 과장</div>
+        
+        <div class="profile-contact-list">
+          <div class="contact-item">
+            <span class="label">CALL</span>
+            <a href="tel:01093790999" class="val">010-9379-0999</a>
+          </div>
+          <div class="contact-item">
+            <span class="label">MAIL</span>
+            <a href="mailto:asuka2121@naver.com" class="val">asuka2121@naver.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="label">FAX</span>
+            <span class="val">0508-942-0999</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-card-right">
+        <div class="mb-brand-logo">
+          <img src="images/mb-logo.png" alt="Mercedes-Benz Logo" class="mb-logo-img" onerror="this.style.display='none'">
+        </div>
+
+        <div class="info-block">
+          <h4>경력사항</h4>
+          <ul class="career-list">
+            <li><strong>2015 - 2018.02</strong> 동성모터스 BMW 포항전시장</li>
+            <li><strong>2018.02 - 현재</strong> 중앙모터스 메르세데스-벤츠 포항전시장</li>
+          </ul>
+          <ul class="cert-list">
+            <li>C-SALES 인증사원 자격 취득</li>
+            <li>EQ SALES EXPERT</li>
+            <li>AMG SALES EXPERT</li>
+            <li>2026 전국 영업직원 롤플레이 경진대회 포항전시장 대표</li>
+          </ul>
+        </div>
+
+        <div class="info-block">
+          <h4>고객님께 드리는 약속</h4>
+          <ul class="promise-list">
+            <li>메르세데스-벤츠의 가치를 경험하실 수 있도록, 1:1 프라이빗 컨설팅을 통해 최상의 서비스를 제공해 드리겠습니다.</li>
+            <li>신차 상담과 시승, 맞춤형 금융 프로그램은 물론, 기존 차량의 매각, 자동차 보험, 리스 및 장기렌트까지 고객님의 라이프스타일에 최적화된 토탈 솔루션을 안내해 드립니다. 또한 법인 및 임직원 대상 MOU 프로그램, VIP 법인 등재 등 오직 메르세데스-벤츠 고객님께만 제공되는 특별한 혜택을 경험해 보시기 바랍니다.</li>
+            <li>고객님의 관심 브랜드와의 투명한 비교를 통해 신뢰와 만족을 바탕으로 한 컨설팅을 약속드립니다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 신청 폼 2종 -->
+    <div class="forms-wrapper">
+      
+      <!-- 4.1 시승 & 맞춤 견적 신청 폼 -->
+      <section id="test-drive" class="form-section">
+        <div class="section-title">
+          <span>PRIVATE VIP SERVICE</span>
+          <h3>🏎️ 시승 & 맞춤 견적 신청</h3>
+          <p>김석현 과장의 1:1 맞춤형 차량 시승 및 전문 금융 컨설팅을 신청해 보세요.</p>
+        </div>
+
+        <form action="https://formspree.io/f/mbdnpnjp" method="POST">
+          <input type="hidden" name="양식유형" value="신차 시승 및 견적 신청">
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">성함 <span class="required">*</span></label>
+              <input type="text" id="name" name="성함" class="form-control" placeholder="홍길동" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">연락처 <span class="required">*</span></label>
+              <input type="tel" id="phone" name="연락처" class="form-control" placeholder="010-0000-0000" required>
+            </div>
+
+            <div class="form-group">
+              <label for="car">관심 차종 <span class="required">*</span></label>
+              <select id="car" name="관심차종" class="form-control" required>
+                <option value="">차종을 선택해 주세요</option>
+                <option value="E-Class">E-Class</option>
+                <option value="S-Class">S-Class</option>
+                <option value="GLC / GLC Coupé">GLC / GLC Coupé</option>
+                <option value="GLE / GLE Coupé">GLE / GLE Coupé</option>
+                <option value="Electric (EQ 라인업)">전기차 (EQ 라인업)</option>
+                <option value="기타 모델">기타 상담 모델</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>구매 방식 (선택)</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="구매방식" value="현금/할부"> 현금/할부</label>
+                <label class="radio-label"><input type="radio" name="구매방식" value="운용리스"> 운용리스</label>
+                <label class="radio-label"><input type="radio" name="구매방식" value="장기렌트"> 장기렌트</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>신청 항목 <span class="required">*</span></label>
+              <div class="checkbox-group">
+                <label class="checkbox-label"><input type="checkbox" name="신청항목" value="시승 신청" checked> 시승 신청</label>
+                <label class="checkbox-label"><input type="checkbox" name="신청항목" value="구매 견적 문의"> 구매 견적 문의</label>
+                <label class="checkbox-label"><input type="checkbox" name="신청항목" value="기존 차량 매각 (Trade-in)"> 기존 차량 매각 (Trade-in)</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="memo">기타 문의사항 및 희망 시승 일시</label>
+              <textarea id="memo" name="문의사항" class="form-control" rows="3" placeholder="희망 시승 일시 또는 추가 질문사항을 적어주세요."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>개인정보 수집 및 이용 동의 <span class="required">*</span></label>
+              <div class="terms-box">
+                [개인정보 수집 및 이용 동의]<br>
+                1. 수집 항목: 성함, 연락처, 관심 차종, 문의 내용<br>
+                2. 수집 및 이용 목적: 메르세데스-벤츠 차량 시승 예약, 구매 맞춤 견적 제공 및 관련 상담<br>
+                3. 보유 및 이용 기간: 상담 완료 후 즉시 파기 또는 고객 요청 시 지체 없이 삭제 처리됩니다.
+              </div>
+              <label class="checkbox-label">
+                <input type="checkbox" required> 개인정보 수집 및 이용에 동의합니다.
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">시승 & 맞춤 견적 신청하기</button>
+        </form>
+      </section>
+
+      <!-- 4.2 프라이빗 서비스 예약 신청 폼 -->
+      <section id="service-care" class="form-section service-theme">
+        <div class="section-title">
+          <span>AFTER-SALES CARE</span>
+          <h3>🛠️ 프라이빗 서비스 예약 신청</h3>
+          <p>출고 고객님을 위해 점검, 정비 예약 및 케어를 직접 도와드립니다.</p>
+        </div>
+
+        <form action="https://formspree.io/f/mbdnpnjp" method="POST">
+          <input type="hidden" name="양식유형" value="서비스 예약 신청">
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="svc-name">고객 성함 <span class="required">*</span></label>
+              <input type="text" id="svc-name" name="성함" class="form-control" placeholder="홍길동" required>
+            </div>
+
+            <div class="form-group">
+              <label for="svc-phone">연락처 <span class="required">*</span></label>
+              <input type="tel" id="svc-phone" name="연락처" class="form-control" placeholder="010-0000-0000" required>
+            </div>
+
+            <div class="form-group">
+              <label for="svc-car-num">차량번호 / 차종 <span class="required">*</span></label>
+              <input type="text" id="svc-car-num" name="차량번호_차종" class="form-control" placeholder="예: 123가 4567 (E300d)" required>
+            </div>
+
+            <div class="form-group">
+              <label for="svc-mileage">현재 주행거리 (선택)</label>
+              <input type="text" id="svc-mileage" name="주행거리" class="form-control" placeholder="예: 약 35,000 km">
+            </div>
+
+            <div class="form-group">
+              <label>서비스 예약 항목 (중복 선택 가능) <span class="required">*</span></label>
+              <div class="checkbox-group">
+                <label class="checkbox-label"><input type="checkbox" name="서비스항목" value="정기 점검 / 엔진오일 교환" checked> 정기 점검 및 소모품 교환</label>
+                <label class="checkbox-label"><input type="checkbox" name="서비스항목" value="차량 경고등 / 수리 점검"> 차량 이상 경고등 및 수리</label>
+                <label class="checkbox-label"><input type="checkbox" name="서비스항목" value="사고 수리 / 보험 접수"> 사고 수리 및 보험 접수 케어</label>
+                <label class="checkbox-label"><input type="checkbox" name="서비스항목" value="타이어 / 보증 연장 문의"> 타이어 교체 / 보증연장 문의</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="svc-memo">희망 입고 날짜 및 요청 사항</label>
+              <textarea id="svc-memo" name="정비요청사항" class="form-control" rows="3" placeholder="희망 서비스센터 방문 일시나 증상을 작성해 주세요."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>개인정보 수집 및 이용 동의 <span class="required">*</span></label>
+              <div class="terms-box">
+                [개인정보 수집 및 이용 동의]<br>
+                1. 수집 항목: 성함, 연락처, 차량번호, 주행거리, 정비 요청사항<br>
+                2. 수집 및 이용 목적: 메르세데스-벤츠 차량 서비스센터 정비/점검 예약 및 서비스 상담<br>
+                3. 보유 및 이용 기간: 서비스 케어 완료 후 즉시 파기 또는 고객 요청 시 지체 없이 삭제 처리됩니다.
+              </div>
+              <label class="checkbox-label">
+                <input type="checkbox" required> 개인정보 수집 및 이용에 동의합니다.
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit btn-green">서비스 예약 신청하기</button>
+        </form>
+      </section>
+
+    </div>
+
+    <!-- 5. 하단 실시간 상담 박스 & 전시장 위치 정보 -->
+    <div class="contact-box">
+      <div class="contact-notice">
+        <h3>📢 맞춤형 견적, 시승 및 서비스 상담 안내</h3>
+        <p>전국 최고의 조건과 사후관리 토탈 케어를 친절하게 도와드리겠습니다.</p>
+      </div>
+      <div class="contact-main">
+        <div class="advisor-detail">
+          <span class="showroom">메르세데스-벤츠 포항전시장</span>
+          <span class="name">김석현 과장</span>
+          <a href="tel:01093790999" class="phone">📞 010-9379-0999</a>
+        </div>
+        <div class="action-buttons">
+          <a href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener noreferrer" class="btn-action btn-kakao-action">💬 카카오톡 문의</a>
+          <a href="tel:01093790999" class="btn-action btn-phone">전화 문의</a>
+          <a href="sms:01093790999" class="btn-action btn-sms">문자 문의</a>
+        </div>
+      </div>
+      
+      <!-- 전시장 상세 주소 & 네이버 지도 연결 (네이버 지도 단축 링크 적용) -->
+      <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.88rem; color: var(--text-muted);">
+        <div>
+          <strong style="color: var(--text-dark);">📍 전시장 주소:</strong> 경북 포항시 남구 새천년대로 210 (중앙모터스 메르세데스-벤츠 포항전시장)
+        </div>
+        <a href="https://naver.me/xAf1U2G5" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); font-weight: 700; text-decoration: none;">
+          네이버 지도에서 보기 →
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
