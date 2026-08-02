@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>2026 JULY PROMOTION - Mercedes-Benz Full Lineup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 AUGUST PROMOTION - Mercedes-Benz Full Lineup</title>
     <style>
         :root {
             --navy-primary: #0F172A;
@@ -42,27 +43,24 @@
             margin-bottom: 14px;
             font-size: 11.5px;
             font-weight: 600;
+            border-bottom: 1px solid #E2E8F0;
         }
 
-        .page-header .header-left {
-            color: #64748B;
+        .page-header .header-left { 
+            color: #64748B; 
+            white-space: nowrap;
         }
-
-        .page-header .header-right {
-            display: flex;
-            gap: 6px;
-            align-items: center;
+        
+        .page-header .header-right { 
+            display: flex; 
+            gap: 6px; 
+            align-items: center; 
+            white-space: nowrap;
+            flex-wrap: nowrap;
         }
-
-        .page-header .blue-text {
-            color: var(--navy-accent);
-            font-weight: 700;
-        }
-
-        .page-header .dark-text {
-            color: var(--navy-primary);
-            font-weight: 700;
-        }
+        
+        .page-header .blue-text { color: var(--navy-accent); font-weight: 700; }
+        .page-header .dark-text { color: var(--navy-primary); font-weight: 700; }
 
         .page-break {
             page-break-before: always;
@@ -130,13 +128,14 @@
             display: inline-block;
             background-color: var(--green-ew);
             color: #FFFFFF;
-            font-size: 10px;
+            font-size: 10.5px;
             font-weight: 700;
-            padding: 1px 5px;
-            border-radius: 3px;
-            margin-left: 3px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 4px;
             vertical-align: middle;
             letter-spacing: 0.3px;
+            line-height: 1;
         }
 
         .focus-section {
@@ -219,6 +218,8 @@
             font-size: 14.5px;
             color: var(--navy-primary);
             font-weight: 800;
+            display: flex;
+            align-items: center;
         }
 
         .card-sub {
@@ -247,9 +248,7 @@
             line-height: 1.35;
         }
 
-        .card-info li {
-            margin-bottom: 2px;
-        }
+        .card-info li { margin-bottom: 2px; }
 
         h2.section-title {
             color: var(--navy-primary);
@@ -283,22 +282,102 @@
             break-after: avoid;
         }
 
-        .callout {
-            background-color: #EFF6FF;
-            border-left: 4px solid var(--navy-accent);
-            padding: 8px 12px;
-            border-radius: 0 6px 6px 0;
+        .summary-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
             margin-bottom: 8px;
+        }
+
+        .summary-item {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-left: 3px solid var(--navy-accent);
+            padding: 7px 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
             font-size: 11.5px;
         }
 
-        .callout ul {
-            margin: 2px 0 0 0;
-            padding-left: 16px;
+        .summary-tag {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 1px 5px;
+            border-radius: 3px;
+            white-space: nowrap;
+            margin-top: 1px;
         }
 
-        .callout li {
-            margin-bottom: 3px;
+        .tag-blue { background: #DBEAFE; color: #1E40AF; }
+        .tag-green { background: #DCFCE7; color: #166534; }
+        .tag-purple { background: #F3E8FF; color: #6B21A8; }
+        .tag-orange { background: #FFEDD5; color: #9A3412; }
+        .tag-gray { background: #F1F5F9; color: #475569; }
+
+        .summary-content {
+            flex-grow: 1;
+            color: #334155;
+            line-height: 1.3;
+        }
+
+        .summary-content strong {
+            color: var(--navy-primary);
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+            font-size: 10.5px;
+            background: #FFFFFF;
+            table-layout: auto;
+        }
+
+        tr { page-break-inside: avoid; break-inside: avoid; }
+
+        th {
+            background-color: var(--navy-primary);
+            color: #FFFFFF;
+            padding: 6px 4px;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid var(--navy-primary);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 5px 4px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        td.model-name {
+            text-align: left;
+            padding-left: 6px;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #F8FAFC;
+        }
+
+        .highlight-text { 
+            color: var(--highlight); 
+            font-weight: bold; 
+        }
+
+        .jc-text {
+            color: #0284C7;
+            font-size: 10.5px;
+            font-weight: 600;
         }
 
         .contact-card {
@@ -397,57 +476,6 @@
             border: 1px solid #CBD5E1;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 12px;
-            font-size: 10.5px;
-            background: #FFFFFF;
-            table-layout: auto;
-        }
-
-        tr {
-            page-break-inside: avoid;
-            break-inside: avoid;
-        }
-
-        th {
-            background-color: var(--navy-primary);
-            color: #FFFFFF;
-            padding: 6px 4px;
-            font-weight: 600;
-            text-align: center;
-            border: 1px solid var(--navy-primary);
-            white-space: nowrap;
-        }
-
-        td {
-            padding: 5px 4px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        td.model-name {
-            text-align: left;
-            padding-left: 6px;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #F8FAFC;
-        }
-
-        .highlight-text {
-            color: var(--highlight);
-            font-weight: bold;
-        }
-
-        .jc-text {
-            color: #0284C7;
-            font-size: 10.5px;
-            font-weight: 600;
-        }
-
         @media print {
             body { background: none; padding: 0; }
             .container { box-shadow: none; padding: 0; max-width: 100%; }
@@ -459,10 +487,8 @@
             .focus-section { background: #F8FAFC !important; -webkit-print-color-adjust: exact; border-color: #CBD5E1 !important; }
             .focus-card { background: #FFFFFF !important; -webkit-print-color-adjust: exact; }
             .highlight-box { background: #FEF3C7 !important; -webkit-print-color-adjust: exact; color: #92400E !important; }
+            .highlight-text { color: #D97706 !important; -webkit-print-color-adjust: exact; }
             
-            .page-header .blue-text { color: #2563EB !important; -webkit-print-color-adjust: exact; }
-            .page-header .dark-text { color: #0F172A !important; -webkit-print-color-adjust: exact; }
-
             .contact-card { background: #F8FAFC !important; border-color: #2563EB !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .contact-line-2 { display: flex !important; justify-content: space-between !important; align-items: center !important; flex-direction: row !important; }
             .contact-buttons { display: flex !important; gap: 6px !important; }
@@ -479,13 +505,24 @@
             tr { page-break-inside: avoid !important; break-inside: avoid !important; }
         }
 
-        @media (max-width: 1024px) {
-            .btn-contact { padding: 4px 8px; font-size: 10px; }
-        }
-
         @media (max-width: 768px) {
+            body { padding: 5px; }
+            .container { padding: 12px 14px; }
+            .header h1 { font-size: 20px; }
             .focus-grid { grid-template-columns: 1fr; }
             td, th { white-space: normal; }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+                font-size: 11px;
+            }
+            .page-header .header-right {
+                width: 100%;
+                justify-content: flex-start;
+                gap: 5px;
+            }
             .contact-line-2 { flex-direction: column; align-items: flex-start; gap: 8px; }
         }
     </style>
@@ -506,14 +543,15 @@
         </div>
 
         <div class="header">
-            <h1>2026 JULY PROMOTION</h1>
-            <p>메르세데스-벤츠 프리미엄 세일즈 종합 가이드 (기준일: 2026년 7월 공식 프로모션)</p>
+            <h1>2026 AUGUST PROMOTION</h1>
+            <p>메르세데스-벤츠 프리미엄 세일즈 종합 가이드 (기준일: 2026년 8월 공식 프로모션)</p>
             
             <div class="badge-wrapper">
-                <span class="badge-title">주요 7월 프로모션</span>
+                <span class="badge-title">주요 8월 프로모션 포인트</span>
                 <div class="badge-container">
-                    <span class="badge">개소세 환원 반영</span>
-                    <span class="badge">MBF 특별 금리</span>
+                    <span class="badge">E클래스 전 트림 EW 무상 보증 연장 제공 (총 4년/13만km)</span>
+                    <span class="badge">MBF 특별금리, 무이자</span>
+                    <span class="badge">140주년 에디션 라인업 할인율 대폭 인상</span>
                     <span class="badge">전동화 EQ 0% 무이자</span>
                 </div>
             </div>
@@ -522,78 +560,110 @@
         <!-- TOP PICKS -->
         <div class="focus-section">
             <div class="focus-header">
-                <span class="focus-tag">TOP PICKS</span>
-                <h2>7월 강력 추천 포커스 모델 BEST 4</h2>
-                <p>파이낸셜 혜택 및 무이자, 개소세 인하 방어 통관 재고 핵심 라인업</p>
+                <span class="focus-tag">AUGUST SPOTLIGHT</span>
+                <h2>8월 핵심 포커스 추천 모델 BEST 4</h2>
+                <p>보증 메리트 1위 E-Class와 8월 조건 강화 주력 라인업</p>
             </div>
 
             <div class="focus-grid">
                 <!-- RANK 01 -->
                 <div class="focus-card rank-1">
                     <div class="card-badge">RANK 01</div>
-                    <h3>E-Class 전 라인업</h3>
-                    <p class="card-sub">VOLUME LEADER</p>
-                    <div class="highlight-box">
-                        E 200 EX 최대 11% / E 200·300 최대 14%
+                    <h3>E-Class (E 200/300/450) <span class="ew-badge">EW</span></h3>
+                    <p class="card-sub">BEST SELLER #1 & ULTIMATE BENEFIT</p>
+                    <div class="highlight-box" style="border-left-color: var(--green-ew); background: #F0FDF4; color: #166534;">
+                        최고 메리트: MY26 E-Class 전 트림 EW(보증 연장) 무상 제공!
                     </div>
                     <ul class="card-info">
-                        <li><strong>핵심:</strong> 7월 통관 재고 추가 입고 (개소세 방어)</li>
-                        <li><strong>인기:</strong> E-Class 전 라인업 즉출 가능</li>
+                        <li><strong>보증 연장:</strong> 기본 보증에 +1년/3만km 추가 연장 (총 4년 / 13만km)</li>
+                        <li><strong>핵심 혜택:</strong> 유지비 획기적 절감 EW(보증 연장) 무상 지원, 무이자 할부 조건 가능</li>
+                        <li><strong>할인율:</strong> E 300 140주년 기본 10% (MBM 적용 시 최대 14%)</li>
                     </ul>
                 </div>
 
                 <!-- RANK 02 -->
                 <div class="focus-card">
                     <div class="card-badge">RANK 02</div>
-                    <h3>GLE 라인업 (GLE 450 중심)</h3>
-                    <p class="card-sub">BEST DEAL SUV</p>
+                    <h3>S 450 4MATIC Sedan (SWB)</h3>
+                    <p class="card-sub">FLAGSHIP SPECIAL FINANCE</p>
                     <div class="highlight-box">
-                        GLE 450 시리즈 기본 13% + 파이낸셜 4% = 총 17%
+                        페이스리프트 전 최대 할인 기회! (법인 +2% 추가)
                     </div>
                     <ul class="card-info">
-                        <li><strong>대상:</strong> 가솔린/디젤, Coupé 및 AMG 53 라인업</li>
-                        <li><strong>혜택:</strong> 타사 보유 시 Conquest +1% (최대 18%)</li>
+                        <li><strong>구매 조건:</strong> 페이스리프트(F/L) 전 마지막 최대 할인 혜택 제공</li>
+                        <li><strong>금융 상품:</strong> 할부 11% (+4%) / 리스렌탈 13% (+6%) 선택 차등 적용</li>
+                        <li><strong>법인 혜택:</strong> 법인 구매 시 TEV+ 법인 2% 추가 할인 중첩 가능</li>
                     </ul>
                 </div>
 
                 <!-- RANK 03 -->
                 <div class="focus-card">
                     <div class="card-badge">RANK 03</div>
-                    <h3>GLC 300 / Coupé</h3>
-                    <p class="card-sub">SUV BESTSELLER</p>
+                    <h3>140주년 기념 에디션 (E/GLC/CLE)</h3>
+                    <p class="card-sub">SPECIAL EDITION DISCOUNT UP</p>
                     <div class="highlight-box">
-                        아방가르트 모델 4% 추가적용 → 총 12% 할인
+                        GLC 300 AMG Line 140주년 최대 12% 할인
                     </div>
                     <ul class="card-info">
-                        <li><strong>특징:</strong> AMG Line 수준의 할인율로 가성비 극대화</li>
-                        <li><strong>재고:</strong> 인기 컬러(화이트/브라운) 빠른 소진 예상</li>
+                        <li><strong>E 300 AMG Line 140주년:</strong> 기본 5% ➔ 10% 2배 인상</li>
+                        <li><strong>GLC 쿠페 140주년:</strong> 기본 4% ➔ 9% 확대</li>
+                        <li><strong>CLE 200 쿠페/카브리 140주년:</strong> 각 5% / 4% 상향 적용</li>
                     </ul>
                 </div>
 
                 <!-- RANK 04 -->
                 <div class="focus-card">
                     <div class="card-badge">RANK 04</div>
-                    <h3>EQA 250 · EQB 300</h3>
-                    <p class="card-sub">ELECTRIC 0% 무이자</p>
-                    <div class="highlight-box" style="border-left-color: var(--green-ew); background: #F0FDF4; color: #166534;">
-                        총 14% 할인 + 선수금 0원 무이자 프로그램
+                    <h3>C 200 Final Edition</h3>
+                    <p class="card-sub">ENTRY SEDAN & MAX VALUE</p>
+                    <div class="highlight-box">
+                        기본 10% + MBM 특별 +4% = 최대 14% 할인
                     </div>
                     <ul class="card-info">
-                        <li><strong>금융:</strong> 24·36개월 무이자 (48개월 0.5% 초저금리)</li>
-                        <li><strong>보증:</strong> SK온 배터리 및 EW 무상 보증 기본 적용</li>
+                        <li><strong>신규 라인업:</strong> C 200 Final Edition 라인업 편입</li>
+                        <li><strong>가성비:</strong> 풀옵션급 구성에 입문 세단 최고 할인 조건 중첩 (실구매가 5,701만원)</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title">1. 2026년 7월 주요 프로모션 변경 사항</h2>
-        <div class="callout">
-            <ul>
-                <li><strong>개별소비세 탄력세율 종료:</strong> 7월 1일부터 개소세가 5% 정상세율로 복귀하여 권장소비자가격이 소폭 인상되었습니다.</li>
-                <li><strong>7/1 이전 통관 차량 특별 혜택:</strong> 개소세 인상폭만큼 추가 할인이 적용된 실질 구매가가 제공되므로 재고 문의 시 통관일 확인이 필수입니다.</li>
-                <li><strong>MBF 특별 할인 대상 확대:</strong> GLA / GLB / AMG A45S / EQA 4종 / EQB 2종 등이 MBF 특별 할인 신규 차종으로 편입되었습니다.</li>
-                <li><strong>조인트 캠페인(MBFJC) 중첩 할인:</strong> 기본 현금할인에 더해 파이낸셜/모빌리티 이용 시 +4%~+7% 추가 할인이 적용됩니다.</li>
-            </ul>
+        <!-- 1번 섹션 -->
+        <h2 class="section-title">1. 2026년 8월 주요 프로모션 변경 사항</h2>
+        <div class="summary-container">
+            <div class="summary-item" style="border-left-color: #2563EB;">
+                <span class="summary-tag tag-blue">NEW</span>
+                <div class="summary-content">
+                    <strong>C 200 Final Edition 반영:</strong> 기본 10% + MBM 특별 +4% = <strong>최대 14% 할인</strong> (개소세 인하가 56,210,000원)
+                </div>
+            </div>
+            
+            <div class="summary-item" style="border-left-color: #16A34A;">
+                <span class="summary-tag tag-green">보증연장</span>
+                <div class="summary-content">
+                    <strong>MY26 E-Class 전 트림 EW 무상 제공:</strong> 기본 보증 +1년/3만km (<strong>총 4년 / 13만km</strong>)
+                </div>
+            </div>
+
+            <div class="summary-item" style="border-left-color: #9333EA;">
+                <span class="summary-tag tag-purple">플래그십</span>
+                <div class="summary-content">
+                    <strong>S 450 SWB F/L전 최대 할인:</strong> 할부 11% (+4%) / 리스렌탈 13% (+6%) (법인 구매 시 <strong>+2% 추가</strong>)
+                </div>
+            </div>
+
+            <div class="summary-item" style="border-left-color: #D97706;">
+                <span class="summary-tag tag-orange">UP</span>
+                <div class="summary-content">
+                    <strong>140주년 에디션 할인 인상:</strong> E 300 (10%), GLC 300 (12%), CLE 200 쿠페 (5%), CLE 200 카브리 (4%)
+                </div>
+            </div>
+
+            <div class="summary-item" style="border-left-color: #64748B;">
+                <span class="summary-tag tag-gray">소폭조정</span>
+                <div class="summary-content">
+                    <strong>주요 모델 할인율 조정:</strong> AMG GT 43 Coupé (C192) 9% 할인, GLE 450 라인업 12% (MBF +4%), GLC 300 AV / 쿠페 AV 7%
+                </div>
+            </div>
         </div>
     </div>
 
@@ -611,963 +681,999 @@
         <h2 class="section-title" style="margin-top: 0;">2. 금융 프로모션 금리표 (MBF)</h2>
         
         <h3 class="sub-title">1) MBF 내연기관 & 하이브리드 특별 금리표</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>할부기간</th>
-                    <th>선수금 10%</th>
-                    <th>선수금 20%</th>
-                    <th>선수금 30%</th>
-                    <th>선수금 40%</th>
-                    <th>선수금 50%</th>
-                    <th>선수금 65%</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>24개월</strong></td>
-                    <td>4.47%</td>
-                    <td>4.03%</td>
-                    <td>3.45%</td>
-                    <td>2.69%</td>
-                    <td>1.16%</td>
-                    <td class="highlight-text">무이자 (0.00%)</td>
-                </tr>
-                <tr>
-                    <td><strong>36개월</strong></td>
-                    <td>5.06%</td>
-                    <td>4.76%</td>
-                    <td>4.36%</td>
-                    <td>3.84%</td>
-                    <td>3.11%</td>
-                    <td>1.19%</td>
-                </tr>
-                <tr>
-                    <td><strong>48개월</strong></td>
-                    <td>5.38%</td>
-                    <td>5.15%</td>
-                    <td>4.86%</td>
-                    <td>4.46%</td>
-                    <td>3.89%</td>
-                    <td>2.43%</td>
-                </tr>
-                <tr>
-                    <td><strong>60개월</strong></td>
-                    <td>5.63%</td>
-                    <td>5.44%</td>
-                    <td>5.20%</td>
-                    <td>4.87%</td>
-                    <td>4.41%</td>
-                    <td>3.22%</td>
-                </tr>
-            </tbody>
-        </table>
-        <p style="font-size: 10px; color: #64748B; margin-top: -6px; margin-bottom: 10px;">※ 대상: C200, E200/300, S 450 SWB, GLC 300, GLE 450, GLA/GLB, AMG A45S/GLB35 등 (선수금 65%/24m 무이자 시 중도상환수수료 0원)</p>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>할부기간</th>
+                        <th>선수금 10%</th>
+                        <th>선수금 20%</th>
+                        <th>선수금 30%</th>
+                        <th>선수금 40%</th>
+                        <th>선수금 50%</th>
+                        <th>선수금 65%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>24개월</strong></td>
+                        <td>4.47%</td>
+                        <td>4.03%</td>
+                        <td>3.45%</td>
+                        <td>2.69%</td>
+                        <td>1.16%</td>
+                        <td class="highlight-text">무이자 (0.00%)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>36개월</strong></td>
+                        <td>5.06%</td>
+                        <td>4.76%</td>
+                        <td>4.36%</td>
+                        <td>3.84%</td>
+                        <td>3.11%</td>
+                        <td>1.19%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>48개월</strong></td>
+                        <td>5.38%</td>
+                        <td>5.15%</td>
+                        <td>4.86%</td>
+                        <td>4.46%</td>
+                        <td>3.89%</td>
+                        <td>2.43%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>60개월</strong></td>
+                        <td>5.63%</td>
+                        <td>5.44%</td>
+                        <td>5.20%</td>
+                        <td>4.87%</td>
+                        <td>4.41%</td>
+                        <td>3.22%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size: 10px; color: #64748B; margin-top: -6px; margin-bottom: 10px;">※ 대상: C200, E200/300, S 450 SWB, GLC 300, GLE 450, GLA/GLB 등</p>
 
         <h3 class="sub-title">2) 전동화 EQ (EQA/EQB) 전용 금리표</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>할부기간</th>
-                    <th>선수금 0% 기본 금리</th>
-                    <th>무이자 전환 조건</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>24개월 / 36개월</strong></td>
-                    <td class="highlight-text">무이자 (0.00%)</td>
-                    <td>선수금 0% 조건 즉시 적용</td>
-                </tr>
-                <tr>
-                    <td><strong>48개월</strong></td>
-                    <td>0.5%</td>
-                    <td>선수금 7% 설정 시 무이자 전환</td>
-                </tr>
-                <tr>
-                    <td><strong>60개월</strong></td>
-                    <td>1.6%</td>
-                    <td>선수금 22% 설정 시 무이자 전환</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>할부기간</th>
+                        <th>선수금 0% 기본 금리</th>
+                        <th>무이자 전환 조건</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>24개월 / 36개월</strong></td>
+                        <td class="highlight-text">무이자 (0.00%)</td>
+                        <td>선수금 0% 조건 즉시 적용</td>
+                    </tr>
+                    <tr>
+                        <td><strong>48개월</strong></td>
+                        <td>0.5%</td>
+                        <td>선수금 7% 설정 시 <span class="highlight-text">무이자</span> 전환</td>
+                    </tr>
+                    <tr>
+                        <td><strong>60개월</strong></td>
+                        <td>1.6%</td>
+                        <td>선수금 22% 설정 시 <span class="highlight-text">무이자</span> 전환</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <h2 class="section-title">3. 공통 추가 할인 조건 (중복 적용 가능)</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 20%;">구분</th>
-                    <th style="width: 15%;">할인율</th>
-                    <th>적용 요건 및 대상</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>MOU 임직원</strong></td>
-                    <td class="highlight-text">+2%</td>
-                    <td style="text-align: left;">벤츠코리아 MOU 체결 603개 기업 임직원 본인/가족 명의</td>
-                </tr>
-                <tr>
-                    <td><strong>TEV+법인</strong></td>
-                    <td class="highlight-text">+2%</td>
-                    <td style="text-align: left;">AMG, Maybach, S-Class, GLS 한정 법인 명의 구매 시</td>
-                </tr>
-                <tr>
-                    <td><strong>재구매 (Retention)</strong></td>
-                    <td class="highlight-text">+1% ~ +2%</td>
-                    <td style="text-align: left;">기존 벤츠 보유 고객 (AMG/S/G/Maybach +2%, 일반 +1%)</td>
-                </tr>
-                <tr>
-                    <td><strong>Trade-in 매각</strong></td>
-                    <td class="highlight-text">+1%</td>
-                    <td style="text-align: left;">벤츠 인증중고차 동시 매각 시 (재구매 할인과 중첩 가능)</td>
-                </tr>
-                <tr>
-                    <td><strong>타브랜드 보유 (Conquest)</strong></td>
-                    <td class="highlight-text">+1%</td>
-                    <td style="text-align: left;">GLC, GLE 한정 (BMW, Audi, Genesis, Volvo, Porsche, LR)</td>
-                </tr>
-                <tr>
-                    <td><strong>무상 보증 연장 <span class="ew-badge">EW</span></strong></td>
-                    <td class="highlight-text">최대 5년/17만km</td>
-                    <td style="text-align: left;">전 EQ 차종 및 Maybach S 580/680 한정 무상 제공 연장 혜택</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">구분</th>
+                        <th style="width: 20%;">할인율/혜택</th>
+                        <th>적용 요건 및 대상</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>MOU 임직원</strong></td>
+                        <td class="highlight-text">+2%</td>
+                        <td style="text-align: left;">벤츠코리아 MOU 체결 기업 임직원 본인/가족 명의</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TEV+법인</strong></td>
+                        <td class="highlight-text">+2%</td>
+                        <td style="text-align: left;">AMG, Maybach, S-Class, GLS 한정 법인 명의 구매 시</td>
+                    </tr>
+                    <tr>
+                        <td><strong>재구매 (Retention)</strong></td>
+                        <td class="highlight-text">+1% ~ +2%</td>
+                        <td style="text-align: left;">기존 벤츠 보유 고객 (AMG/S/G/Maybach +2%, 일반 +1%)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trade-in 매각</strong></td>
+                        <td class="highlight-text">+1%</td>
+                        <td style="text-align: left;">벤츠 인증중고차 동시 매각 시 (재구매 할인과 중첩 가능)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>타브랜드 보유 (Conquest)</strong></td>
+                        <td class="highlight-text">+1%</td>
+                        <td style="text-align: left;">GLC, GLE 한정 (BMW, Audi, Genesis, Volvo, Porsche, LR 보유 고객)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>무상 보증 연장 <span class="ew-badge">EW</span></strong></td>
+                        <td class="highlight-text">무상 연장 - 최대 5년/17만km</td>
+                        <td style="text-align: left;">전 EQ 차종 및 Maybach S 580/680 한정 무상 제공 연장 혜택, MY26 E클래스 전 모델 (최대 4년/13만km)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-        <h2 class="section-title">4. 메르세데스-벤츠 2026년 7월 전체 라인업 상세 가격표</h2>
-        <p style="font-size: 10.5px; color: #64748B; margin-top: -6px; margin-bottom: 8px;">※ 모든 가격은 VAT 포함, 권장소비자가격은 만원 단위 절삭, 할인금액은 만원 단위 올림 기준입니다. (옵션·재고·고객 조건에 따라 실제 견적과 차이가 있을 수 있습니다.)</p>
+    <!-- ================= PAGE 3 ================= -->
+    <div class="page-break">
+        <div class="page-header">
+            <span class="header-left">공식 세일즈 가이드</span>
+            <span class="header-right">
+                <span class="blue-text">메르세데스-벤츠 포항전시장</span>
+                <span class="dark-text">김석현 과장</span>
+                <span class="dark-text">(010-9379-0999)</span>
+            </span>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 0;">4. 메르세데스-벤츠 2026년 8월 전체 라인업 상세 가격표</h2>
+        <p style="font-size: 10.5px; color: #64748B; margin-top: -6px; margin-bottom: 8px;">※ 모든 가격은 VAT 포함, 권장소비자가격은 만원 단위 절삭, 할인금액은 천원 단위에서 올림 산출 기준입니다. (옵션·재고·고객 조건에 따라 실제 견적과 차이가 있을 수 있습니다.)</p>
 
         <h3 class="sub-title">1) A-Class / CLA / GLA / GLB</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>모델명</th>
-                    <th>권장 소비자가</th>
-                    <th>기본 할인</th>
-                    <th>파이낸셜/모빌리티 JC</th>
-                    <th>실구매가 (정상 통관)</th>
-                    <th>개소세 인하가</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="model-name"><strong>A 220 Hatch</strong></td>
-                    <td>48,700,000원</td>
-                    <td>10% (-4,870,000원)</td>
-                    <td>-</td>
-                    <td>43,830,000원</td>
-                    <td class="highlight-text">43,230,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>A 220 Sedan</strong></td>
-                    <td>50,500,000원</td>
-                    <td>5% (-2,530,000원)</td>
-                    <td>-</td>
-                    <td>47,970,000원</td>
-                    <td class="highlight-text">47,370,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>AMG A 45 S 4MATIC+</strong></td>
-                    <td>81,400,000원</td>
-                    <td>7% (-5,700,000원)</td>
-                    <td class="jc-text">11% (-8,960,000원) [MBF+4%]</td>
-                    <td>72,440,000원</td>
-                    <td class="highlight-text">71,440,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>AMG A 35 4MATIC</strong></td>
-                    <td>67,700,000원</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>67,700,000원</td>
-                    <td class="highlight-text">66,800,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>CLA 250 4MATIC AMG Line</strong></td>
-                    <td>64,500,000원</td>
-                    <td>7% (-4,520,000원)</td>
-                    <td>-</td>
-                    <td>59,980,000원</td>
-                    <td class="highlight-text">59,180,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>AMG CLA 45 S 4MATIC+</strong></td>
-                    <td>91,800,000원</td>
-                    <td>5% (-4,590,000원)</td>
-                    <td>-</td>
-                    <td>87,210,000원</td>
-                    <td class="highlight-text">86,010,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLA 250 4MATIC AMG Line</strong></td>
-                    <td>70,000,000원</td>
-                    <td>9% (-6,300,000원)</td>
-                    <td class="jc-text">13% (-9,100,000원) [MBF+4%]</td>
-                    <td>60,900,000원</td>
-                    <td class="highlight-text">60,000,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLB 200 d</strong></td>
-                    <td>64,300,000원</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>64,300,000원</td>
-                    <td class="highlight-text">63,300,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLB 250 4MATIC</strong></td>
-                    <td>72,000,000원</td>
-                    <td>9% (-6,480,000원)</td>
-                    <td class="jc-text">13% (-9,360,000원) [MBF+4%]</td>
-                    <td>62,640,000원</td>
-                    <td class="highlight-text">61,740,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>AMG GLB 35 4MATIC</strong></td>
-                    <td>79,500,000원</td>
-                    <td>9% (-7,160,000원)</td>
-                    <td class="jc-text">13% (-10,340,000원) [MBF+4%]</td>
-                    <td>69,160,000원</td>
-                    <td class="highlight-text">68,160,000원</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>모델명</th>
+                        <th>권장 소비자가</th>
+                        <th>기본 할인</th>
+                        <th>파이낸셜/모빌리티 JC</th>
+                        <th>실구매가 (정상 통관)</th>
+                        <th>개소세 인하가</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="model-name"><strong>A 220 Hatch</strong></td>
+                        <td>48,700,000원</td>
+                        <td>10% (-4,870,000원)</td>
+                        <td>-</td>
+                        <td>43,830,000원</td>
+                        <td class="highlight-text">43,230,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>A 220 Sedan</strong></td>
+                        <td>50,500,000원</td>
+                        <td>5% (-2,530,000원)</td>
+                        <td>-</td>
+                        <td>47,970,000원</td>
+                        <td class="highlight-text">47,370,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>AMG A 45 S 4MATIC+</strong></td>
+                        <td>81,400,000원</td>
+                        <td>7% (-5,700,000원)</td>
+                        <td class="jc-text">11% (-8,960,000원) [MBF+4%]</td>
+                        <td>72,440,000원</td>
+                        <td class="highlight-text">71,440,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>AMG A 35 4MATIC</strong></td>
+                        <td>67,700,000원</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>67,700,000원</td>
+                        <td class="highlight-text">66,800,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>CLA 250 4MATIC AMG Line</strong></td>
+                        <td>64,500,000원</td>
+                        <td>7% (-4,520,000원)</td>
+                        <td>-</td>
+                        <td>59,980,000원</td>
+                        <td class="highlight-text">59,180,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>AMG CLA 45 S 4MATIC+</strong></td>
+                        <td>91,800,000원</td>
+                        <td>5% (-4,590,000원)</td>
+                        <td>-</td>
+                        <td>87,210,000원</td>
+                        <td class="highlight-text">86,010,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLA 250 4MATIC AMG Line</strong></td>
+                        <td>70,000,000원</td>
+                        <td>9% (-6,300,000원)</td>
+                        <td class="jc-text">13% (-9,100,000원) [MBF+4%]</td>
+                        <td>60,900,000원</td>
+                        <td class="highlight-text">60,000,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLB 200 d</strong></td>
+                        <td>64,300,000원</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>64,300,000원</td>
+                        <td class="highlight-text">63,300,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLB 250 4MATIC</strong></td>
+                        <td>72,000,000원</td>
+                        <td>9% (-6,480,000원)</td>
+                        <td class="jc-text">13% (-9,360,000원) [MBF+4%]</td>
+                        <td>62,640,000원</td>
+                        <td class="highlight-text">61,740,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>AMG GLB 35 4MATIC</strong></td>
+                        <td>79,500,000원</td>
+                        <td>9% (-7,160,000원)</td>
+                        <td class="jc-text">13% (-10,340,000원) [MBF+4%]</td>
+                        <td>69,160,000원</td>
+                        <td class="highlight-text">68,160,000원</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <h3 class="sub-title">2) C-Class / E-Class</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>모델명</th>
-                    <th>권장 소비자가</th>
-                    <th>기본 할인</th>
-                    <th>파이낸셜/모빌리티 JC</th>
-                    <th>실구매가 (정상 통관)</th>
-                    <th>개소세 인하가</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="model-name"><strong>C 200 AVANTGARDE</strong></td>
-                    <td>65,100,000원</td>
-                    <td>10% (-6,510,000원)</td>
-                    <td class="jc-text">14% (-9,120,000원) [MBF+4%]</td>
-                    <td>55,980,000원</td>
-                    <td class="highlight-text">55,180,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>C 200 AMG Line</strong></td>
-                    <td>68,300,000원</td>
-                    <td>10% (-6,830,000원)</td>
-                    <td class="jc-text">14% (-9,570,000원) [MBF+4%]</td>
-                    <td>58,730,000원</td>
-                    <td class="highlight-text">57,930,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 200 AVANTGARDE</strong></td>
-                    <td>77,500,000원</td>
-                    <td>16% (-12,400,000원)</td>
-                    <td>-</td>
-                    <td>65,100,000원</td>
-                    <td class="highlight-text">64,100,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 200 AMG Line (RoF Edition)</strong></td>
-                    <td>81,710,000원</td>
-                    <td>10% (-8,180,000원)</td>
-                    <td class="jc-text">14% (-11,440,000원) [MBF+4%]</td>
-                    <td>70,270,000원</td>
-                    <td class="highlight-text">69,270,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 200 EXCLUSIVE</strong></td>
-                    <td>77,500,000원</td>
-                    <td>4% (-3,100,000원)</td>
-                    <td class="jc-text">11% (-8,530,000원) [MBF+7%]</td>
-                    <td>68,970,000원</td>
-                    <td class="highlight-text">68,070,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 200 AMG Line</strong></td>
-                    <td>81,000,000원</td>
-                    <td>10% (-8,100,000원)</td>
-                    <td class="jc-text">14% (-11,340,000원) [MBF+4%]</td>
-                    <td>69,660,000원</td>
-                    <td class="highlight-text">68,660,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 220 d 4MATIC AVANTGARDE</strong></td>
-                    <td>82,900,000원</td>
-                    <td>10% (-8,290,000원)</td>
-                    <td class="jc-text">14% (-11,610,000원) [MBF+4%]</td>
-                    <td>71,290,000원</td>
-                    <td class="highlight-text">70,290,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 220 d 4MATIC EXCLUSIVE</strong></td>
-                    <td>87,200,000원</td>
-                    <td>9% (-7,850,000원)</td>
-                    <td>-</td>
-                    <td>79,350,000원</td>
-                    <td class="highlight-text">78,250,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 300 4MATIC EXCLUSIVE</strong></td>
-                    <td>94,800,000원</td>
-                    <td>10% (-9,480,000원)</td>
-                    <td class="jc-text">14% (-13,280,000원) [MBF+4%]</td>
-                    <td>81,520,000원</td>
-                    <td class="highlight-text">80,320,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 300 4MATIC AMG Line</strong></td>
-                    <td>99,000,000원</td>
-                    <td>10% (-9,900,000원)</td>
-                    <td class="jc-text">14% (-13,860,000원) [MBF+4%]</td>
-                    <td>85,140,000원</td>
-                    <td class="highlight-text">83,840,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 300 4MATIC AMG Line (140주년 Edition)</strong></td>
-                    <td>98,000,000원</td>
-                    <td>10% (-9,800,000원)</td>
-                    <td class="jc-text">14% (-13,720,000원) [MBF+4%]</td>
-                    <td>84,280,000원</td>
-                    <td class="highlight-text">82,980,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 300 d 4MATIC AMG Line</strong></td>
-                    <td>94,000,000원</td>
-                    <td>10% (-9,400,000원)</td>
-                    <td class="jc-text">14% (-13,160,000원) [MBF+4%]</td>
-                    <td>80,840,000원</td>
-                    <td class="highlight-text">79,640,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 350 e 4MATIC EXCLUSIVE</strong></td>
-                    <td>100,000,000원</td>
-                    <td>11% (-11,000,000원)</td>
-                    <td>-</td>
-                    <td>89,000,000원</td>
-                    <td class="highlight-text">87,700,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 450 4MATIC EXCLUSIVE</strong></td>
-                    <td>115,700,000원</td>
-                    <td>11% (-12,730,000원)</td>
-                    <td class="jc-text">15% (-17,360,000원) [MBF+4%]</td>
-                    <td>98,340,000원</td>
-                    <td class="highlight-text">96,940,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 450 4MATIC AMG Line</strong></td>
-                    <td>116,000,000원</td>
-                    <td>11% (-12,760,000원)</td>
-                    <td>-</td>
-                    <td>103,240,000원</td>
-                    <td class="highlight-text">101,840,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>E 450 4MATIC All-Terrain</strong></td>
-                    <td>107,000,000원</td>
-                    <td>11% (-11,770,000원)</td>
-                    <td class="jc-text">15% (-16,050,000원) [MBF+4%]</td>
-                    <td>90,950,000원</td>
-                    <td class="highlight-text">89,650,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>AMG E 53 HYBRID 4MATIC+</strong></td>
-                    <td>143,000,000원</td>
-                    <td>10% (-14,300,000원)</td>
-                    <td>-</td>
-                    <td>128,700,000원</td>
-                    <td class="highlight-text">127,300,000원</td>
-                </tr>
-            </tbody>
-        </table>
+        <h3 class="sub-title">2) C-Class / E-Class <span style="font-size:11px; color:#16A34A; font-weight:normal; margin-left:6px;">— MY26 E클래스 전 모델 보증연장제공: 최대 4년 / 13만km (Warranty Plus Advance 동일 범위)</span></h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>모델명</th>
+                        <th>권장 소비자가</th>
+                        <th>기본 할인</th>
+                        <th>파이낸셜/모빌리티 JC</th>
+                        <th>실구매가 (정상 통관)</th>
+                        <th>개소세 인하가</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="model-name"><strong>C 200 AVANTGARDE</strong></td>
+                        <td>65,100,000원</td>
+                        <td>10% (-6,510,000원)</td>
+                        <td class="jc-text">14% (-9,120,000원) [MBF+4%]</td>
+                        <td>55,980,000원</td>
+                        <td class="highlight-text">55,180,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>C 200 AMG Line</strong></td>
+                        <td>68,300,000원</td>
+                        <td>10% (-6,830,000원)</td>
+                        <td class="jc-text">14% (-9,570,000원) [MBF+4%]</td>
+                        <td>58,730,000원</td>
+                        <td class="highlight-text">57,930,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>C 200 Final Edition</strong></td>
+                        <td>66,300,000원</td>
+                        <td>10% (-6,630,000원)</td>
+                        <td class="jc-text">14% (-9,280,000원) [MBF+4%]</td>
+                        <td>57,010,000원</td>
+                        <td class="highlight-text">56,210,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>E 200 AVANTGARDE <span class="ew-badge">EW</span></strong></td>
+                        <td>77,500,000원</td>
+                        <td>16% (-12,400,000원)</td>
+                        <td>-</td>
+                        <td>65,100,000원</td>
+                        <td class="highlight-text">64,100,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>E 200 AMG Line (RoF Edition) <span class="ew-badge">EW</span></strong></td>
+                        <td>81,710,000원</td>
+                        <td>10% (-8,180,000원)</td>
+                        <td class="jc-text">14% (-11,440,000원) [MBF+4%]</td>
+                        <td>70,270,000원</td>
+                        <td class="highlight-text">69,270,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>E 200 EXCLUSIVE <span class="ew-badge">EW</span></strong></td>
+                        <td>77,500,000원</td>
+                        <td>4% (-3,100,000원)</td>
+                        <td class="jc-text">11% (-8,530,000원) [MBF+7%]</td>
+                        <td>68,970,000원</td>
+                        <td class="highlight-text">68,070,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>E 200 AMG Line <span class="ew-badge">EW</span></strong></td>
+                        <td>81,000,000원</td>
+                        <td>10% (-8,100,000원)</td>
+                        <td class="jc-text">14% (-11,340,000원) [MBF+4%]</td>
+                        <td>69,660,000원</td>
+                        <td class="highlight-text">68,660,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>E 220 d 4MATIC EXCLUSIVE <span class="ew-badge">EW</span></strong></td>
+                        <td>87,200,000원</td>
+                        <td>9% (-7,850,000원)</td>
+                        <td>-</td>
+                        <td>79,350,000원</td>
+                        <td class="highlight-text">78,250,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>E 300 4MATIC EXCLUSIVE <span class="ew-badge">EW</span></strong></td>
+                        <td>94,800,000원</td>
+                        <td>10% (-9,480,000원)</td>
+                        <td class="jc-text">14% (-13,280,000원) [MBF+4%]</td>
+                        <td>81,520,000원</td>
+                        <td class="highlight-text">80,320,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>E 300 4MATIC AMG Line <span class="ew-badge">EW</span></strong></td>
+                        <td>99,000,000원</td>
+                        <td>10% (-9,900,000원)</td>
+                        <td class="jc-text">14% (-13,860,000원) [MBF+4%]</td>
+                        <td>85,140,000원</td>
+                        <td class="highlight-text">83,840,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>E 300 4MATIC AMG Line (140주년 Edition) <span class="ew-badge">EW</span></strong></td>
+                        <td>104,700,000원</td>
+                        <td>10% (-10,470,000원)</td>
+                        <td class="jc-text">14% (-14,660,000원) [MBF+4%]</td>
+                        <td>90,040,000원</td>
+                        <td class="highlight-text">88,740,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>E 350 e 4MATIC EXCLUSIVE <span class="ew-badge">EW</span></strong></td>
+                        <td>100,000,000원</td>
+                        <td>11% (-11,000,000원)</td>
+                        <td>-</td>
+                        <td>89,000,000원</td>
+                        <td class="highlight-text">87,700,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>E 450 4MATIC AMG Line <span class="ew-badge">EW</span></strong></td>
+                        <td>116,000,000원</td>
+                        <td>11% (-12,760,000원)</td>
+                        <td>-</td>
+                        <td>103,240,000원</td>
+                        <td class="highlight-text">101,840,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>E 450 4MATIC EXCLUSIVE <span class="ew-badge">EW</span></strong></td>
+                        <td>129,600,000원</td>
+                        <td>11% (-14,260,000원)</td>
+                        <td>-</td>
+                        <td>115,340,000원</td>
+                        <td class="highlight-text">113,940,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>AMG E 53 HYBRID 4MATIC+ <span class="ew-badge">EW</span></strong></td>
+                        <td>143,000,000원</td>
+                        <td>10% (-14,300,000원)</td>
+                        <td>-</td>
+                        <td>128,700,000원</td>
+                        <td class="highlight-text">127,300,000원</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-        <h3 class="sub-title">3) CLE / AMG GT / SL</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>모델명</th>
-                    <th>권장 소비자가</th>
-                    <th>기본 할인</th>
-                    <th>파이낸셜/모빌리티 JC</th>
-                    <th>실구매가 (정상 통관)</th>
-                    <th>개소세 인하가</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="model-name"><strong>CLE 200 Coupé AMG Line</strong></td>
-                    <td>76,700,000원</td>
-                    <td>5% (-3,840,000원)</td>
-                    <td>-</td>
-                    <td>72,860,000원</td>
-                    <td class="highlight-text">71,860,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>CLE 200 Coupé (140주년 Edition)</strong></td>
-                    <td>81,200,000원</td>
-                    <td>2% (-1,630,000원)</td>
-                    <td>-</td>
-                    <td>79,570,000원</td>
-                    <td class="highlight-text">78,570,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>CLE 200 Cabriolet AMG Line</strong></td>
-                    <td>83,100,000원</td>
-                    <td>4% (-3,330,000원)</td>
-                    <td>-</td>
-                    <td>79,770,000원</td>
-                    <td class="highlight-text">78,770,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>CLE 200 Cabriolet (140주년 Edition)</strong></td>
-                    <td>87,400,000원</td>
-                    <td>2% (-1,750,000원)</td>
-                    <td>-</td>
-                    <td>85,650,000원</td>
-                    <td class="highlight-text">84,650,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>CLE 450 4MATIC Coupé AMG Line</strong></td>
-                    <td>99,700,000원</td>
-                    <td>9% (-8,980,000원)</td>
-                    <td>-</td>
-                    <td>90,720,000원</td>
-                    <td class="highlight-text">89,420,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>CLE 450 4MATIC Cabriolet AMG Line</strong></td>
-                    <td>104,000,000원</td>
-                    <td>6% (-6,240,000원)</td>
-                    <td>-</td>
-                    <td>97,760,000원</td>
-                    <td class="highlight-text">96,360,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Mercedes-AMG CLE 53 4M+ Coupé</strong></td>
-                    <td>109,100,000원</td>
-                    <td>3% (-3,280,000원)</td>
-                    <td>-</td>
-                    <td>105,820,000원</td>
-                    <td class="highlight-text">104,420,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Mercedes-AMG CLE 53 4M+ Cabriolet</strong></td>
-                    <td>115,000,000원</td>
-                    <td>3% (-3,450,000원)</td>
-                    <td>-</td>
-                    <td>111,550,000원</td>
-                    <td class="highlight-text">110,150,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Mercedes-AMG SL 43</strong></td>
-                    <td>160,000,000원</td>
-                    <td>9% (-14,400,000원)</td>
-                    <td>-</td>
-                    <td>145,600,000원</td>
-                    <td class="highlight-text">144,200,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Mercedes-AMG GT 43 4MATIC+</strong></td>
-                    <td>164,000,000원</td>
-                    <td>9% (-14,760,000원)</td>
-                    <td>-</td>
-                    <td>149,240,000원</td>
-                    <td class="highlight-text">147,840,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Mercedes-AMG GT 55 4MATIC+ Coupé</strong></td>
-                    <td>210,000,000원</td>
-                    <td>3% (-6,300,000원)</td>
-                    <td>-</td>
-                    <td>203,700,000원</td>
-                    <td class="highlight-text">202,300,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Mercedes-AMG GT 63 S E Performance</strong></td>
-                    <td>280,000,000원</td>
-                    <td>4% (-11,200,000원)</td>
-                    <td>-</td>
-                    <td>268,800,000원</td>
-                    <td class="highlight-text">267,400,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Maybach SL 680</strong></td>
-                    <td>344,000,000원</td>
-                    <td>2% (-6,880,000원)</td>
-                    <td>-</td>
-                    <td>337,120,000원</td>
-                    <td class="highlight-text">335,720,000원</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- ================= PAGE 4 ================= -->
+    <div class="page-break">
+        <div class="page-header">
+            <span class="header-left">공식 세일즈 가이드</span>
+            <span class="header-right">
+                <span class="blue-text">메르세데스-벤츠 포항전시장</span>
+                <span class="dark-text">김석현 과장</span>
+                <span class="dark-text">(010-9379-0999)</span>
+            </span>
+        </div>
 
-        <h3 class="sub-title">4) S-Class / Maybach S</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>모델명</th>
-                    <th>권장 소비자가</th>
-                    <th>기본 할인</th>
-                    <th>파이낸셜/모빌리티 JC</th>
-                    <th>실구매가 (정상 통관)</th>
-                    <th>개소세 인하가</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="model-name"><strong>S 350 d 4MATIC</strong></td>
-                    <td>154,000,000원</td>
-                    <td>10% (-15,400,000원)</td>
-                    <td>-</td>
-                    <td>138,600,000원</td>
-                    <td class="highlight-text">137,200,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>S 450 4MATIC Sedan (SWB)</strong></td>
-                    <td>162,000,000원</td>
-                    <td>7% (-11,340,000원)</td>
-                    <td class="jc-text">11% (-17,820,000원) [MBF+4%]</td>
-                    <td>144,180,000원</td>
-                    <td class="highlight-text">142,780,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>S 450 4MATIC Long</strong></td>
-                    <td>193,000,000원</td>
-                    <td>10% (-19,300,000원)</td>
-                    <td>-</td>
-                    <td>173,700,000원</td>
-                    <td class="highlight-text">172,300,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>S 500 4MATIC Long</strong></td>
-                    <td>215,000,000원</td>
-                    <td>10% (-21,500,000원)</td>
-                    <td>-</td>
-                    <td>193,500,000원</td>
-                    <td class="highlight-text">192,100,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>S 580 4MATIC Long</strong></td>
-                    <td>260,000,000원</td>
-                    <td>10% (-26,000,000원)</td>
-                    <td>-</td>
-                    <td>234,000,000원</td>
-                    <td class="highlight-text">232,600,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>AMG S 63 E Performance</strong></td>
-                    <td>299,000,000원</td>
-                    <td>10% (-29,900,000원)</td>
-                    <td>-</td>
-                    <td>269,100,000원</td>
-                    <td class="highlight-text">267,700,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Maybach S 580 4MATIC <span class="ew-badge">EW</span></strong></td>
-                    <td>317,000,000원</td>
-                    <td>9% (-28,530,000원)</td>
-                    <td>-</td>
-                    <td>288,470,000원</td>
-                    <td class="highlight-text">287,070,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Maybach S 680 4MATIC <span class="ew-badge">EW</span></strong></td>
-                    <td>403,000,000원</td>
-                    <td>9% (-36,270,000원)</td>
-                    <td>-</td>
-                    <td>366,730,000원</td>
-                    <td class="highlight-text">365,330,000원</td>
-                </tr>
-            </tbody>
-        </table>
+        <h3 class="sub-title" style="margin-top: 0;">3) CLE / AMG GT / SL</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>모델명</th>
+                        <th>권장 소비자가</th>
+                        <th>기본 할인</th>
+                        <th>파이낸셜/모빌리티 JC</th>
+                        <th>실구매가 (정상 통관)</th>
+                        <th>개소세 인하가</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="model-name"><strong>CLE 200 Coupé AMG Line</strong></td>
+                        <td>76,700,000원</td>
+                        <td>5% (-3,840,000원)</td>
+                        <td>-</td>
+                        <td>72,860,000원</td>
+                        <td class="highlight-text">71,860,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>CLE 200 Coupé (140주년 Edition)</strong></td>
+                        <td>81,200,000원</td>
+                        <td>5% (-4,060,000원)</td>
+                        <td>-</td>
+                        <td>77,140,000원</td>
+                        <td class="highlight-text">76,140,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>CLE 200 Cabriolet AMG Line</strong></td>
+                        <td>83,100,000원</td>
+                        <td>4% (-3,330,000원)</td>
+                        <td>-</td>
+                        <td>79,770,000원</td>
+                        <td class="highlight-text">78,770,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>CLE 200 Cabriolet (140주년 Edition)</strong></td>
+                        <td>87,400,000원</td>
+                        <td>4% (-3,500,000원)</td>
+                        <td>-</td>
+                        <td>83,900,000원</td>
+                        <td class="highlight-text">82,900,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>CLE 450 4MATIC Coupé AMG Line</strong></td>
+                        <td>99,700,000원</td>
+                        <td>9% (-8,980,000원)</td>
+                        <td>-</td>
+                        <td>90,720,000원</td>
+                        <td class="highlight-text">89,420,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>CLE 450 4MATIC Cabriolet AMG Line</strong></td>
+                        <td>104,000,000원</td>
+                        <td>6% (-6,240,000원)</td>
+                        <td>-</td>
+                        <td>97,760,000원</td>
+                        <td class="highlight-text">96,360,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Mercedes-AMG CLE 53 4M+ Coupé</strong></td>
+                        <td>109,100,000원</td>
+                        <td>3% (-3,280,000원)</td>
+                        <td>-</td>
+                        <td>105,820,000원</td>
+                        <td class="highlight-text">104,420,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Mercedes-AMG CLE 53 4M+ Cabriolet</strong></td>
+                        <td>115,000,000원</td>
+                        <td>3% (-3,450,000원)</td>
+                        <td>-</td>
+                        <td>111,550,000원</td>
+                        <td class="highlight-text">110,150,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Mercedes-AMG SL 43</strong></td>
+                        <td>160,000,000원</td>
+                        <td>9% (-14,400,000원)</td>
+                        <td>-</td>
+                        <td>145,600,000원</td>
+                        <td class="highlight-text">144,200,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Mercedes-AMG GT 43 Coupé (C192 · 2-Door)</strong></td>
+                        <td>149,500,000원</td>
+                        <td>9% (-13,460,000원)</td>
+                        <td>-</td>
+                        <td>136,040,000원</td>
+                        <td class="highlight-text">134,640,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Mercedes-AMG GT 55 4MATIC+ Coupé</strong></td>
+                        <td>210,000,000원</td>
+                        <td>3% (-6,300,000원)</td>
+                        <td>-</td>
+                        <td>203,700,000원</td>
+                        <td class="highlight-text">202,300,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Mercedes-AMG GT 63 S E Performance</strong></td>
+                        <td>280,000,000원</td>
+                        <td>4% (-11,200,000원)</td>
+                        <td>-</td>
+                        <td>268,800,000원</td>
+                        <td class="highlight-text">267,400,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Maybach SL 680</strong></td>
+                        <td>344,000,000원</td>
+                        <td>2% (-6,880,000원)</td>
+                        <td>-</td>
+                        <td>337,120,000원</td>
+                        <td class="highlight-text">335,720,000원</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <!-- 5) GLC 라인업 -->
+        <h3 class="sub-title">4) S-Class / Maybach S ( The new S-Class 라인업 차후공지)</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>모델명</th>
+                        <th>권장 소비자가</th>
+                        <th>기본 할인</th>
+                        <th>파이낸셜/모빌리티 JC</th>
+                        <th>실구매가 (정상 통관)</th>
+                        <th>개소세 인하가</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="model-name"><strong>S 350 d 4MATIC</strong></td>
+                        <td>154,000,000원</td>
+                        <td>10% (-15,400,000원)</td>
+                        <td>-</td>
+                        <td>138,600,000원</td>
+                        <td class="highlight-text">137,200,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>S 450 4MATIC Sedan (SWB)</strong></td>
+                        <td>162,000,000원</td>
+                        <td>7% (-11,340,000원)</td>
+                        <td class="jc-text">할부 11% (-17,820,000원) [MBF+4%]<br>리스렌탈 13% (-21,060,000원) [MBF+6%]</td>
+                        <td>144,180,000원<br><span style="color:#2563EB; font-weight:bold;">(리스/렌트: 140,940,000원)</span></td>
+                        <td class="highlight-text">142,780,000원<br><span style="color:#D97706; font-weight:bold;">(리스/렌트: 139,540,000원)</span></td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>S 450 4MATIC Long</strong></td>
+                        <td>193,000,000원</td>
+                        <td>10% (-19,300,000원)</td>
+                        <td>-</td>
+                        <td>173,700,000원</td>
+                        <td class="highlight-text">172,300,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>S 500 4MATIC Long</strong></td>
+                        <td>215,000,000원</td>
+                        <td>10% (-21,500,000원)</td>
+                        <td>-</td>
+                        <td>193,500,000원</td>
+                        <td class="highlight-text">192,100,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>S 580 4MATIC Long</strong></td>
+                        <td>260,000,000원</td>
+                        <td>10% (-26,000,000원)</td>
+                        <td>-</td>
+                        <td>234,000,000원</td>
+                        <td class="highlight-text">232,600,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>AMG S 63 E Performance</strong></td>
+                        <td>299,000,000원</td>
+                        <td>10% (-29,900,000원)</td>
+                        <td>-</td>
+                        <td>269,100,000원</td>
+                        <td class="highlight-text">267,700,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Maybach S 580 4MATIC <span class="ew-badge">EW</span></strong></td>
+                        <td>317,000,000원</td>
+                        <td>9% (-28,530,000원)</td>
+                        <td>-</td>
+                        <td>288,470,000원</td>
+                        <td class="highlight-text">287,070,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Maybach S 680 4MATIC <span class="ew-badge">EW</span></strong></td>
+                        <td>403,000,000원</td>
+                        <td>9% (-36,270,000원)</td>
+                        <td>-</td>
+                        <td>366,730,000원</td>
+                        <td class="highlight-text">365,330,000원</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <h3 class="sub-title">5) GLC Lineup</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>모델명</th>
-                    <th>권장 소비자가</th>
-                    <th>기본 할인</th>
-                    <th>파이낸셜/모빌리티 JC</th>
-                    <th>실구매가 (정상 통관)</th>
-                    <th>개소세 인하가</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="model-name"><strong>GLC 220 d 4MATIC</strong></td>
-                    <td>82,200,000원</td>
-                    <td>7% (-5,760,000원)</td>
-                    <td>-</td>
-                    <td>76,440,000원</td>
-                    <td class="highlight-text">75,440,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLC 300 4MATIC AVANTGARDE</strong></td>
-                    <td>82,500,000원</td>
-                    <td>8% (-6,600,000원)</td>
-                    <td class="jc-text">12% (-9,900,000원) [MBF+4%]</td>
-                    <td>72,600,000원</td>
-                    <td class="highlight-text">71,500,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLC 300 4MATIC AMG Line</strong></td>
-                    <td>92,500,000원</td>
-                    <td>12% (-11,100,000원)</td>
-                    <td>-</td>
-                    <td>81,400,000원</td>
-                    <td class="highlight-text">80,300,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLC 300 4MATIC AMG Line (RoF Edition)</strong></td>
-                    <td>93,760,000원</td>
-                    <td>12% (-11,260,000원)</td>
-                    <td>-</td>
-                    <td>82,500,000원</td>
-                    <td class="highlight-text">81,400,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLC 300 4MATIC AMG Line (140주년 Edition)</strong></td>
-                    <td>97,900,000원</td>
-                    <td>6% (-5,880,000원)</td>
-                    <td>-</td>
-                    <td>92,020,000원</td>
-                    <td class="highlight-text">90,920,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLC 300 4MATIC Coupé AVANTGARDE</strong></td>
-                    <td>86,600,000원</td>
-                    <td>8% (-6,930,000원)</td>
-                    <td class="jc-text">12% (-10,400,000원) [MBF+4%]</td>
-                    <td>76,200,000원</td>
-                    <td class="highlight-text">75,100,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLC 300 4MATIC Coupé AMG Line</strong></td>
-                    <td>96,900,000원</td>
-                    <td>9% (-8,730,000원)</td>
-                    <td>-</td>
-                    <td>88,170,000원</td>
-                    <td class="highlight-text">86,970,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLC 300 4MATIC Coupé AMG Line (RoF Edition)</strong></td>
-                    <td>98,160,000원</td>
-                    <td>9% (-8,840,000원)</td>
-                    <td>-</td>
-                    <td>89,320,000원</td>
-                    <td class="highlight-text">88,120,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLC 300 4M Coupé AMG Line (140주년·옵션)</strong></td>
-                    <td>102,300,000원</td>
-                    <td>4% (-4,100,000원)</td>
-                    <td>-</td>
-                    <td>98,200,000원</td>
-                    <td class="highlight-text">97,000,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Mercedes-AMG GLC 43 4MATIC</strong></td>
-                    <td>103,600,000원</td>
-                    <td>7% (-7,260,000원)</td>
-                    <td>-</td>
-                    <td>96,340,000원</td>
-                    <td class="highlight-text">95,040,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Mercedes-AMG GLC 43 4MATIC Coupé</strong></td>
-                    <td>108,300,000원</td>
-                    <td>3% (-3,250,000원)</td>
-                    <td>-</td>
-                    <td>105,050,000원</td>
-                    <td class="highlight-text">103,650,000원</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>모델명</th>
+                        <th>권장 소비자가</th>
+                        <th>기본 할인</th>
+                        <th>파이낸셜/모빌리티 JC</th>
+                        <th>실구매가 (정상 통관)</th>
+                        <th>개소세 인하가</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="model-name"><strong>GLC 220 d 4MATIC</strong></td>
+                        <td>82,200,000원</td>
+                        <td>7% (-5,760,000원)</td>
+                        <td>-</td>
+                        <td>76,440,000원</td>
+                        <td class="highlight-text">75,440,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLC 300 4MATIC AVANTGARDE</strong></td>
+                        <td>82,500,000원</td>
+                        <td>7% (-5,780,000원)</td>
+                        <td class="jc-text">11% (-9,080,000원) [MBF+4%]</td>
+                        <td>73,420,000원</td>
+                        <td class="highlight-text">72,320,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLC 300 4MATIC AMG Line</strong></td>
+                        <td>92,500,000원</td>
+                        <td>12% (-11,100,000원)</td>
+                        <td>-</td>
+                        <td>81,400,000원</td>
+                        <td class="highlight-text">80,300,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLC 300 4MATIC AMG Line (RoF Edition)</strong></td>
+                        <td>93,760,000원</td>
+                        <td>12% (-11,260,000원)</td>
+                        <td>-</td>
+                        <td>82,500,000원</td>
+                        <td class="highlight-text">81,400,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLC 300 4MATIC AMG Line (140주년 Edition)</strong></td>
+                        <td>97,900,000원</td>
+                        <td>12% (-11,750,000원)</td>
+                        <td>-</td>
+                        <td>86,150,000원</td>
+                        <td class="highlight-text">85,050,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLC 300 4MATIC Coupé AVANTGARDE</strong></td>
+                        <td>86,600,000원</td>
+                        <td>7% (-6,070,000원)</td>
+                        <td class="jc-text">11% (-9,530,000원) [MBF+4%]</td>
+                        <td>77,070,000원</td>
+                        <td class="highlight-text">75,970,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLC 300 4MATIC Coupé AMG Line</strong></td>
+                        <td>96,900,000원</td>
+                        <td>9% (-8,730,000원)</td>
+                        <td>-</td>
+                        <td>88,170,000원</td>
+                        <td class="highlight-text">86,970,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLC 300 4MATIC Coupé AMG Line (RoF Edition)</strong></td>
+                        <td>98,160,000원</td>
+                        <td>9% (-8,840,000원)</td>
+                        <td>-</td>
+                        <td>89,320,000원</td>
+                        <td class="highlight-text">88,120,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLC 300 4M Coupé AMG Line (140주년)</strong></td>
+                        <td>102,300,000원</td>
+                        <td>9% (-9,210,000원)</td>
+                        <td>-</td>
+                        <td>93,090,000원</td>
+                        <td class="highlight-text">91,890,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Mercedes-AMG GLC 43 4MATIC</strong></td>
+                        <td>103,600,000원</td>
+                        <td>7% (-7,260,000원)</td>
+                        <td>-</td>
+                        <td>96,340,000원</td>
+                        <td class="highlight-text">95,040,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Mercedes-AMG GLC 43 4MATIC Coupé</strong></td>
+                        <td>108,300,000원</td>
+                        <td>3% (-3,250,000원)</td>
+                        <td>-</td>
+                        <td>105,050,000원</td>
+                        <td class="highlight-text">103,650,000원</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <!-- 6) GLE / GLS / G-Class Lineup -->
         <h3 class="sub-title">6) GLE / GLS / G-Class</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>모델명</th>
-                    <th>권장 소비자가</th>
-                    <th>기본 할인</th>
-                    <th>파이낸셜/모빌리티 JC</th>
-                    <th>실구매가 (정상 통관)</th>
-                    <th>개소세 인하가</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- GLE Lineup -->
-                <tr>
-                    <td class="model-name"><strong>GLE 350 4MATIC</strong></td>
-                    <td>118,000,000원</td>
-                    <td>10% (-11,800,000원)</td>
-                    <td>-</td>
-                    <td>106,200,000원</td>
-                    <td class="highlight-text">104,800,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLE 300 d 4MATIC</strong></td>
-                    <td>119,200,000원</td>
-                    <td>8% (-9,540,000원)</td>
-                    <td>-</td>
-                    <td>109,660,000원</td>
-                    <td class="highlight-text">108,260,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLE 450 4MATIC</strong></td>
-                    <td>129,000,000원</td>
-                    <td>13% (-16,770,000원)</td>
-                    <td class="jc-text">17% (-21,930,000원) [MBF+4%]</td>
-                    <td>107,070,000원</td>
-                    <td class="highlight-text">105,670,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLE 450 4MATIC AMG Line</strong></td>
-                    <td>139,000,000원</td>
-                    <td>13% (-18,070,000원)</td>
-                    <td class="jc-text">17% (-23,630,000원) [MBF+4%]</td>
-                    <td>115,370,000원</td>
-                    <td class="highlight-text">113,970,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLE 450 d 4MATIC AMG Line Coupé</strong></td>
-                    <td>134,000,000원</td>
-                    <td>8% (-10,720,000원)</td>
-                    <td>-</td>
-                    <td>123,280,000원</td>
-                    <td class="highlight-text">121,880,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLE 450 4MATIC AMG Line Coupé</strong></td>
-                    <td>142,500,000원</td>
-                    <td>13% (-18,530,000원)</td>
-                    <td class="jc-text">17% (-24,230,000원) [MBF+4%]</td>
-                    <td>118,270,000원</td>
-                    <td class="highlight-text">116,870,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Mercedes-AMG GLE 53 4MATIC+</strong></td>
-                    <td>166,000,000원</td>
-                    <td>8% (-13,280,000원)</td>
-                    <td>-</td>
-                    <td>152,720,000원</td>
-                    <td class="highlight-text">151,320,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Mercedes-AMG GLE 53 4MATIC+ Coupé</strong></td>
-                    <td>170,000,000원</td>
-                    <td>5% (-8,500,000원)</td>
-                    <td>-</td>
-                    <td>161,500,000원</td>
-                    <td class="highlight-text">160,100,000원</td>
-                </tr>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>모델명</th>
+                        <th>권장 소비자가</th>
+                        <th>기본 할인</th>
+                        <th>파이낸셜/모빌리티 JC</th>
+                        <th>실구매가 (정상 통관)</th>
+                        <th>개소세 인하가</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="model-name"><strong>GLE 350 4MATIC</strong></td>
+                        <td>118,000,000원</td>
+                        <td>10% (-11,800,000원)</td>
+                        <td>-</td>
+                        <td>106,200,000원</td>
+                        <td class="highlight-text">104,800,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLE 300 d 4MATIC</strong></td>
+                        <td>119,200,000원</td>
+                        <td>8% (-9,540,000원)</td>
+                        <td>-</td>
+                        <td>109,660,000원</td>
+                        <td class="highlight-text">108,260,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLE 450 4MATIC</strong></td>
+                        <td>129,000,000원</td>
+                        <td>12% (-15,480,000원)</td>
+                        <td class="jc-text">16% (-20,640,000원) [MBF+4%]</td>
+                        <td>108,360,000원</td>
+                        <td class="highlight-text">106,960,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLE 450 4MATIC AMG Line</strong></td>
+                        <td>139,000,000원</td>
+                        <td>12% (-16,680,000원)</td>
+                        <td class="jc-text">16% (-22,240,000원) [MBF+4%]</td>
+                        <td>116,760,000원</td>
+                        <td class="highlight-text">115,360,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLE 450 d 4MATIC AMG Line Coupé</strong></td>
+                        <td>134,000,000원</td>
+                        <td>8% (-10,720,000원)</td>
+                        <td>-</td>
+                        <td>123,280,000원</td>
+                        <td class="highlight-text">121,880,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLE 450 4MATIC Coupé</strong></td>
+                        <td>142,500,000원</td>
+                        <td>12% (-17,100,000원)</td>
+                        <td class="jc-text">16% (-22,800,000원) [MBF+4%]</td>
+                        <td>119,700,000원</td>
+                        <td class="highlight-text">118,300,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLE 450 4MATIC AMG Line Coupé</strong></td>
+                        <td>142,500,000원</td>
+                        <td>12% (-17,100,000원)</td>
+                        <td class="jc-text">16% (-22,800,000원) [MBF+4%]</td>
+                        <td>119,700,000원</td>
+                        <td class="highlight-text">118,300,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Mercedes-AMG GLE 53 4MATIC+</strong></td>
+                        <td>166,000,000원</td>
+                        <td>8% (-13,280,000원)</td>
+                        <td>-</td>
+                        <td>152,720,000원</td>
+                        <td class="highlight-text">151,320,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Mercedes-AMG GLE 53 4MATIC+ Coupé</strong></td>
+                        <td>170,000,000원</td>
+                        <td>5% (-8,500,000원)</td>
+                        <td>-</td>
+                        <td>161,500,000원</td>
+                        <td class="highlight-text">160,100,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLS 450 4MATIC AMG Line</strong></td>
+                        <td>154,000,000원</td>
+                        <td>5% (-7,700,000원)</td>
+                        <td>-</td>
+                        <td>146,300,000원</td>
+                        <td class="highlight-text">144,900,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLS 450 d 4MATIC AMG Line</strong></td>
+                        <td>154,000,000원</td>
+                        <td>2% (-3,080,000원)</td>
+                        <td>-</td>
+                        <td>150,920,000원</td>
+                        <td class="highlight-text">149,520,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>GLS 580 4MATIC AMG Line</strong></td>
+                        <td>193,400,000원</td>
+                        <td>6% (-11,610,000원)</td>
+                        <td>-</td>
+                        <td>181,790,000원</td>
+                        <td class="highlight-text">180,390,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Mercedes-AMG GLS 63 4MATIC+</strong></td>
+                        <td>210,000,000원</td>
+                        <td>1% (-2,100,000원)</td>
+                        <td>-</td>
+                        <td>207,900,000원</td>
+                        <td class="highlight-text">206,500,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Maybach GLS 600</strong></td>
+                        <td>295,000,000원</td>
+                        <td>5% (-14,750,000원)</td>
+                        <td>-</td>
+                        <td>280,250,000원</td>
+                        <td class="highlight-text">278,850,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Maybach GLS 600 MANUFAKTUR</strong></td>
+                        <td>337,000,000원</td>
+                        <td>5% (-16,850,000원)</td>
+                        <td>-</td>
+                        <td>320,150,000원</td>
+                        <td class="highlight-text">318,750,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>G 450 d</strong></td>
+                        <td>194,900,000원</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>194,900,000원</td>
+                        <td class="highlight-text">193,500,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>G 450 d MANUFAKTUR</strong></td>
+                        <td>219,100,000원</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>219,100,000원</td>
+                        <td class="highlight-text">217,700,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>AMG G 63</strong></td>
+                        <td>262,600,000원</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>262,600,000원</td>
+                        <td class="highlight-text">261,200,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>AMG G 63 MANUFAKTUR</strong></td>
+                        <td>289,800,000원</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>289,800,000원</td>
+                        <td class="highlight-text">288,400,000원</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                <!-- GLS Lineup -->
-                <tr>
-                    <td class="model-name"><strong>GLS 450 4MATIC AMG Line</strong></td>
-                    <td>154,000,000원</td>
-                    <td>5% (-7,700,000원)</td>
-                    <td>-</td>
-                    <td>146,300,000원</td>
-                    <td class="highlight-text">144,900,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLS 450 d 4MATIC AMG Line</strong></td>
-                    <td>154,000,000원</td>
-                    <td>2% (-3,080,000원)</td>
-                    <td>-</td>
-                    <td>150,920,000원</td>
-                    <td class="highlight-text">149,520,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>GLS 580 4MATIC AMG Line</strong></td>
-                    <td>193,400,000원</td>
-                    <td>6% (-11,610,000원)</td>
-                    <td>-</td>
-                    <td>181,790,000원</td>
-                    <td class="highlight-text">180,390,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Mercedes-AMG GLS 63 4MATIC+</strong></td>
-                    <td>210,000,000원</td>
-                    <td>1% (-2,100,000원)</td>
-                    <td>-</td>
-                    <td>207,900,000원</td>
-                    <td class="highlight-text">206,500,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Maybach GLS 600</strong></td>
-                    <td>295,000,000원</td>
-                    <td>5% (-14,750,000원)</td>
-                    <td>-</td>
-                    <td>280,250,000원</td>
-                    <td class="highlight-text">278,850,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Maybach GLS 600 MANUFAKTUR</strong></td>
-                    <td>337,000,000원</td>
-                    <td>5% (-16,850,000원)</td>
-                    <td>-</td>
-                    <td>320,150,000원</td>
-                    <td class="highlight-text">318,750,000원</td>
-                </tr>
+        <h3 class="sub-title">7) 전동화 EQ 라인업 (전 차종 무상 보증 연장 EW 제공)</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>모델명</th>
+                        <th>권장 소비자가</th>
+                        <th>기본 할인</th>
+                        <th>파이낸셜/모빌리티 JC</th>
+                        <th>실구매가 (정상 통관)</th>
+                        <th>개소세 인하가</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="model-name"><strong>EQA 250 <span class="ew-badge">EW</span></strong></td>
+                        <td>70,000,000원</td>
+                        <td>10% (-7,000,000원)</td>
+                        <td class="jc-text">14% (-9,800,000원) [MBF+4%]</td>
+                        <td>60,200,000원</td>
+                        <td class="highlight-text">60,200,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>EQA 250 AMG Line <span class="ew-badge">EW</span></strong></td>
+                        <td>75,800,000원</td>
+                        <td>10% (-7,580,000원)</td>
+                        <td class="jc-text">14% (-10,620,000원) [MBF+4%]</td>
+                        <td>65,180,000원</td>
+                        <td class="highlight-text">65,180,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>EQB 300 4M Progressive <span class="ew-badge">EW</span></strong></td>
+                        <td>78,800,000원</td>
+                        <td>10% (-7,880,000원)</td>
+                        <td class="jc-text">14% (-11,040,000원) [MBF+4%]</td>
+                        <td>67,760,000원</td>
+                        <td class="highlight-text">67,760,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>EQB 300 4M AMG Line <span class="ew-badge">EW</span></strong></td>
+                        <td>84,300,000원</td>
+                        <td>10% (-8,430,000원)</td>
+                        <td class="jc-text">14% (-11,810,000원) [MBF+4%]</td>
+                        <td>72,490,000원</td>
+                        <td class="highlight-text">72,490,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>EQE 350+ SUV <span class="ew-badge">EW</span></strong></td>
+                        <td>106,000,000원</td>
+                        <td>10% (-10,600,000원)</td>
+                        <td>-</td>
+                        <td>95,400,000원</td>
+                        <td class="highlight-text">95,400,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>EQE 350+ <span class="ew-badge">EW</span></strong></td>
+                        <td>110,000,000원</td>
+                        <td>10% (-11,000,000원)</td>
+                        <td>-</td>
+                        <td>99,000,000원</td>
+                        <td class="highlight-text">99,000,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>EQE 500 4M SUV <span class="ew-badge">EW</span></strong></td>
+                        <td>141,000,000원</td>
+                        <td>10% (-14,100,000원)</td>
+                        <td>-</td>
+                        <td>126,900,000원</td>
+                        <td class="highlight-text">126,900,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>EQS 450 4M SUV <span class="ew-badge">EW</span></strong></td>
+                        <td>166,000,000원</td>
+                        <td>10% (-16,600,000원)</td>
+                        <td>-</td>
+                        <td>149,400,000원</td>
+                        <td class="highlight-text">149,400,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>EQS 580 4MATIC SUV <span class="ew-badge">EW</span></strong></td>
+                        <td>192,000,000원</td>
+                        <td>10% (-19,200,000원)</td>
+                        <td>-</td>
+                        <td>172,800,000원</td>
+                        <td class="highlight-text">171,400,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>G 580 with EQ Tech <span class="ew-badge">EW</span></strong></td>
+                        <td>216,100,000원</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>216,100,000원</td>
+                        <td class="highlight-text">216,100,000원</td>
+                    </tr>
+                    <tr>
+                        <td class="model-name"><strong>Maybach EQS 680 SUV <span class="ew-badge">EW</span></strong></td>
+                        <td>235,000,000원</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>235,000,000원</td>
+                        <td class="highlight-text">235,000,000원</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                <!-- G-Class Lineup -->
-                <tr>
-                    <td class="model-name"><strong>G 450 d</strong></td>
-                    <td>194,900,000원</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>194,900,000원</td>
-                    <td class="highlight-text">193,500,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>G 450 d MANUFAKTUR</strong></td>
-                    <td>219,100,000원</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>219,100,000원</td>
-                    <td class="highlight-text">217,700,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>AMG G 63</strong></td>
-                    <td>262,600,000원</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>262,600,000원</td>
-                    <td class="highlight-text">261,200,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>AMG G 63 MANUFAKTUR</strong></td>
-                    <td>289,800,000원</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>289,800,000원</td>
-                    <td class="highlight-text">288,400,000원</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 7) 전동화 EQ 라인업 -->
-        <h3 class="sub-title">7) 전동화 EQ 라인업 (전 차종 무상 보증 연장 <span class="ew-badge">EW</span> 제공)</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>모델명</th>
-                    <th>권장 소비자가</th>
-                    <th>기본 할인</th>
-                    <th>파이낸셜/모빌리티 JC</th>
-                    <th>실구매가 (정상 통관)</th>
-                    <th>개소세 인하가</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="model-name"><strong>EQA 250 <span class="ew-badge">EW</span></strong></td>
-                    <td>70,000,000원</td>
-                    <td>10% (-7,000,000원)</td>
-                    <td class="jc-text">14% (-9,800,000원) [MBF+4%]</td>
-                    <td>60,200,000원</td>
-                    <td class="highlight-text">60,200,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>EQA 250 AMG Line <span class="ew-badge">EW</span></strong></td>
-                    <td>75,800,000원</td>
-                    <td>10% (-7,580,000원)</td>
-                    <td class="jc-text">14% (-10,620,000원) [MBF+4%]</td>
-                    <td>65,180,000원</td>
-                    <td class="highlight-text">65,180,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>EQB 300 4M Progressive <span class="ew-badge">EW</span></strong></td>
-                    <td>78,800,000원</td>
-                    <td>10% (-7,880,000원)</td>
-                    <td class="jc-text">14% (-11,040,000원) [MBF+4%]</td>
-                    <td>67,760,000원</td>
-                    <td class="highlight-text">67,760,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>EQB 300 4M AMG Line <span class="ew-badge">EW</span></strong></td>
-                    <td>84,300,000원</td>
-                    <td>10% (-8,430,000원)</td>
-                    <td class="jc-text">14% (-11,810,000원) [MBF+4%]</td>
-                    <td>72,490,000원</td>
-                    <td class="highlight-text">72,490,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>EQE 350+ SUV <span class="ew-badge">EW</span></strong></td>
-                    <td>106,000,000원</td>
-                    <td>10% (-10,600,000원)</td>
-                    <td>-</td>
-                    <td>95,400,000원</td>
-                    <td class="highlight-text">95,400,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>EQE 350+ <span class="ew-badge">EW</span></strong></td>
-                    <td>110,000,000원</td>
-                    <td>10% (-11,000,000원)</td>
-                    <td>-</td>
-                    <td>99,000,000원</td>
-                    <td class="highlight-text">99,000,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>EQE 500 4M SUV <span class="ew-badge">EW</span></strong></td>
-                    <td>141,000,000원</td>
-                    <td>10% (-14,100,000원)</td>
-                    <td>-</td>
-                    <td>126,900,000원</td>
-                    <td class="highlight-text">126,900,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>EQS 450 4M SUV <span class="ew-badge">EW</span></strong></td>
-                    <td>166,000,000원</td>
-                    <td>10% (-16,600,000원)</td>
-                    <td>-</td>
-                    <td>149,400,000원</td>
-                    <td class="highlight-text">149,400,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>G 580 with EQ Tech <span class="ew-badge">EW</span></strong></td>
-                    <td>216,100,000원</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>216,100,000원</td>
-                    <td class="highlight-text">216,100,000원</td>
-                </tr>
-                <tr>
-                    <td class="model-name"><strong>Maybach EQS 680 SUV <span class="ew-badge">EW</span></strong></td>
-                    <td>235,000,000원</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>235,000,000원</td>
-                    <td class="highlight-text">235,000,000원</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 하단 문의 카드 -->
+        <!-- 하단 담당자 연락처 카드 -->
         <div class="contact-card">
             <div class="contact-line-1">
-                📢 정확한 견적·재고·출고 일정은 김석현 과장에게 문의해 주시기 바랍니다.
+                상세 견적 / 금융상담 / 시승 문의는 아래 연락처로 언제든지 문의해 주세요.
             </div>
             <div class="contact-line-2">
                 <div class="contact-info-inline">
                     <span class="contact-showroom">메르세데스-벤츠 포항전시장</span>
                     <span class="contact-name">김석현 과장</span>
-                    <a href="tel:010-9379-0999" class="contact-phone-link">📞 010-9379-0999</a>
+                    <a href="tel:010-9379-0999" class="contact-phone-link">010-9379-0999</a>
                 </div>
                 <div class="contact-buttons">
-                    <a href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener noreferrer" class="btn-contact btn-kakao">💬 카카오톡 문의</a>
-                    <a href="tel:010-9379-0999" class="btn-contact btn-call">전화 문의</a>
+                    <a href="https://open.kakao.com" target="_blank" class="btn-contact btn-kakao">카카오톡 상담</a>
+                    <a href="tel:010-9379-0999" class="btn-contact btn-call">전화 연결</a>
                     <a href="sms:010-9379-0999" class="btn-contact btn-sms">문자 문의</a>
                 </div>
             </div>
@@ -1579,4 +1685,3 @@
 
 </body>
 </html>
-```[cite: 2]
