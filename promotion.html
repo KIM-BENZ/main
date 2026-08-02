@@ -479,6 +479,10 @@
         @media print {
             body { background: none; padding: 0; }
             .container { box-shadow: none; padding: 0; max-width: 100%; }
+            .table-responsive { overflow-x: visible !important; margin: 0 !important; padding: 0 !important; }
+            .table-responsive::after { content: none !important; }
+            table { font-size: 9px !important; }
+            td, th { white-space: normal !important; padding: 4px 3px !important; }
             .header { background: var(--navy-primary) !important; -webkit-print-color-adjust: exact; }
             th { background-color: var(--navy-primary) !important; color: white !important; -webkit-print-color-adjust: exact; }
             tbody tr:nth-child(even) { background-color: #F8FAFC !important; -webkit-print-color-adjust: exact; }
@@ -510,7 +514,26 @@
             .container { padding: 12px 14px; }
             .header h1 { font-size: 20px; }
             .focus-grid { grid-template-columns: 1fr; }
-            td, th { white-space: normal; }
+
+            /* 표는 줄바꿈시키지 않고 가로 스크롤로 원본 그대로 유지 */
+            .table-responsive {
+                margin: 0 -14px 12px -14px;
+                padding: 0 14px;
+                position: relative;
+            }
+            table { font-size: 11px; }
+            td, th { white-space: nowrap; padding: 6px 8px; }
+            td.model-name { min-width: 130px; }
+
+            /* 가로 스크롤 가능함을 알려주는 힌트 */
+            .table-responsive::after {
+                content: "◀ 좌우로 밀어서 더 보기 ▶";
+                display: block;
+                text-align: center;
+                font-size: 10.5px;
+                color: #94A3B8;
+                padding: 4px 0 2px 0;
+            }
 
             .page-header {
                 flex-direction: column;
@@ -522,8 +545,16 @@
                 width: 100%;
                 justify-content: flex-start;
                 gap: 5px;
+                flex-wrap: wrap;
             }
             .contact-line-2 { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .contact-buttons { flex-wrap: wrap; }
+        }
+
+        @media (max-width: 420px) {
+            table { font-size: 10px; }
+            td, th { padding: 5px 6px; }
+            .badge-container { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
@@ -1672,7 +1703,7 @@
                     <a href="tel:010-9379-0999" class="contact-phone-link">010-9379-0999</a>
                 </div>
                 <div class="contact-buttons">
-                    <a href="https://open.kakao.com" target="_blank" class="btn-contact btn-kakao">카카오톡 상담</a>
+                    <a href="https://pf.kakao.com/_hTPGX/chat" target="_blank" class="btn-contact btn-kakao">카카오톡 상담</a>
                     <a href="tel:010-9379-0999" class="btn-contact btn-call">전화 연결</a>
                     <a href="sms:010-9379-0999" class="btn-contact btn-sms">문자 문의</a>
                 </div>
