@@ -153,10 +153,10 @@
       padding: 3rem 1.5rem;
     }
 
-    /* 카드 3종 그리드 */
+    /* 카드 5종 그리드 */
     .hub-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1.5rem;
       margin-bottom: 2.5rem;
     }
@@ -749,12 +749,6 @@
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    @media (max-width: 1100px) {
-      .hub-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
     @media (max-width: 900px) {
       .header-nav {
         display: none !important;
@@ -849,7 +843,7 @@
   <!-- 메인 컨텐츠 -->
   <main class="container">
     
-    <!-- 카드 3종 그리드 -->
+    <!-- 카드 5종 그리드 -->
     <div class="hub-grid">
       <!-- 1번째: 프로모션 -->
       <a href="promotion.html" class="hub-card">
@@ -865,13 +859,27 @@
         </div>
       </a>
 
-      <!-- 2번째: S-Class 사전계약 카드 -->
-      <a href="https://kim-benz.github.io/S-CLASS/" target="_blank" rel="noopener noreferrer" class="hub-card">
-        <img src="https://kim-benz.github.io/S-CLASS/images/hero-sclass.png" alt="The new S-Class 사전계약" class="hub-card-img" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=The+new+S-Class'">
+      <!-- 2번째: CLA 사전계약 카드 -->
+      <a href="https://kim-benz.github.io/CLA/" target="_blank" rel="noopener noreferrer" class="hub-card">
+        <img src="https://kim-benz.github.io/CLA/images/hero-main.jpg" alt="The all-new electric CLA 사전예약" class="hub-card-img" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Electric+CLA'">
         <div class="hub-card-body">
-          <span class="hub-card-tag">NEW CAR & PRE-ORDER</span>
-          <h3 class="hub-card-title">The new S-Class 사전계약</h3>
-          <p class="hub-card-desc">The new S-Class 사전계약 정보부터 트림별 제원, 예상 가격 및 세부 옵션 비교 안내입니다.</p>
+          <span class="hub-card-tag" style="color: var(--accent-gold);">🔥 NEW · 사전예약 9/1 오픈</span>
+          <h3 class="hub-card-title">The all-new Electric CLA 사전예약</h3>
+          <p class="hub-card-desc">국내 출시 5종 라인업, CLA 200 vs 250+ 세부 비교, 트림별 옵션 및 컬러 안내까지 한눈에 확인하세요.</p>
+          <div class="hub-card-btn">
+            <span>Electric CLA 가이드</span>
+            <span>→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 3번째: S-Class 런칭 카드 -->
+      <a href="https://kim-benz.github.io/S-CLASS/" target="_blank" rel="noopener noreferrer" class="hub-card">
+        <img src="https://kim-benz.github.io/S-CLASS/images/hero-sclass.png" alt="The new S-Class 런칭" class="hub-card-img" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=The+new+S-Class'">
+        <div class="hub-card-body">
+          <span class="hub-card-tag">NEW CAR LAUNCH</span>
+          <h3 class="hub-card-title">The new S-Class 런칭</h3>
+          <p class="hub-card-desc">The new S-Class 출시 안내부터 트림별 제원, 가격 및 세부 옵션 비교 안내입니다.</p>
           <div class="hub-card-btn">
             <span>The new S-Class 가이드</span>
             <span>→</span>
@@ -879,7 +887,7 @@
         </div>
       </a>
 
-      <!-- 3번째: GLC EV 사전계약 카드 -->
+      <!-- 4번째: GLC EV 사전계약 카드 -->
       <a href="https://kim-benz.github.io/GLC_EV/" target="_blank" rel="noopener noreferrer" class="hub-card">
         <img src="images/glc-hero.jpg" alt="The All-New Electric GLC Pre-order" class="hub-card-img" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=The+All-New+Electric+GLC'">
         <div class="hub-card-body">
@@ -893,7 +901,7 @@
         </div>
       </a>
 
-      <!-- 3번째: 포항전시장 오시는 길 -->
+      <!-- 5번째: 포항전시장 오시는 길 -->
       <a href="https://naver.me/xAf1U2G5" target="_blank" rel="noopener noreferrer" class="hub-card">
         <img src="images/showroom-pohang.jpg" alt="포항 전시장 안내" class="hub-card-img" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Pohang+Showroom'">
         <div class="hub-card-body">
