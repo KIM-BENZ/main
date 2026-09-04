@@ -153,10 +153,10 @@
       padding: 3rem 1.5rem;
     }
 
-    /* 카드 5종 그리드 */
+    /* 카드 4종 그리드 */
     .hub-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
       margin-bottom: 2.5rem;
     }
@@ -749,6 +749,12 @@
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
+    @media (max-width: 1000px) {
+      .hub-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 900px) {
       .header-nav {
         display: none !important;
@@ -901,18 +907,17 @@
         </div>
       </a>
 
-      <!-- 5번째: 포항전시장 오시는 길 -->
-      <a href="https://naver.me/xAf1U2G5" target="_blank" rel="noopener noreferrer" class="hub-card">
-        <img src="images/showroom-pohang.jpg" alt="포항 전시장 안내" class="hub-card-img" onerror="this.src='https://via.placeholder.com/600x400/0f172a/ffffff?text=Pohang+Showroom'">
-        <div class="hub-card-body">
-          <span class="hub-card-tag">SHOWROOM & LOCATION</span>
-          <h3 class="hub-card-title">포항전시장 오시는 길 & 안내</h3>
-          <p class="hub-card-desc">메르세데스-벤츠 포항전시장 위치(새천년대로 210), 운영 시간 및 프라이빗 주차 서비스를 안내해 드립니다.</p>
-          <div class="hub-card-btn">
-            <span>네이버 지도로 위치 확인하기</span>
-            <span>→</span>
-          </div>
-        </div>
+    </div>
+
+    <!-- 0. 포항전시장 오시는 길 (슬림 배너로 전환) -->
+    <div class="price-banner">
+      <div class="price-banner-text">
+        <span class="tag">SHOWROOM & LOCATION</span>
+        <h3>📍 포항전시장 오시는 길 & 안내</h3>
+        <p>메르세데스-벤츠 포항전시장 위치(새천년대로 210), 운영 시간 및 프라이빗 주차 서비스를 안내해 드립니다.</p>
+      </div>
+      <a href="https://naver.me/xAf1U2G5" target="_blank" rel="noopener noreferrer" class="btn-pdf">
+        네이버 지도로 위치 확인하기 →
       </a>
     </div>
 
