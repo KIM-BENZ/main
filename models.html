@@ -113,6 +113,7 @@
     }
     .chip.my27 { background: #fef3c7; color: var(--accent-gold); }
     .chip.ev { background: #d1fae5; color: var(--accent-ev); }
+    .chip.web { background: #0f172a; color: #fff; }
 
     .card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.7rem; letter-spacing: -0.2px; }
 
@@ -170,6 +171,37 @@
     .cta-call { background: var(--accent-blue); color: #fff; }
     .cta-kakao { background: #fee500; color: #191919; }
 
+
+    /* 웹용 제원표 */
+    .view-switch { max-width: 860px; margin: 0 auto 1rem; display: flex; gap: 0.4rem; }
+    .view-switch button {
+      flex: 1; padding: 0.6rem 0; border-radius: 10px; font-size: 0.88rem; font-weight: 700; cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #cbd5e1;
+    }
+    .view-switch button.on { background: #fff; color: var(--text-dark); border-color: #fff; }
+    .spec-sec { max-width: 860px; margin: 0 auto 1.2rem; background: #fff; border-radius: 12px; overflow: hidden; color: var(--text-dark); }
+    .spec-head { padding: 1rem 1.1rem 0.8rem; border-bottom: 1px solid var(--border-color); }
+    .spec-head h5 { font-size: 1.05rem; font-weight: 800; }
+    .spec-head small { font-size: 0.75rem; color: var(--text-soft); }
+    .spec-head .sec-note { display: block; font-size: 0.78rem; color: var(--accent-gold); margin-top: 0.2rem; }
+    .spec-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table.spec { width: 100%; border-collapse: collapse; font-size: 0.83rem; table-layout: fixed; }
+    table.spec th, table.spec td { border-bottom: 1px solid #eef2f7; padding: 0.5rem 0.55rem; text-align: center; word-break: keep-all; vertical-align: middle; }
+    table.spec td + td, table.spec th + th { border-left: 1px solid #eef2f7; }
+    table.spec .lbl { width: 30%; text-align: left; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    table.spec thead th { overflow-wrap: anywhere; }
+    table.spec thead th { background: #0f172a; color: #fff; font-size: 0.8rem; font-weight: 700; padding: 0.65rem 0.5rem; }
+    table.spec thead.sub th { background: #f1f5f9; color: var(--text-muted); font-size: 0.74rem; padding: 0.45rem 0.4rem; }
+    table.spec thead .price { white-space: nowrap; }
+    table.spec thead .price { display: block; color: #7dd3fc; font-size: 0.92rem; font-weight: 800; margin-top: 0.15rem; }
+    table.spec tr.grp td { background: #e0f2fe; color: var(--accent-blue); font-weight: 800; font-size: 0.78rem; text-align: left; letter-spacing: 0.5px; padding: 0.4rem 0.7rem; }
+    table.spec td.na { color: #cbd5e1; }
+    table.spec td.diff { font-weight: 700; color: var(--text-dark); }
+    .safety { padding: 0.8rem 1rem 1rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .safety span { font-size: 0.78rem; background: #f1f5f9; border: 1px solid var(--border-color); border-radius: 999px; padding: 0.2rem 0.65rem; color: var(--text-muted); }
+    .sec-label { padding: 0.8rem 1rem 0; font-size: 0.8rem; font-weight: 800; color: var(--accent-blue); }
+    .orig-link { display: block; text-align: right; padding: 0.6rem 1rem 0.8rem; font-size: 0.78rem; color: var(--accent-blue); text-decoration: none; font-weight: 700; }
+
     footer {
       text-align: center; font-size: 0.8rem; color: var(--text-soft); padding: 0 1.5rem 2.5rem;
     }
@@ -183,6 +215,11 @@
     }
     @media (max-width: 640px) {
       .grid { grid-template-columns: 1fr; }
+      table.spec { font-size: 0.76rem; }
+      table.spec th, table.spec td { padding: 0.45rem 0.35rem; }
+      table.spec .lbl { width: 23%; }
+      table.spec thead th { font-size: 0.68rem; padding: 0.55rem 0.25rem; letter-spacing: -0.2px; }
+      table.spec thead .price { font-size: 0.78rem; }
       .hero { padding: 2.4rem 1.2rem 2rem; }
       .hero h2 { font-size: 1.5rem; }
       .tabs { padding: 0.65rem 3.4rem 0.65rem 1rem; }
@@ -223,12 +260,13 @@
   <!-- 제원표 보기 모달 -->
   <div class="sheet-dim" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
     <div class="sheet-bar">
-      <div><h4 id="sheetTitle"></h4><small>이미지를 누르면 원본 크기로 크게 볼 수 있습니다</small></div>
+      <div><h4 id="sheetTitle"></h4><small id="sheetHint">이미지를 누르면 원본 크기로 크게 볼 수 있습니다</small></div>
       <button type="button" class="sheet-close" id="sheetClose" aria-label="닫기">×</button>
     </div>
     <div class="sheet-body" id="sheetBody"></div>
   </div>
 
+  <script src="specs-data.js"></script>
   <script>
     /* =========================================================
        차종 데이터 (가격: 만원 단위, VAT 포함 권장소비자가)
@@ -333,6 +371,7 @@
     function card(m, i) {
       var chip = '<span class="chip' + (m.my === 'MY27' ? ' my27' : '') + '">' + m.my + '</span>';
       if (m.cat === 'ev') chip += '<span class="chip ev">ELECTRIC</span>';
+      if (typeof SPEC_DETAIL !== 'undefined' && SPEC_DETAIL[m.name + '|' + m.my]) chip += '<span class="chip web">한눈에 보기</span>';
       var body;
       if (m.trims) {
         body = '<ul class="trims">' + m.trims.map(function (t) {
@@ -387,20 +426,104 @@
     var sheetTitle = document.getElementById('sheetTitle');
     var prevOverflow = '';
 
-    function openSheet(m) {
-      sheetTitle.textContent = m.name + ' (' + m.my + ') 제원 · 옵션표';
-      sheetBody.innerHTML = m.pages.map(function (p) {
+    function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
+
+    // 옆 칸과 같은 값은 하나로 합침
+    function mergedCells(vals) {
+      var out = [];
+      vals.forEach(function (v) {
+        var last = out[out.length - 1];
+        if (last && last.v === v) last.n++; else out.push({ v: v, n: 1 });
+      });
+      return out;
+    }
+    function rowCells(vals) {
+      var cells = mergedCells(vals), multi = vals.length > 1 && cells.length > 1;
+      return cells.map(function (c) {
+        var cls = c.v === '-' ? ' class="na"' : (multi ? ' class="diff"' : '');
+        return '<td' + (c.n > 1 ? ' colspan="' + c.n + '"' : '') + cls + '>' + (c.v === '-' ? '–' : esc(c.v)) + '</td>';
+      }).join('');
+    }
+
+    // 트림명에서 공통 앞부분을 빼고 다른 부분만 (표 머리용)
+    function shortNames(trims) {
+      var names = trims.map(function (t) { return t[0]; });
+      if (names.length < 2) return names;
+      var words = names.map(function (x) { return x.split(' '); }), k = 0;
+      while (words.every(function (w) { return w.length > k && w[k] === words[0][k]; })) k++;
+      if (!k) return names;
+      return words.map(function (w) { return w.slice(k).join(' ') || '기본'; });
+    }
+
+    function renderSection(sec) {
+      var n = sec.trims.length, h = '', sn = shortNames(sec.trims);
+      h += '<div class="spec-sec"><div class="spec-head"><h5>' + esc(sec.title) + '</h5>' +
+           (n > 1 ? '<small style="display:block;color:var(--text-muted)">' + sec.trims.map(function (t) { return esc(t[0]); }).join(' · ') + '</small>' : '') + '<small>제원표 기준일 ' + sec.date + '</small>' + (sec.note ? '<span class="sec-note">※ ' + esc(sec.note) + '</span>' : '') + '</div>';
+      var headCols = sec.trims.map(function (t, i) {
+        return '<th title="' + esc(t[0]) + '">' + esc(sn[i]) + '<span class="price">' + won(t[1]) + '</span></th>';
+      }).join('');
+
+      // 제원
+      h += '<div class="spec-scroll"><table class="spec"><thead><tr><th class="lbl" style="background:#0f172a;color:#94a3b8">제원</th>' + headCols + '</tr></thead><tbody>';
+      var g = '';
+      sec.spec.forEach(function (r) {
+        if (r[0] !== g) { g = r[0]; h += '<tr class="grp"><td colspan="' + (n + 1) + '">' + esc(g) + '</td></tr>'; }
+        h += '<tr><td class="lbl">' + esc(r[1]) + '</td>' + rowCells(r[2]) + '</tr>';
+      });
+      h += '</tbody></table></div>';
+
+      // 옵션
+      h += '<div class="spec-scroll"><table class="spec">' + (n > 1 ? '<thead class="sub"><tr>' + sn.map(function (x) { return '<th>' + esc(x) + '</th>'; }).join('') + '</tr></thead>' : '') + '<tbody>';
+      g = '';
+      sec.opts.forEach(function (r) {
+        if (r[0] !== g) { g = r[0]; h += '<tr class="grp"><td colspan="' + n + '">' + esc(g) + '' + '</td></tr>'; }
+        h += '<tr>' + rowCells(r[1]) + '</tr>';
+      });
+      h += '</tbody></table></div>';
+
+      if (sec.safety) {
+        h += '<div class="sec-label">안전 옵션 · 전 트림 기본</div><div class="safety">' +
+             sec.safety.map(function (x) { return '<span>' + esc(x) + '</span>'; }).join('') + '</div>';
+      }
+      h += '<a class="orig-link" href="specs/p' + pad(sec.page) + '.jpg" target="_blank" rel="noopener">원본 제원표 이미지 보기 ↗</a></div>';
+      return h;
+    }
+
+    function imagesHtml(m) {
+      return m.pages.map(function (p) {
         var src = 'specs/p' + pad(p) + '.jpg';
         return '<div class="sheet-page"><a href="' + src + '" target="_blank" rel="noopener"><img src="' + src +
-               '" alt="' + m.name + ' ' + m.my + ' 제원표" loading="lazy"></a></div>';
-      }).join('') +
-      '<div class="sheet-cta"><a class="cta-call" href="tel:01093790999">📞 견적 문의</a>' +
-      '<a class="cta-kakao" href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener noreferrer">💬 카톡 상담</a></div>';
+               '" alt="' + esc(m.name) + ' ' + m.my + ' 제원표" loading="lazy"></a></div>';
+      }).join('');
+    }
+
+    function openSheet(m) {
+      var detail = (typeof SPEC_DETAIL !== 'undefined') && SPEC_DETAIL[m.name + '|' + m.my];
+      sheetTitle.textContent = m.name + ' (' + m.my + ') 제원 · 옵션표';
+      var cta = '<div class="sheet-cta"><a class="cta-call" href="tel:01093790999">📞 견적 문의</a>' +
+        '<a class="cta-kakao" href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener noreferrer">💬 카톡 상담</a></div>';
+      if (detail) {
+        sheetBody.innerHTML =
+          '<div class="view-switch"><button type="button" class="on" data-v="web">한눈에 보기</button>' +
+          '<button type="button" data-v="img">원본 제원표</button></div>' +
+          '<div data-pane="web">' + detail.map(renderSection).join('') + '</div>' +
+          '<div data-pane="img" hidden>' + imagesHtml(m) + '</div>' + cta;
+      } else {
+        sheetBody.innerHTML = imagesHtml(m) + cta;
+      }
+      document.getElementById('sheetHint').textContent = detail ? '트림별로 다른 사양은 굵게 표시됩니다' : '이미지를 누르면 원본 크기로 크게 볼 수 있습니다';
       sheetBody.scrollTop = 0;
       prevOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
       sheet.classList.add('open');
     }
+    sheetBody.addEventListener('click', function (e) {
+      var b = e.target.closest('.view-switch button'); if (!b) return;
+      var v = b.getAttribute('data-v');
+      sheetBody.querySelectorAll('.view-switch button').forEach(function (x) { x.classList.toggle('on', x === b); });
+      sheetBody.querySelectorAll('[data-pane]').forEach(function (p) { p.hidden = p.getAttribute('data-pane') !== v; });
+      sheetBody.scrollTop = 0;
+    });
     function closeSheet() {
       sheet.classList.remove('open');
       document.body.style.overflow = prevOverflow;
