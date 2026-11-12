@@ -14,7 +14,7 @@
       { name: '이달의 프로모션', sub: '차종별 할인 · 최종가', url: MAIN + 'promotion.html' },
       { name: '출고 웰컴 서비스', sub: '틴팅 · 블랙박스 · 기프트', url: MAIN + 'welcome.html' },
       { name: '보증 & 서비스', sub: '보증기간 · 고객 케어', url: MAIN + 'service.html' },
-      { name: '전 차종 공식 가격표', sub: 'PDF', url: MAIN + 'pdf/price_list.pdf' }
+      { name: '전 차종 공식 가격표', sub: 'PDF', url: MAIN + 'pdf/price_list.pdf', ext: true }
     ]},
     { group: '신차 · 모델', items: [
       { name: 'Electric GLB', sub: '사전계약', url: 'https://kim-benz.github.io/GLB_EV/' },
