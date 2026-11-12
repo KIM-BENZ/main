@@ -141,7 +141,7 @@
 
     /* 제원표 보기 모달 */
     .sheet-dim {
-      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.92); z-index: 1000;
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.985); z-index: 1000;
       display: none; flex-direction: column;
     }
     .sheet-dim.open { display: flex; }
@@ -219,6 +219,22 @@
     .my-btn.on { background: var(--accent-blue); color: #fff; }
     .tab[data-cat="amg"], .tab[data-cat="maybach"] { border-style: dashed; }
 
+
+    .sheet-ctrl {
+      position: sticky; top: -1rem; z-index: 2; margin: -1rem -1rem 1rem; padding: 1rem 1rem 0.7rem;
+      background: rgba(15, 23, 42, 0.97); border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .sheet-ctrl .view-switch { margin-bottom: 0.6rem; }
+    .lineup { max-width: 860px; margin: 0 auto; display: flex; gap: 0.4rem; overflow-x: auto; scrollbar-width: none; }
+    .lineup::-webkit-scrollbar { display: none; }
+    .lu {
+      flex-shrink: 0; text-align: left; border: 1px solid rgba(255,255,255,0.18); background: transparent; color: #e2e8f0;
+      border-radius: 10px; padding: 0.45rem 0.8rem; font-size: 0.85rem; font-weight: 800; cursor: pointer; line-height: 1.25;
+    }
+    .lu small { display: block; font-size: 0.7rem; font-weight: 600; color: #94a3b8; }
+    .lu.on { background: #38bdf8; border-color: #38bdf8; color: #0f172a; }
+    .lu.on small { color: #0c4a6e; }
+
     footer {
       text-align: center; font-size: 0.8rem; color: var(--text-soft); padding: 0 1.5rem 2.5rem;
     }
@@ -242,6 +258,7 @@
       .tabs { padding: 0.65rem 3.4rem 0.65rem 1rem; }
       .container { padding: 1.4rem 1rem 2.5rem; }
       .sheet-body { padding: 0.6rem; }
+      .sheet-ctrl { top: -0.6rem; margin: -0.6rem -0.6rem 0.8rem; padding: 0.6rem 0.6rem 0.6rem; }
     }
   </style>
 </head>
@@ -635,32 +652,97 @@
       }).join('');
     }
 
+    // 라인업 버튼 이름: 트림의 모델 번호만 모아서 (예: GLE 300 d · 350)
+    function trimCore(name) {
+      var w = name.split(' '), out = [], seenNum = false;
+      for (var i = 0; i < w.length; i++) {
+        var x = w[i];
+        if (/^4MATIC/.test(x)) continue;
+        if (!seenNum) {
+          if (x === 'AMG' && i > 0) continue;
+          out.push(x);
+          if (/\d/.test(x)) seenNum = true;
+        } else if (/^(d|e|electric|SWB|Long)$/.test(x)) out.push(x);
+      }
+      return out.join(' ');
+    }
+    function trimRest(name, core) {
+      var cw = core.split(' ');
+      return name.split(' ').filter(function (x) { return cw.indexOf(x) < 0 && !/^4MATIC/.test(x); }).join(' ');
+    }
+    function lineupLabels(detail) {
+      var labels = detail.map(function (sec) {
+        var cores = [];
+        sec.tr.forEach(function (t) { var c = trimCore(t[0]); if (cores.indexOf(c) < 0) cores.push(c); });
+        if (cores.length < 2) return cores[0];
+        // 같은 계열이면 뒤는 번호만 (GLE 300 d · 350)
+        var fam = cores[0].split(' ')[0];
+        return cores.map(function (c, i) { return i && c.split(' ')[0] === fam ? c.split(' ').slice(1).join(' ') : c; }).join(' · ');
+      });
+      labels = labels.map(function (l, k) {
+        var dup = labels.filter(function (x) { return x === l; }).length > 1;
+        if (!dup) return l;
+        var t = detail[k].tr[0][0], rest = trimRest(t, trimCore(t));
+        rest = rest.replace(/\bAMG Line\b/, '').trim() || 'AMG Line';
+        return (l.indexOf(' · ') >= 0 ? l.split(' ')[0] : l) + ' ' + rest;
+      });
+      return labels;
+    }
+    function priceRange(sec) {
+      var ps = sec.tr.map(function (t) { return t[1]; }).filter(Boolean);
+      if (!ps.length) return '';
+      var lo = Math.min.apply(null, ps), hi = Math.max.apply(null, ps);
+      return lo === hi ? won(lo) : won(lo) + '~';
+    }
+
     function openSheet(m) {
       var detail = (typeof SPEC_DETAIL !== 'undefined') && SPEC_DETAIL[m.name + '|' + m.my];
       sheetTitle.textContent = m.name + ' (' + m.my + ') 제원 · 옵션표';
       var cta = '<div class="sheet-cta"><a class="cta-call" href="tel:01093790999">📞 견적 문의</a>' +
         '<a class="cta-kakao" href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener noreferrer">💬 카톡 상담</a></div>';
       if (detail) {
-        sheetBody.innerHTML =
-          '<div class="view-switch"><button type="button" class="on" data-v="web">한눈에 보기</button>' +
+        var multi = detail.length > 1;
+        var bar = '<div class="sheet-ctrl"><div class="view-switch"><button type="button" class="on" data-v="web">한눈에 보기</button>' +
           '<button type="button" data-v="img">원본 제원표</button></div>' +
-          '<div data-pane="web">' + detail.map(renderSection).join('') + '</div>' +
-          '<div data-pane="img" hidden>' + imagesHtml(m) + '</div>' + cta;
+          (multi ? '<div class="lineup">' + (function () { var L = lineupLabels(detail); return detail.map(function (sec, k) {
+            return '<button type="button" class="lu' + (k === 0 ? ' on' : '') + '" data-sec="' + k + '">' + esc(L[k]) +
+                   '<small>' + priceRange(sec) + '</small></button>';
+          }).join(''); })() + '</div>' : '') + '</div>';
+        var web = detail.map(function (sec, k) {
+          return '<div data-sec-pane="' + k + '"' + (multi && k ? ' hidden' : '') + '>' + renderSection(sec) + '</div>';
+        }).join('');
+        var img = detail.map(function (sec, k) {
+          var src = 'specs/p' + pad(sec.p) + '.jpg';
+          return '<div data-sec-pane="' + k + '"' + (multi && k ? ' hidden' : '') + '><div class="sheet-page"><a href="' + src +
+                 '" target="_blank" rel="noopener"><img src="' + src + '" alt="' + esc(m.name) + ' ' + m.my + ' 제원표" loading="lazy"></a></div></div>';
+        }).join('');
+        sheetBody.innerHTML = bar + '<div data-pane="web">' + web + '</div><div data-pane="img" hidden>' + img + '</div>' + cta;
       } else {
         sheetBody.innerHTML = imagesHtml(m) + cta;
       }
-      document.getElementById('sheetHint').textContent = detail ? '트림별 차이는 굵게, 원본 강조 항목은 빨간색으로 표시됩니다' : '이미지를 누르면 원본 크기로 크게 볼 수 있습니다';
+      document.getElementById('sheetHint').textContent = detail ? '트림별 차이는 굵게, 원본 강조는 빨간색' : '이미지를 누르면 원본 크기로 크게 볼 수 있습니다';
       sheetBody.scrollTop = 0;
       prevOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
       sheet.classList.add('open');
     }
     sheetBody.addEventListener('click', function (e) {
-      var b = e.target.closest('.view-switch button'); if (!b) return;
-      var v = b.getAttribute('data-v');
-      sheetBody.querySelectorAll('.view-switch button').forEach(function (x) { x.classList.toggle('on', x === b); });
-      sheetBody.querySelectorAll('[data-pane]').forEach(function (p) { p.hidden = p.getAttribute('data-pane') !== v; });
-      sheetBody.scrollTop = 0;
+      var b = e.target.closest('.view-switch button');
+      if (b) {
+        var v = b.getAttribute('data-v');
+        sheetBody.querySelectorAll('.view-switch button').forEach(function (x) { x.classList.toggle('on', x === b); });
+        sheetBody.querySelectorAll('[data-pane]').forEach(function (p) { p.hidden = p.getAttribute('data-pane') !== v; });
+        sheetBody.scrollTop = 0;
+        return;
+      }
+      var l = e.target.closest('.lineup .lu');
+      if (l) {
+        var k = l.getAttribute('data-sec');
+        sheetBody.querySelectorAll('.lineup .lu').forEach(function (x) { x.classList.toggle('on', x === l); });
+        sheetBody.querySelectorAll('[data-sec-pane]').forEach(function (p) { p.hidden = p.getAttribute('data-sec-pane') !== k; });
+        l.scrollIntoView({ block: 'nearest', inline: 'center' });
+        sheetBody.scrollTop = 0;
+      }
     });
     function closeSheet() {
       sheet.classList.remove('open');
