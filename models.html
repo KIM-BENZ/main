@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전 차종 제원·가격표 | 메르세데스-벤츠 포항전시장 김석현 과장</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="메르세데스-벤츠 전 차종 제원·가격표 | 포항전시장 김석현 과장">
+  <meta property="og:description" content="세단·SUV·쿠페·전기차 전 라인업의 트림별 가격과 제원·옵션표를 한눈에 확인하세요.">
+  <meta property="og:image" content="images/hero-main.jpg">
+
+  <style>
+    :root {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --text-soft: #94a3b8;
+      --accent-blue: #0284c7;
+      --accent-hover: #0369a1;
+      --accent-gold: #d97706;
+      --accent-ev: #059669;
+      --border-color: #e2e8f0;
+      --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --shadow-hover: 0 12px 30px rgba(2, 132, 199, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0;
+        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+    body { background-color: var(--bg-main); color: var(--text-dark); line-height: 1.6; }
+
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.85rem 5rem 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header a { text-decoration: none; color: inherit; }
+    .header-brand h1 { font-size: 1.1rem; font-weight: 800; letter-spacing: 1.5px; white-space: nowrap; }
+    .header-brand .advisor-info { font-size: 0.82rem; color: var(--text-muted); }
+    .header-brand .advisor-info span { color: var(--accent-blue); font-weight: 700; }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1.5rem 2.6rem;
+      background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.88)), url('images/hero-main.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .hero .badge {
+      display: inline-block; background: rgba(2, 132, 199, 0.2); color: #38bdf8;
+      padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+      border: 1px solid rgba(56, 189, 248, 0.3); margin-bottom: 0.9rem; letter-spacing: 1px;
+    }
+    .hero h2 { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+    .hero p { color: #cbd5e1; font-size: 0.95rem; max-width: 600px; margin: 0 auto; word-break: keep-all; }
+
+    /* 카테고리 탭 */
+    .tabs-wrap {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(248, 250, 252, 0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .tabs {
+      max-width: 1100px; margin: 0 auto; padding: 0.75rem 1.5rem;
+      display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      flex-shrink: 0; border: 1px solid var(--border-color); background: #fff;
+      color: var(--text-muted); font-size: 0.9rem; font-weight: 700;
+      padding: 0.5rem 1.05rem; border-radius: 999px; cursor: pointer; transition: all 0.2s ease;
+    }
+    .tab:hover { border-color: var(--accent-blue); color: var(--text-dark); }
+    .tab.active { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
+    .tab .cnt { font-weight: 600; opacity: 0.7; margin-left: 0.25rem; font-size: 0.8rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+    .notice {
+      font-size: 0.83rem; color: var(--text-muted); background: #fff;
+      border: 1px solid var(--border-color); border-radius: 12px;
+      padding: 0.85rem 1.1rem; margin-bottom: 1.6rem; word-break: keep-all;
+    }
+    .notice a { color: var(--accent-blue); font-weight: 700; text-decoration: none; }
+
+    .section-title {
+      font-size: 1.15rem; font-weight: 800; margin: 2rem 0 0.9rem;
+      border-left: 3.5px solid var(--accent-blue); padding-left: 0.6rem;
+    }
+    .section-title:first-of-type { margin-top: 0; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem;
+    }
+
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px;
+      box-shadow: var(--shadow-light); padding: 1.3rem 1.3rem 1.1rem;
+      display: flex; flex-direction: column; transition: all 0.25s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: var(--accent-blue); box-shadow: var(--shadow-hover); }
+
+    .card-top { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.35rem; flex-wrap: wrap; }
+    .chip {
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.5px;
+      padding: 0.15rem 0.55rem; border-radius: 999px; background: #e0f2fe; color: var(--accent-blue);
+    }
+    .chip.my27 { background: #fef3c7; color: var(--accent-gold); }
+    .chip.ev { background: #d1fae5; color: var(--accent-ev); }
+
+    .card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.7rem; letter-spacing: -0.2px; }
+
+    .trims { list-style: none; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; margin-bottom: 1rem; flex-grow: 1; }
+    .trims li {
+      display: flex; justify-content: space-between; gap: 0.8rem;
+      font-size: 0.86rem; padding: 0.22rem 0;
+    }
+    .trims .t-name { color: var(--text-muted); word-break: keep-all; }
+    .trims .t-price { font-weight: 800; white-space: nowrap; color: var(--text-dark); }
+    .trims .t-note { display: block; font-size: 0.72rem; color: var(--text-soft); }
+
+    .card-btn {
+      display: flex; justify-content: space-between; align-items: center;
+      width: 100%; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.86rem; font-weight: 700;
+      background: #f1f5f9; border: 1px solid var(--border-color); color: var(--text-dark);
+      cursor: pointer; text-decoration: none; transition: all 0.2s ease;
+    }
+    .card:hover .card-btn, .card-btn:focus-visible { background: var(--accent-blue); color: #fff; border-color: var(--accent-blue); }
+    .card-btn + .card-btn { margin-top: 0.45rem; }
+    .card-btn.sub { background: #fff; }
+    .card:hover .card-btn.sub { background: #fff; color: var(--accent-blue); border-color: var(--accent-blue); }
+
+    .empty { text-align: center; color: var(--text-soft); padding: 3rem 0; }
+
+    /* 제원표 보기 모달 */
+    .sheet-dim {
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.92); z-index: 1000;
+      display: none; flex-direction: column;
+    }
+    .sheet-dim.open { display: flex; }
+    .sheet-bar {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 0.75rem 1rem; color: #fff; background: rgba(15, 23, 42, 0.96);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .sheet-bar h4 { font-size: 1rem; font-weight: 800; }
+    .sheet-bar small { display: block; font-size: 0.75rem; color: #94a3b8; font-weight: 500; }
+    .sheet-close {
+      flex-shrink: 0; width: 42px; height: 42px; border-radius: 10px; font-size: 1.4rem; line-height: 1;
+      border: 1px solid rgba(255, 255, 255, 0.2); background: transparent; color: #fff; cursor: pointer;
+    }
+    .sheet-body { flex: 1; overflow-y: auto; padding: 1rem; -webkit-overflow-scrolling: touch; }
+    .sheet-page { max-width: 860px; margin: 0 auto 1.2rem; }
+    .sheet-page img { display: block; width: 100%; height: auto; background: #fff; border-radius: 6px; }
+    .sheet-page a {
+      display: inline-block; margin-top: 0.4rem; font-size: 0.8rem; color: #7dd3fc; text-decoration: none; font-weight: 600;
+    }
+    .sheet-cta {
+      max-width: 860px; margin: 0 auto 1.5rem; display: flex; gap: 0.5rem;
+    }
+    .sheet-cta a {
+      flex: 1; text-align: center; padding: 0.8rem 0; border-radius: 10px; font-weight: 700; font-size: 0.9rem; text-decoration: none;
+    }
+    .cta-call { background: var(--accent-blue); color: #fff; }
+    .cta-kakao { background: #fee500; color: #191919; }
+
+    footer {
+      text-align: center; font-size: 0.8rem; color: var(--text-soft); padding: 0 1.5rem 2.5rem;
+    }
+
+    @media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 900px) {
+      header { padding: 0.8rem 4rem 0.8rem 1rem; }
+      .header-brand h1 { font-size: 1.02rem; letter-spacing: 1px; }
+      .header-brand .advisor-info { font-size: 0.78rem; }
+      .tabs { padding-right: 3.6rem; }
+    }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding: 2.4rem 1.2rem 2rem; }
+      .hero h2 { font-size: 1.5rem; }
+      .tabs { padding: 0.65rem 3.4rem 0.65rem 1rem; }
+      .container { padding: 1.4rem 1rem 2.5rem; }
+      .sheet-body { padding: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="header-brand" href="./">
+      <h1>MERCEDES-BENZ</h1>
+      <div class="advisor-info">포항전시장 <span>김석현 과장 (010-9379-0999)</span></div>
+    </a>
+  </header>
+
+  <section class="hero">
+    <span class="badge">ALL MODELS · SPEC & PRICE</span>
+    <h2>전 차종 제원 · 가격표</h2>
+    <p>세단부터 SUV, 쿠페, 전기차까지 트림별 가격과 제원·옵션표를 한 곳에서 확인하세요.</p>
+  </section>
+
+  <div class="tabs-wrap">
+    <nav class="tabs" id="tabs" aria-label="차종 분류"></nav>
+  </div>
+
+  <main class="container">
+    <div class="notice">
+      표시 가격은 권장소비자가격(VAT 포함, 만원 단위)이며 연식·사양에 따라 변동될 수 있습니다.
+      이번 달 할인과 최종 구매가는 <a href="promotion.html">이달의 프로모션</a>에서 확인하세요.
+    </div>
+    <div id="list"></div>
+  </main>
+
+  <footer>제원·옵션은 공식 자료 기준이며, 정확한 사양은 상담 시 다시 안내해 드립니다.</footer>
+
+  <!-- 제원표 보기 모달 -->
+  <div class="sheet-dim" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-bar">
+      <div><h4 id="sheetTitle"></h4><small>이미지를 누르면 원본 크기로 크게 볼 수 있습니다</small></div>
+      <button type="button" class="sheet-close" id="sheetClose" aria-label="닫기">×</button>
+    </div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+
+  <script>
+    /* =========================================================
+       차종 데이터 (가격: 만원 단위, VAT 포함 권장소비자가)
+       - cat: sedan(세단·해치백) / suv / coupe(쿠페·카브리올레) / ev(전기차)
+       - pages: specs/ 폴더의 제원표 이미지 번호
+       - link: 별도 안내 페이지가 있는 차종
+    ========================================================= */
+    var MODELS = [
+      // 세단 · 해치백
+      { cat:'sedan', name:'A-Class', my:'MY26', pages:[1], trims:[['A 220 Hatch',4870],['A 220 Sedan',5050]] },
+      { cat:'sedan', name:'CLA', my:'MY26', pages:[4], trims:[['CLA 250 4MATIC AMG Line',6450]] },
+      { cat:'sedan', name:'CLA 하이브리드 (CLA 220)', my:'MY27', pages:[5], trims:[['CLA 220',5990],['CLA 220 AMG Line',6290]] },
+      { cat:'sedan', name:'C-Class', my:'MY26', pages:[11], trims:[['C 200 AVANTGARDE',6510],['C 200 AMG Line',6830]] },
+      { cat:'sedan', name:'E-Class', my:'MY26', pages:[25,26,27,28,29,30], trims:[
+          ['E 200 EXCLUSIVE',7750],['E 200 AMG Line',8100],['E 220 d 4MATIC EXCLUSIVE',8720],
+          ['E 300 4MATIC EXCLUSIVE',9480],['E 300 4MATIC AMG Line',9900],['E 350 e 4MATIC EXCLUSIVE',10000],
+          ['E 450 4MATIC AMG Line',11600],['E 450 4MATIC EXCLUSIVE',12960],['AMG E 53 HYBRID 4MATIC+',14300]] },
+      { cat:'sedan', name:'E-Class', my:'MY27', pages:[31,32,33,34,35,36], trims:[
+          ['E 200 EXCLUSIVE',7750,'11~12월 MY26과 동일 권장가'],['E 200 AMG Line',8100,'11~12월 MY26과 동일 권장가'],
+          ['E 220 d 4MATIC AVANTGARDE',8750],['E 300 4MATIC EXCLUSIVE',9480],['E 300 4MATIC AMG Line',10010],
+          ['E 350 e 4MATIC EXCLUSIVE',10110],['E 450 4MATIC AMG Line',11720],['E 450 4MATIC EXCLUSIVE',12950],
+          ['AMG E 53 HYBRID 4MATIC+',14990]] },
+      { cat:'sedan', name:'S-Class', my:'MY26', pages:[46,47,48,49,55], trims:[
+          ['S 350 d 4MATIC',15400],['S 450 4MATIC SWB',16100],['S 450 4MATIC',19300],['S 500 4MATIC',21500],
+          ['S 580 4MATIC',26000],['AMG S 63 E PERFORMANCE',29900]] },
+      { cat:'sedan', name:'The new S-Class', my:'MY27', pages:[50,51,52,53,54], link:'https://kim-benz.github.io/S-CLASS/', trims:[
+          ['S 350 d 4MATIC',15400],['S 450 4MATIC SWB',16240],['S 450 4MATIC EXCLUSIVE',17540],
+          ['S 450 4MATIC AMG Line',19540],['S 500 4MATIC Long',22000],['S 580 4MATIC Long',27000]] },
+      { cat:'sedan', name:'Mercedes-Maybach S-Class', my:'MY26', pages:[56], trims:[['Maybach S 580',31700],['Maybach S 680',40300]] },
+      { cat:'sedan', name:'Mercedes-Maybach S-Class', my:'MY27', pages:[57], trims:[['Maybach S 580',31700],['Maybach S 680',40700]] },
+
+      // SUV
+      { cat:'suv', name:'GLA', my:'MY27', pages:[9], trims:[['GLA 250 4MATIC AMG Line',7080]] },
+      { cat:'suv', name:'GLB', my:'MY26', pages:[10], trims:[['GLB 200 d',6430],['GLB 250 4MATIC',7200],['AMG GLB 35 4MATIC',7850]] },
+      { cat:'suv', name:'GLC', my:'MY26', pages:[16,17,19], trims:[
+          ['GLC 220 d 4MATIC',8220],['GLC 300 4MATIC AVANTGARDE',8250],['GLC 300 4MATIC AMG Line',9250],['AMG GLC 43 4MATIC',10360]] },
+      { cat:'suv', name:'GLC', my:'MY27', pages:[21,22,24], trims:[
+          ['GLC 220 d 4MATIC',8220],['GLC 300 4MATIC',7700],['GLC 300 4MATIC AVANTGARDE',8250],
+          ['GLC 300 4MATIC AMG Line',9550],['AMG GLC 53 4MATIC',10510]] },
+      { cat:'suv', name:'GLE', my:'MY26', pages:[37,38,40], trims:[
+          ['GLE 300 d 4MATIC',11920],['GLE 350 4MATIC',11800],['GLE 450 4MATIC',12900],
+          ['GLE 450 4MATIC AMG Line',13900],['AMG GLE 53 4MATIC+',16600]] },
+      { cat:'suv', name:'GLS', my:'MY26', pages:[42,43,44], trims:[
+          ['GLS 450 d 4MATIC AMG Line',15400],['GLS 450 4MATIC AMG Line',15400],
+          ['GLS 450 d 4MATIC AMG Line Premium',15850],['GLS 450 4MATIC AMG Line Premium',15850],
+          ['GLS 580 4MATIC AMG Line',19340],['AMG GLS 63 4MATIC+',21000]] },
+      { cat:'suv', name:'Mercedes-Maybach GLS', my:'MY26', pages:[45], trims:[['Maybach GLS 600 4MATIC',29500],['Maybach GLS 600 MANUFAKTUR',33700]] },
+      { cat:'suv', name:'G-Class', my:'MY26', pages:[63,62], trims:[
+          ['G 450 d',19490],['G 450 d MANUFAKTUR',21910],['AMG G 63',26260],['AMG G 63 MANUFAKTUR',28980]] },
+      { cat:'suv', name:'신형 GLE · GLE 쿠페 · GLS', my:'MY27', link:'https://kim-benz.github.io/GLE_GLS/', soon:'가격 확정 후 안내 · 11월 말 출시 예상' },
+      { cat:'suv', name:'The new V-Class', my:'MY27', link:'https://kim-benz.github.io/V_CLASS/', soon:'사전계약 진행 중 · 전용 안내 페이지' },
+
+      // 쿠페 · 카브리올레
+      { cat:'coupe', name:'CLE Coupé', my:'MY26', pages:[12,14], trims:[
+          ['CLE 200 Coupé',7670],['CLE 450 4MATIC Coupé',9970],['AMG CLE 53 4MATIC+ Coupé',10910]] },
+      { cat:'coupe', name:'CLE Cabriolet', my:'MY26', pages:[13,15], trims:[
+          ['CLE 200 Cabriolet',8310],['CLE 450 4MATIC Cabriolet',10400],['AMG CLE 53 4MATIC+ Cabriolet',11500]] },
+      { cat:'coupe', name:'GLC Coupé', my:'MY26', pages:[18,19], trims:[
+          ['GLC 300 4MATIC Coupé AVANTGARDE',8660],['GLC 300 4MATIC Coupé AMG Line',9690],['AMG GLC 43 4MATIC Coupé',10830]] },
+      { cat:'coupe', name:'GLC Coupé', my:'MY27', pages:[23,24], trims:[
+          ['GLC 300 4MATIC Coupé',8000],['GLC 300 4MATIC Coupé AVANTGARDE',8660],
+          ['GLC 300 4MATIC Coupé AMG Line',9690],['AMG GLC 53 4MATIC Coupé',10980]] },
+      { cat:'coupe', name:'GLE Coupé', my:'MY26', pages:[39,41], trims:[
+          ['GLE 450 d 4MATIC Coupé AMG Line',13400],['GLE 450 4MATIC Coupé AMG Line',14250],['AMG GLE 53 4MATIC+ Coupé',17000]] },
+      { cat:'coupe', name:'Mercedes-AMG GT 4-Door', my:'MY26', pages:[58], trims:[['AMG GT 43 4MATIC+',16400]] },
+      { cat:'coupe', name:'Mercedes-AMG GT Coupé', my:'MY26', pages:[59], trims:[['AMG GT 55 4MATIC+',21000],['AMG GT 63 S E PERFORMANCE',28000]] },
+      { cat:'coupe', name:'Mercedes-AMG SL', my:'MY26', pages:[60], trims:[['AMG SL 43',16000],['AMG SL 63 4MATIC+',25000]] },
+      { cat:'coupe', name:'Mercedes-Maybach SL', my:'MY26', pages:[61], trims:[['Maybach SL 680 Monogram Series',34400]] },
+
+      // 전기차
+      { cat:'ev', name:'The all-new Electric CLA', my:'MY27', pages:[6,7,8], link:'https://kim-benz.github.io/CLA/', trims:[
+          ['CLA 200 electric Essential',5290],['CLA 200 electric Advanced',5580],['CLA 200 electric AMG Line',5890],
+          ['CLA 250+ electric',6370],['CLA 250+ electric AMG Line',6770]] },
+      { cat:'ev', name:'The all-new Electric GLC', my:'MY27', pages:[20], link:'https://kim-benz.github.io/GLC_EV/', trims:[
+          ['GLC 300 4MATIC AMG Line',9000],['GLC 300 4MATIC AMG Line+',9480]] },
+      { cat:'ev', name:'The all-new Electric GLB', my:'MY27', link:'https://kim-benz.github.io/GLB_EV/', soon:'사전계약 진행 중 · 전용 안내 페이지' },
+      { cat:'ev', name:'EQA', my:'MY27', pages:[65], trims:[['EQA 250 Progressive',7080],['EQA 250 AMG Line',7670]] },
+      { cat:'ev', name:'EQB', my:'MY26', pages:[66], trims:[['EQB 300 4MATIC Progressive',7880],['EQB 300 4MATIC AMG Line',8430]] },
+      { cat:'ev', name:'EQE', my:'MY26', pages:[67], trims:[['EQE 350+',11000]] },
+      { cat:'ev', name:'EQE SUV', my:'MY26', pages:[68], trims:[['EQE 350+ SUV',10600],['EQE 500 4MATIC SUV',14100]] },
+      { cat:'ev', name:'EQS SUV', my:'MY26', pages:[69], trims:[['EQS 450 4MATIC SUV',16600],['EQS 580 4MATIC SUV',19200]] },
+      { cat:'ev', name:'Mercedes-Maybach EQS SUV', my:'MY26', pages:[70], trims:[['Maybach EQS 680 SUV',23500]] },
+      { cat:'ev', name:'G 580 with EQ Technology', my:'MY26', pages:[64], trims:[['G 580 with EQ Technology',21610]] }
+    ];
+
+    var CATS = [
+      { id:'all', label:'전체' },
+      { id:'sedan', label:'세단 · 해치백' },
+      { id:'suv', label:'SUV' },
+      { id:'coupe', label:'쿠페 · 카브리올레' },
+      { id:'ev', label:'전기차' }
+    ];
+
+    function won(man) {
+      var eok = Math.floor(man / 10000), rest = man % 10000;
+      var r = rest ? rest.toLocaleString('ko-KR') + '만원' : '';
+      if (!eok) return r;
+      return eok + '억' + (r ? ' ' + r : '원');
+    }
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+    function card(m, i) {
+      var chip = '<span class="chip' + (m.my === 'MY27' ? ' my27' : '') + '">' + m.my + '</span>';
+      if (m.cat === 'ev') chip += '<span class="chip ev">ELECTRIC</span>';
+      var body;
+      if (m.trims) {
+        body = '<ul class="trims">' + m.trims.map(function (t) {
+          return '<li><span class="t-name">' + t[0] + (t[2] ? '<span class="t-note">' + t[2] + '</span>' : '') +
+                 '</span><span class="t-price">' + won(t[1]) + '</span></li>';
+        }).join('') + '</ul>';
+      } else {
+        body = '<ul class="trims"><li><span class="t-name">' + m.soon + '</span></li></ul>';
+      }
+      var btns = '';
+      if (m.pages) btns += '<button type="button" class="card-btn" data-i="' + i + '"><span>제원 · 옵션표 보기</span><span>→</span></button>';
+      if (m.link) btns += '<a class="card-btn' + (m.pages ? ' sub' : '') + '" href="' + m.link + '" target="_blank" rel="noopener noreferrer"><span>' +
+                         (m.pages ? '상세 안내 페이지' : '안내 페이지 보기') + '</span><span>↗</span></a>';
+      return '<div class="card"><div class="card-top">' + chip + '</div><h3>' + m.name + '</h3>' + body + btns + '</div>';
+    }
+
+    var tabsEl = document.getElementById('tabs');
+    var listEl = document.getElementById('list');
+    var current = 'all';
+
+    function renderTabs() {
+      tabsEl.innerHTML = CATS.map(function (c) {
+        var n = c.id === 'all' ? MODELS.length : MODELS.filter(function (m) { return m.cat === c.id; }).length;
+        return '<button type="button" class="tab' + (c.id === current ? ' active' : '') + '" data-cat="' + c.id + '">' +
+               c.label + '<span class="cnt">' + n + '</span></button>';
+      }).join('');
+    }
+
+    function renderList() {
+      var cats = current === 'all' ? CATS.slice(1) : CATS.filter(function (c) { return c.id === current; });
+      var html = '';
+      cats.forEach(function (c) {
+        var items = [];
+        MODELS.forEach(function (m, i) { if (m.cat === c.id) items.push(card(m, i)); });
+        if (!items.length) return;
+        html += '<h2 class="section-title">' + c.label + '</h2><div class="grid">' + items.join('') + '</div>';
+      });
+      listEl.innerHTML = html || '<p class="empty">해당 차종이 없습니다.</p>';
+    }
+
+    tabsEl.addEventListener('click', function (e) {
+      var b = e.target.closest('.tab'); if (!b) return;
+      current = b.getAttribute('data-cat');
+      try { history.replaceState(null, '', current === 'all' ? location.pathname : '#' + current); } catch (err) {}
+      renderTabs(); renderList();
+      window.scrollTo({ top: document.querySelector('.tabs-wrap').offsetTop, behavior: 'smooth' });
+    });
+
+    // 제원표 모달
+    var sheet = document.getElementById('sheet');
+    var sheetBody = document.getElementById('sheetBody');
+    var sheetTitle = document.getElementById('sheetTitle');
+    var prevOverflow = '';
+
+    function openSheet(m) {
+      sheetTitle.textContent = m.name + ' (' + m.my + ') 제원 · 옵션표';
+      sheetBody.innerHTML = m.pages.map(function (p) {
+        var src = 'specs/p' + pad(p) + '.jpg';
+        return '<div class="sheet-page"><a href="' + src + '" target="_blank" rel="noopener"><img src="' + src +
+               '" alt="' + m.name + ' ' + m.my + ' 제원표" loading="lazy"></a></div>';
+      }).join('') +
+      '<div class="sheet-cta"><a class="cta-call" href="tel:01093790999">📞 견적 문의</a>' +
+      '<a class="cta-kakao" href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener noreferrer">💬 카톡 상담</a></div>';
+      sheetBody.scrollTop = 0;
+      prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      sheet.classList.add('open');
+    }
+    function closeSheet() {
+      sheet.classList.remove('open');
+      document.body.style.overflow = prevOverflow;
+    }
+
+    listEl.addEventListener('click', function (e) {
+      var b = e.target.closest('button.card-btn'); if (!b) return;
+      openSheet(MODELS[+b.getAttribute('data-i')]);
+    });
+    document.getElementById('sheetClose').onclick = closeSheet;
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
+
+    var h = (location.hash || '').slice(1);
+    if (CATS.some(function (c) { return c.id === h; })) current = h;
+    renderTabs(); renderList();
+  </script>
+
+  <!-- 공통 햄버거 메뉴 (전체 사이트맵) -->
+  <script src="https://kim-benz.github.io/main/nav.js"></script>
+
+</body>
+</html>

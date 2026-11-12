@@ -17,6 +17,7 @@
       { name: '전 차종 공식 가격표', sub: 'PDF', url: MAIN + 'pdf/price_list.pdf', ext: true }
     ]},
     { group: '신차 · 모델', items: [
+      { name: '전 차종 제원 · 가격표', sub: '세단 · SUV · 쿠페 · 전기차', url: MAIN + 'models.html' },
       { name: 'Electric GLB', sub: '사전계약', url: 'https://kim-benz.github.io/GLB_EV/' },
       { name: 'Electric CLA', sub: '신차 가이드', url: 'https://kim-benz.github.io/CLA/' },
       { name: 'Electric GLC', sub: '', url: 'https://kim-benz.github.io/GLC_EV/' },
