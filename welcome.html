@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>벤츠 신차 출고 웰컴 서비스 안내 (포항전시장 김석현 과장)</title>
+  <meta name="description" content="메르세데스-벤츠 신차 출고 고객 웰컴 서비스 · 틴팅 3종 택1 · 블랙박스 STARVIEW PRO · 웰컴 기프트 (포항전시장 김석현 과장)">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="벤츠 신차 출고 웰컴 서비스 안내">
+  <meta property="og:description" content="틴팅 3종 택1 · 블랙박스 · 웰컴 기프트 (포항전시장 김석현 과장)">
+  <meta property="og:image" content="https://kim-benz.github.io/main/images/welcome/og-thumb.jpg">
+  <meta property="og:url" content="https://kim-benz.github.io/main/welcome.html">
+  <style>
+    /* =========================================================
+       1. 화면 기본 스타일 (다크 모드 디자인)
+       ========================================================= */
+    :root {
+      --mb-black: #08080a;
+      --mb-dark-gray: #121316;
+      --mb-card-bg: #1a1c20;
+      --mb-silver: #a0a5aa;
+      --mb-white: #ffffff;
+      --mb-accent: #00adef;
+      --mb-border: #262930;
+      --mb-highlight: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--mb-black);
+      color: var(--mb-white);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: rgba(8, 8, 10, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--mb-border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--mb-white);
+    }
+
+    .advisor-info {
+      font-size: 0.9rem;
+      color: var(--mb-silver);
+    }
+
+    .advisor-info span {
+      color: var(--mb-accent);
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      min-height: 360px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 3.5rem;
+      border-bottom: 1px solid var(--mb-border);
+      background-color: #050505;
+    }
+
+    .hero-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 62% 45%;
+      cursor: pointer;
+    }
+
+    .hero-gradient-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(8, 8, 10, 0.75) 0%,
+        rgba(8, 8, 10, 0.2) 40%,
+        rgba(8, 8, 10, 0.4) 70%,
+        rgba(8, 8, 10, 0.95) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      text-align: center;
+      z-index: 2;
+      padding: 0 1rem;
+      pointer-events: none;
+    }
+
+    .hero-overlay h2 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-overlay p {
+      font-size: 1.05rem;
+      color: var(--mb-silver);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .section-title-wrap {
+      margin-bottom: 1.8rem;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      color: var(--mb-accent);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--mb-white);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 1.2rem;
+      background-color: var(--mb-accent);
+    }
+
+    .img-placeholder {
+      width: 100%;
+      background-color: #22252b;
+      border: 1px dashed #3a3f4a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mb-silver);
+      font-size: 0.8rem;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .img-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: transform 0.4s ease;
+    }
+
+    .img-placeholder:hover::after {
+      content: '🔍 클릭하여 확대';
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.75);
+      color: var(--mb-white);
+      padding: 4px 8px;
+      font-size: 0.7rem;
+      border-radius: 4px;
+      border: 1px solid var(--mb-accent);
+      z-index: 5;
+    }
+
+    /* =========================================================
+       2. 레이아웃 & 디테일
+       ========================================================= */
+
+    /* [1. 상단] 3분할 카운터 카드 */
+    .top-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .top-detail-card {
+      background-color: var(--mb-card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--mb-border);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .top-detail-card:hover {
+      border-color: var(--mb-accent);
+      transform: translateY(-2px);
+    }
+
+    .top-detail-card:hover .img-placeholder img {
+      transform: scale(1.05);
+    }
+
+    .top-detail-card .img-wrapper {
+      height: 140px;
+    }
+
+    .top-detail-info {
+      padding: 0.8rem 1rem;
+    }
+
+    .top-detail-info h4 {
+      font-size: 0.88rem;
+      color: var(--mb-white);
+    }
+
+    /* [2. 외관] */
+    .feature-split-row {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 4rem;
+      background-color: var(--mb-dark-gray);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--mb-border);
+    }
+
+    .feature-split-img {
+      height: 320px;
+    }
+
+    .feature-split-text h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      color: var(--mb-white);
+    }
+
+    .feature-split-text p {
+      font-size: 0.9rem;
+      color: var(--mb-silver);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .feature-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .feature-tag-item {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      background-color: rgba(0, 173, 239, 0.1);
+      color: var(--mb-accent);
+      border-radius: 4px;
+      border: 1px solid rgba(0, 173, 239, 0.2);
+    }
+
+    /* [3. 라인업 카드 4종] */
+    .lineup-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .lineup-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .lineup-card {
+      background-color: var(--mb-card-bg);
+      border: 1px solid var(--mb-border);
+      border-radius: 10px;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .lineup-card:hover {
+      border-color: var(--mb-accent);
+      transform: translateY(-3px);
+    }
+
+    .lineup-card.active-target {
+      border-color: var(--mb-accent);
+    }
+
+    .lineup-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background-color: rgba(255, 255, 255, 0.08);
+      color: var(--mb-silver);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .lineup-badge.target {
+      background-color: rgba(0, 173, 239, 0.2);
+      color: var(--mb-accent);
+    }
+
+    .lineup-card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.3rem;
+      line-height: 1.35;
+    }
+
+    .lineup-price {
+      font-size: 0.88rem;
+      color: var(--mb-highlight);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .lineup-specs {
+      list-style: none;
+      border-top: 1px solid var(--mb-border);
+      padding-top: 0.8rem;
+    }
+
+    .lineup-specs li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      padding: 0.25rem 0;
+      color: var(--mb-silver);
+    }
+
+    .lineup-specs li span {
+      color: var(--mb-white);
+      font-weight: 500;
+    }
+
+    /* [4. 라인업 휠 4종 - 1:1 비율] */
+    .wheel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .wheel-card {
+      background-color: var(--mb-card-bg);
+      border: 1px solid var(--mb-border);
+      border-radius: 8px;
+      padding: 0.8rem;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .wheel-card:hover {
+      border-color: var(--mb-accent);
+      transform: translateY(-2px);
+    }
+
+    .wheel-card:hover .wheel-img img {
+      transform: scale(1.06);
+    }
+
+    .wheel-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      height: auto;
+      margin-bottom: 0.6rem;
+    }
+
+    .wheel-card h5 {
+      font-size: 0.82rem;
+      color: var(--mb-white);
+    }
+
+    .wheel-card span {
+      font-size: 0.73rem;
+      color: var(--mb-accent);
+    }
+
+    /* [5. 디지털 콕핏] */
+    .cockpit-section {
+      margin-bottom: 4rem;
+    }
+
+    .hero-banner-box {
+      width: 100%;
+      height: 380px;
+      margin-bottom: 1.2rem;
+      border-radius: 12px;
+    }
+
+    .cockpit-sub-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .cockpit-sub-card {
+      background-color: var(--mb-card-bg);
+      border-radius: 8px;
+      padding: 1rem;
+      border: 1px solid var(--mb-border);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .cockpit-sub-card:hover {
+      border-color: var(--mb-accent);
+      transform: translateY(-2px);
+    }
+
+    .cockpit-sub-card:hover .img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .cockpit-sub-card .img-wrapper {
+      height: 120px;
+      margin-bottom: 0.8rem;
+    }
+
+    .cockpit-sub-card h4 {
+      font-size: 0.92rem;
+      margin-bottom: 0.3rem;
+      color: var(--mb-white);
+    }
+
+    .cockpit-sub-card p {
+      font-size: 0.8rem;
+      color: var(--mb-silver);
+      line-height: 1.4;
+    }
+
+    /* [6. AMG Line vs AMG Line+ 와이드 비주얼] */
+    .compare-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 4rem;
+      background-color: var(--mb-card-bg);
+      border: 1px solid var(--mb-border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .compare-box h4 {
+      font-size: 1.05rem;
+      color: var(--mb-accent);
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid var(--mb-border);
+      padding-bottom: 0.4rem;
+    }
+
+    .compare-box .compare-img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-height: 240px;
+      height: auto;
+      margin-bottom: 0.8rem;
+      border-radius: 6px;
+      background-color: #0d0e11;
+    }
+
+    .compare-box .compare-img img {
+      object-fit: contain;
+      background-color: #0d0e11;
+    }
+
+    .compare-box ul {
+      list-style: none;
+    }
+
+    .compare-box li {
+      font-size: 0.83rem;
+      color: var(--mb-silver);
+      margin-bottom: 0.4rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .compare-box li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--mb-accent);
+    }
+
+    /* [7. 실내 공간] */
+    .space-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      align-items: center;
+    }
+
+    .space-gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .space-gallery-img {
+      height: 180px;
+    }
+
+    .space-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--mb-white);
+    }
+
+    .space-info p {
+      font-size: 0.88rem;
+      color: var(--mb-silver);
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
+
+    /* [8. 색상 커스터마이저 - 2:1 비율] */
+    .color-section {
+      background-color: var(--mb-card-bg);
+      border: 1px solid var(--mb-border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .color-controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      background-color: var(--mb-dark-gray);
+      padding: 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--mb-border);
+      margin-bottom: 1.2rem;
+    }
+
+    .color-control-group h3 {
+      font-size: 0.95rem;
+      color: var(--mb-white);
+      margin-bottom: 0.8rem;
+    }
+
+    .color-palette {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .color-chip {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #444;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .color-chip:hover {
+      transform: scale(1.1);
+    }
+
+    .color-chip.active {
+      border-color: var(--mb-accent);
+      box-shadow: 0 0 10px rgba(0, 173, 239, 0.6);
+    }
+
+    .selected-color-title {
+      font-size: 0.85rem;
+      color: var(--mb-accent);
+      margin-top: 0.6rem;
+      font-weight: 600;
+    }
+
+    .color-preview-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .preview-wrapper {
+      position: relative;
+    }
+
+    .preview-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgba(8, 8, 10, 0.8);
+      color: var(--mb-accent);
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 173, 239, 0.3);
+      z-index: 2;
+    }
+
+    .color-preview-box {
+      height: 280px;
+      border: 1px solid var(--mb-border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .color-preview-box img {
+      object-fit: contain;
+      background-color: #0b0c0e;
+    }
+
+    .color-summary-bar {
+      background-color: var(--mb-dark-gray);
+      padding: 0.8rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--mb-white);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--mb-border);
+    }
+
+    /* [9. 충전 인프라] */
+    .benefit-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .benefit-card {
+      background: linear-gradient(135deg, #141c29 0%, #121316 100%);
+      border: 1px solid var(--mb-accent);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .benefit-img {
+      width: 220px;
+      height: 130px;
+      flex-shrink: 0;
+    }
+
+    .benefit-info h3 {
+      font-size: 1.15rem;
+      color: var(--mb-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .benefit-info p {
+      font-size: 0.85rem;
+      color: var(--mb-silver);
+      line-height: 1.5;
+    }
+
+    /* [10. 전 모델 공통 사양] */
+    .grid-common {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .common-card {
+      background-color: var(--mb-card-bg);
+      border: 1px solid var(--mb-border);
+      border-radius: 10px;
+      padding: 1.2rem;
+    }
+
+    .common-card h3 {
+      font-size: 0.98rem;
+      color: var(--mb-white);
+      margin-bottom: 0.6rem;
+    }
+
+    .common-card ul {
+      list-style: none;
+    }
+
+    .common-card li {
+      font-size: 0.82rem;
+      color: var(--mb-silver);
+      padding: 0.2rem 0;
+      position: relative;
+      padding-left: 0.9rem;
+    }
+
+    .common-card li::before {
+      content: '•';
+      color: var(--mb-accent);
+      position: absolute;
+      left: 0;
+    }
+
+    /* [11. 표 스타일] */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      background-color: var(--mb-card-bg);
+      border-radius: 10px;
+      border: 1px solid var(--mb-border);
+      margin-bottom: 3.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid var(--mb-border);
+    }
+
+    th {
+      background-color: var(--mb-dark-gray);
+      color: var(--mb-white);
+      font-weight: 600;
+    }
+
+    td {
+      color: var(--mb-silver);
+    }
+
+    table tr:hover td {
+      background-color: rgba(255, 255, 255, 0.02);
+      color: var(--mb-white);
+    }
+
+    td.check {
+      color: var(--mb-accent);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    td.none {
+      color: #555;
+      text-align: center;
+    }
+
+    .category-row {
+      background-color: #16181c;
+    }
+
+    .category-row td {
+      color: var(--mb-accent);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding-top: 0.9rem;
+      padding-bottom: 0.5rem;
+    }
+
+    /* 카탈로그 다운로드 섹션 스타일 */
+    .catalog-download-section {
+      background: linear-gradient(135deg, #141c29 0%, #121316 100%);
+      border: 1px solid var(--mb-border);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .catalog-info h3 {
+      font-size: 1.25rem;
+      color: var(--mb-white);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .catalog-info p {
+      font-size: 0.88rem;
+      color: var(--mb-silver);
+      line-height: 1.5;
+    }
+
+    .catalog-btn-group {
+      display: flex;
+      gap: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .c-btn-catalog {
+      background-color: var(--mb-accent);
+      color: var(--mb-black);
+      font-weight: 700;
+      border: none;
+    }
+    .c-btn-catalog:hover {
+      background-color: #0098d4;
+      transform: translateY(-1px);
+    }
+
+    .c-btn-outline {
+      background-color: transparent;
+      color: var(--mb-white);
+      border: 1px solid var(--mb-border);
+    }
+    .c-btn-outline:hover {
+      border-color: var(--mb-accent);
+      background-color: rgba(0, 173, 239, 0.05);
+      transform: translateY(-1px);
+    }
+
+    /* [12. 하단 상담 / 사전계약 CTA 배너] */
+    .consult-card {
+      background: linear-gradient(135deg, #141821 0%, #0a0b0d 100%);
+      border: 1.5px solid var(--mb-accent);
+      border-radius: 12px;
+      padding: 1.8rem 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 8px 30px rgba(0, 173, 239, 0.15);
+    }
+
+    .consult-header {
+      margin-bottom: 1.2rem;
+    }
+
+    .consult-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .consult-title-row h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--mb-white);
+      letter-spacing: -0.3px;
+    }
+
+    .consult-subtext {
+      font-size: 0.88rem;
+      color: var(--mb-silver);
+      line-height: 1.5;
+    }
+
+    .consult-divider {
+      border: none;
+      border-top: 1px dashed var(--mb-border);
+      margin: 1.2rem 0;
+    }
+
+    .consult-bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .advisor-details {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .advisor-name {
+      color: var(--mb-silver);
+    }
+
+    .advisor-name strong {
+      color: var(--mb-white);
+      font-size: 1.05rem;
+    }
+
+    .advisor-phone {
+      color: var(--mb-accent);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      text-decoration: none;
+    }
+
+    .consult-btn-group {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .c-btn {
+      padding: 0.65rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .c-btn-kakao {
+      background-color: #fee500;
+      color: #191919;
+    }
+    .c-btn-kakao:hover {
+      background-color: #fada0a;
+      transform: translateY(-1px);
+    }
+
+    .c-btn-call {
+      background-color: #2563eb;
+      color: #ffffff;
+    }
+    .c-btn-call:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .c-btn-sms {
+      background-color: #ffffff;
+      color: #1a1a1a;
+      border: 1px solid #d1d5db;
+    }
+    .c-btn-sms:hover {
+      background-color: #f3f4f6;
+      transform: translateY(-1px);
+    }
+
+    /* [13. 하단 푸터 / 주의사항 영역] */
+    footer {
+      border-top: 1px solid var(--mb-border);
+      background-color: #050507;
+      padding: 2.5rem 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      font-size: 0.78rem;
+      color: #71767e;
+      line-height: 1.7;
+    }
+
+    .footer-disclaimer {
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-disclaimer p {
+      margin-bottom: 0.2rem;
+    }
+
+    .footer-copyright {
+      color: #52565e;
+      font-size: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 1rem;
+    }
+
+    /* =========================================================
+       3. 이미지 클릭 확대 모달 (Lightbox Modal)
+       ========================================================= */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0, 173, 239, 0.3);
+      object-fit: contain;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: var(--mb-accent);
+    }
+
+    /* 반응형 스타일 조정 */
+    @media (max-width: 992px) {
+      .lineup-container, .wheel-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .feature-split-row, .space-section, .color-controls, .color-preview-container {
+        grid-template-columns: 1fr;
+      }
+      .feature-split-img {
+        height: 250px;
+      }
+      .color-preview-box {
+        height: 220px;
+      }
+      .catalog-download-section {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .catalog-btn-group {
+        width: 100%;
+        flex-direction: column;
+      }
+    }
+
+    /* 브랜드 문구 인용 섹션 */
+    .brand-quote {
+      text-align: center;
+      padding: 3rem 1.5rem 2.8rem;
+    }
+
+    .brand-quote p {
+      font-size: 1.3rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--mb-highlight);
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .brand-quote .quote-byline {
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      color: var(--mb-silver);
+      text-transform: uppercase;
+    }
+
+    .brand-quote .quote-byline span {
+      color: var(--mb-accent);
+      font-weight: 700;
+    }
+
+    /* 어드바이저 구매 전략 소개 섹션 */
+    .advisor-pitch {
+      display: grid;
+      grid-template-columns: 0.85fr 1.4fr;
+      gap: 2.5rem;
+      align-items: center;
+      background-color: var(--mb-dark-gray);
+      border: 1px solid var(--mb-border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .advisor-pitch-img {
+      width: 100%;
+      height: 320px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .advisor-pitch-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .advisor-pitch .section-tag {
+      color: var(--mb-highlight);
+    }
+
+    .advisor-pitch-body h3 {
+      font-size: 1.5rem;
+      line-height: 1.45;
+      margin-bottom: 0.9rem;
+      color: var(--mb-white);
+    }
+
+    .advisor-pitch-body > p {
+      font-size: 0.9rem;
+      color: var(--mb-silver);
+      line-height: 1.7;
+      margin-bottom: 1.6rem;
+    }
+
+    .advisor-stats {
+      display: flex;
+      gap: 2.2rem;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid var(--mb-border);
+    }
+
+    .advisor-stat-num {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--mb-highlight);
+    }
+
+    .advisor-stat-label {
+      font-size: 0.75rem;
+      color: var(--mb-silver);
+      margin-top: 0.2rem;
+    }
+
+    @media (max-width: 650px) {
+      .top-detail-grid, .cockpit-sub-grid, .lineup-container, .wheel-grid, .compare-container, .grid-common {
+        grid-template-columns: 1fr;
+      }
+      .advisor-pitch {
+        grid-template-columns: 1fr;
+        padding: 1.6rem;
+        text-align: center;
+      }
+      .advisor-pitch-img {
+        max-width: 100%;
+        height: 250px;
+        margin: 0 auto;
+      }
+      .advisor-stats {
+        justify-content: center;
+      }
+      .consult-bottom-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .consult-btn-group {
+        width: 100%;
+      }
+      .c-btn {
+        flex: 1;
+        text-align: center;
+      }
+      .benefit-card {
+        flex-direction: column;
+      }
+      .benefit-img {
+        width: 100%;
+        height: 160px;
+      }
+    }
+  
+    /* ---- GLB 전용 추가 ---- */
+    .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}
+    .price-card{background:var(--mb-card-bg);border:1px solid var(--mb-border);border-radius:10px;padding:1.3rem}
+    .price-card .p-label{font-size:.78rem;color:var(--mb-silver);margin-bottom:.4rem}
+    .price-card .p-num{font-size:1.8rem;font-weight:800;color:var(--mb-white)}
+    .price-card .p-sub{font-size:.75rem;color:var(--mb-silver);margin-top:.3rem}
+    .price-card.hl{border-color:var(--mb-accent);background:linear-gradient(135deg,#141c29 0%,#121316 100%)}
+    .price-card.hl .p-num{color:var(--mb-accent)}
+    .note-list{list-style:none;font-size:.78rem;color:#8b9098;line-height:1.7;margin-bottom:3.5rem}
+    .note-list li::before{content:'※ ';color:var(--mb-silver)}
+    .range-card{background:var(--mb-card-bg);border:1px solid var(--mb-border);border-radius:10px;padding:1.4rem}
+    .range-card h4{font-size:1rem;color:var(--mb-accent);margin-bottom:.6rem}
+    .range-big{font-size:2.4rem;font-weight:800;color:var(--mb-white);margin-bottom:.8rem}
+    .range-big small{font-size:1rem;color:var(--mb-silver);margin-left:.2rem;font-weight:500}
+    .charge-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.2rem}
+    .charge-stat{background:var(--mb-dark-gray);border:1px solid var(--mb-border);border-radius:8px;padding:1rem;text-align:center}
+    .charge-stat strong{display:block;font-size:1.3rem;color:var(--mb-white)}
+    .charge-stat span{font-size:.75rem;color:var(--mb-silver)}
+    .wheel-grid.two{grid-template-columns:repeat(2,1fr)}
+    .wheel-grid.two .wheel-img{aspect-ratio:4/3}
+    .spec-sub{font-size:.78rem;color:var(--mb-silver);font-weight:400}
+    @media(max-width:992px){.charge-stats{grid-template-columns:repeat(2,1fr)}.price-grid{grid-template-columns:1fr}}
+    @media(max-width:650px){.wheel-grid.two{grid-template-columns:1fr}.hero-overlay h2{font-size:1.5rem}}
+
+    /* WELCOME 전용 */
+    .w-nav{display:flex;gap:.6rem;flex-wrap:wrap;margin:0 0 2.5rem}
+    .w-nav a{flex:1 1 180px;text-align:center;padding:1rem;border:1px solid var(--mb-border);border-radius:12px;background:var(--mb-card-bg);color:#fff;text-decoration:none;font-weight:700;transition:.2s}
+    .w-nav a:hover{border-color:var(--mb-accent);color:var(--mb-accent)}
+    .w-nav small{display:block;color:var(--mb-silver);font-weight:400;margin-top:.2rem}
+    .w-sec{margin:4rem 0}
+    .w-lead{color:var(--mb-silver);margin:-.5rem 0 1.5rem;line-height:1.7}
+    .w-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .w-card{background:var(--mb-card-bg);border:1px solid var(--mb-border);border-radius:14px;padding:1.4rem;display:flex;flex-direction:column;gap:.7rem}
+    .w-card .no{color:var(--mb-accent);font-weight:800;letter-spacing:1px;font-size:.85rem}
+    .w-card h3{font-size:1.2rem}
+    .w-card .origin{color:var(--mb-silver);font-size:.88rem}
+    .w-card ul{list-style:none;display:flex;flex-direction:column;gap:.4rem;font-size:.95rem}
+    .w-card li{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dashed var(--mb-border);padding-bottom:.4rem}
+    .w-card li span:first-child{color:var(--mb-silver)}
+    .w-card li span:last-child{text-align:right;font-weight:600}
+    .w-tag{display:inline-block;background:rgba(0,173,239,.12);color:var(--mb-accent);border-radius:6px;padding:.25rem .6rem;font-size:.82rem;font-weight:600}
+    .w-warn{background:rgba(245,158,11,.1);color:var(--mb-highlight)}
+    .w-note{color:var(--mb-silver);font-size:.85rem;margin-top:1rem;line-height:1.7}
+    .w-split{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+    .w-img{width:100%;border-radius:14px;border:1px solid var(--mb-border);display:block;background:var(--mb-card-bg);cursor:zoom-in}
+    .w-ph{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--mb-silver);font-size:.85rem;background:var(--mb-card-bg);border:1px dashed var(--mb-border);border-radius:14px}
+    .w-table{width:100%;border-collapse:collapse;background:var(--mb-card-bg);border:1px solid var(--mb-border);border-radius:14px;overflow:hidden}
+    .w-table th,.w-table td{padding:.8rem 1rem;border-bottom:1px solid var(--mb-border);text-align:left;font-size:.95rem}
+    .w-table th{width:34%;color:var(--mb-silver);font-weight:500;background:rgba(255,255,255,.02)}
+    .w-table tr:last-child th,.w-table tr:last-child td{border-bottom:0}
+    .w-gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .w-gift{background:var(--mb-card-bg);border:1px solid var(--mb-border);border-radius:14px;overflow:hidden}
+    .w-gift .w-ph,.w-gift img{border-radius:0;border:0;border-bottom:1px solid var(--mb-border);width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+    .w-gift div.b{padding:1rem 1.2rem}
+    .w-gift h3{font-size:1.05rem;margin-bottom:.4rem}
+    .w-gift p{color:var(--mb-silver);font-size:.9rem;line-height:1.6}
+    @media(max-width:900px){.w-grid3{grid-template-columns:1fr 1fr}.w-split{grid-template-columns:1fr}}
+    @media(max-width:600px){.w-grid3{grid-template-columns:1fr}}
+
+    /* 웰컴 기프트: 공식 사용법 이미지(가로형) 전체 노출 */
+    .w-package{margin-bottom:2rem;align-items:center}
+    .w-package .w-img{background:#fff}
+    .w-gifts{grid-template-columns:1fr}
+    .w-gift img{aspect-ratio:auto;height:auto;object-fit:contain;background:#fff}
+    .w-gift .w-ph{aspect-ratio:3/1}
+    .w-gift div.b{display:flex;gap:1rem;align-items:baseline;flex-wrap:wrap}
+    .w-gift div.b h3{margin:0;flex:0 0 auto}
+    .w-gift div.b p{flex:1 1 260px}
+    .w-gift .num{color:var(--mb-accent);font-weight:800;margin-right:.4rem}
+    .w-gift img.w-narrow{max-width:760px;margin:0 auto;border-bottom:0}
+    .w-gift:has(.w-narrow){background:var(--mb-card-bg)}
+    .w-gift img.w-narrow{box-shadow:0 0 0 100vmax #fff;clip-path:inset(0 -100vmax)}
+    .w-hint{color:var(--mb-silver);font-size:.82rem;margin:-.8rem 0 1rem}
+    /* 블랙박스 사진을 옆 사양표 높이에 맞춤 */
+    .w-bb{align-items:stretch}
+    .w-bb > .w-img{height:100%;object-fit:cover;object-position:center}
+    .w-bb > .w-ph{height:100%;aspect-ratio:auto}
+    @media(max-width:900px){.w-bb > .w-img{height:auto;aspect-ratio:4/3}.w-bb > .w-ph{aspect-ratio:4/3}}
+    /* 히어로: 키 사진이 오른쪽에 오도록 글자를 왼쪽 정렬 */
+    .hero{justify-content:flex-start;align-items:center;padding-top:0}
+    .hero-img{object-position:62% 45%}
+    .hero-gradient-overlay{background:linear-gradient(90deg,rgba(8,8,10,.92) 0%,rgba(8,8,10,.75) 35%,rgba(8,8,10,.15) 60%,rgba(8,8,10,0) 75%),linear-gradient(to bottom,rgba(8,8,10,0) 70%,rgba(8,8,10,.9) 100%)}
+    .hero-overlay{position:relative;text-align:left;max-width:520px;margin-left:max(1.5rem,calc((100% - 1100px)/2 + 1.5rem));padding:0}
+    .hero-overlay p{word-break:keep-all}
+    @media(max-width:650px){.hero-img{object-position:40% 45%}.hero-overlay{max-width:54%}.hero-overlay h2{font-size:1.45rem;letter-spacing:1px}.hero-overlay p{font-size:.88rem}}
+</style>
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html" style="color:inherit;text-decoration:none">MERCEDES-BENZ</a></h1>
+    <div class="advisor-info">포항전시장 <span>김석현 과장 (010-9379-0999)</span></div>
+  </header>
+
+  <section class="hero">
+    <img src="images/welcome/hero-main.jpg" alt="WELCOME SERVICE" class="hero-img clickable-img" onerror="this.outerHTML='<div class=&quot;w-ph&quot;>WELCOME SERVICE 이미지 (images/welcome/hero-main.jpg)</div>'">
+    <div class="hero-gradient-overlay"></div>
+    <div class="hero-overlay">
+      <h2>WELCOME SERVICE</h2>
+      <p>신차 출고 고객님께 드리는 기본 혜택<br>틴팅 3종 택1 · 블랙박스 STARVIEW PRO · 웰컴 기프트</p>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <nav class="w-nav" style="margin-top:2.5rem">
+      <a href="#tinting">틴팅<small>3종 중 택1</small></a>
+      <a href="#blackbox">블랙박스<small>출고 시 기본 장착</small></a>
+      <a href="#gift">웰컴 기프트<small>기본 제공 6종</small></a>
+    </nav>
+
+    <section id="tinting" class="w-sec">
+      <div class="section-title-wrap"><h2 class="section-title">틴팅 필름 · 3종 중 택1</h2></div>
+      <p class="w-lead">신차 출고 고객께는 아래 세 가지 필름 중 한 가지를 선택하실 수 있습니다.</p>
+      <div class="w-grid3"><div class="w-card"><div class="no">OPTION 01</div><h3>후퍼옵틱 GK</h3><div class="origin">독일 Huper Optik · Eastman 계열 브랜드</div><ul><li><span>자외선 차단</span><span>99%</span></li><li><span>TSER</span><span>41~52%</span></li><li><span>가시광선 투과율</span><span>6~45%</span></li></ul><span class="w-tag">전파 장애 최소화 · 블랙 컬러</span></div><div class="w-card"><div class="no">OPTION 02</div><h3>글라스틴트 펜더</h3><div class="origin">한국 GlassTint · 비금속 나노 세라믹</div><ul><li><span>자외선 차단</span><span>99%</span></li><li><span>TSER</span><span>46~67%</span></li><li><span>적외선 차단</span><span>최대 81%</span></li></ul><span class="w-tag">전파 간섭 없음(IR 통신 제외) · 특허 SR 코팅</span></div><div class="w-card"><div class="no">OPTION 03</div><h3>버텍스 300</h3><div class="origin">미국 LLumar · 퓨전 M 메탈 공법</div><ul><li><span>자외선 차단</span><span>99%</span></li><li><span>TSER</span><span>43~62%</span></li><li><span>보증</span><span>5년</span></li></ul><span class="w-tag">프라이버시형 열차단 · 고시인성 · 눈부심 차단</span></div></div>
+      <p class="w-note">
+        · 같은 필름이라도 고르신 농도(VLT)에 따라 TSER 수치가 달라지며, 짙을수록 열 차단이 높아집니다.<br>
+        · 앞유리, 측면, 후면 등 부위별 농도는 출고 상담 때 운전 환경에 맞춰 함께 정해 드립니다.<br>
+        · 3종 외 상위 필름을 원하시면 승인 후 차액을 부담하시고 변경하실 수 있습니다.<br>
+        · 필름 브랜드와 사양은 공급 사정에 따라 바뀔 수 있습니다.
+      </p>
+    </section>
+
+    <section id="blackbox" class="w-sec">
+      <div class="section-title-wrap"><h2 class="section-title">블랙박스 · STARVIEW PRO</h2></div>
+      <p class="w-lead">벤츠 코리아 전용 모델이 출고 시 기본으로 장착됩니다. 선택 항목이 아닙니다.</p>
+      <div class="w-split w-bb">
+        <img src="images/welcome/blackbox.jpg" alt="STARVIEW PRO 블랙박스" class="w-img clickable-img" onerror="this.outerHTML='<div class=&quot;w-ph&quot;>STARVIEW PRO 블랙박스 이미지 (images/welcome/blackbox.jpg)</div>'">
+        <table class="w-table"><tr><th>제조</th><td>팅크웨어(THINKWARE) · 벤츠 코리아 전용</td></tr><tr><th>녹화 해상도</th><td>전방 4K UHD · 후방 2K QHD</td></tr><tr><th>화각</th><td>전방 146° · 후방 150°</td></tr><tr><th>센서 · 화질</th><td>SONY STARVIS 2(전·후방) · IDS 클리어 HDR 30FPS</td></tr><tr><th>주차 녹화</th><td>모션 감지 최대 12시간 · 충격 감지 최대 372시간</td></tr><tr><th>조작</th><td>3.5인치 IPS 터치 LCD</td></tr><tr><th>앱 연동</th><td>Wi-Fi · STARVIEW PRO 앱</td></tr></table>
+      </div>
+      <p class="w-note">· 장착 모델과 세부 사양은 공급 상황에 따라 바뀔 수 있습니다.</p>
+    </section>
+
+    <section id="gift" class="w-sec">
+      <div class="section-title-wrap"><h2 class="section-title">웰컴 기프트 · 기본 제공</h2></div>
+      <p class="w-lead">출고 날 차와 함께 전해드리는 기프트 박스입니다. 박스는 서랍형으로 되어 있어 다 쓰신 뒤에도 보관함으로 쓰실 수 있어요.</p>
+      <div class="w-split w-package">
+        <img src="images/welcome/gift-package.jpg" alt="웰컴 기프트 패키지 구성" class="w-img clickable-img" onerror="this.outerHTML='<div class=&quot;w-ph&quot;>웰컴 기프트 패키지 이미지 (images/welcome/gift-package.jpg)</div>'">
+        <table class="w-table"><tr><th>상단 수납부</th><td>모델카 (AMG 300 SEL 6.8 또는 300 SL)</td></tr><tr><th>서랍 1단</th><td>방향제(홀더·리필) · 키케이스 2종 · 키체인 2종 · 러기지택</td></tr><tr><th>서랍 2단</th><td>자동차등록증 케이스</td></tr></table>
+      </div>
+      <p class="w-hint">· 아래 사용법 이미지는 누르면 크게 보실 수 있습니다.</p>
+      <div class="w-gifts">
+        <div class="w-gift"><img src="images/welcome/gift-modelcar.jpg" alt="모델카 사용 방법" class="w-img clickable-img" onerror="this.outerHTML='<div class=&quot;w-ph&quot;>모델카 사용 방법 이미지 (images/welcome/gift-modelcar.jpg)</div>'"><div class="b"><h3><span class="num">01</span>모델카</h3><p>클래식 벤츠 AMG 300 SEL 6.8 또는 300 SL 중 한 대가 들어 있습니다. 기프트 박스를 닫고 그 위에 올려두면, 아래는 서랍형 보관함이 되고 위는 진열대가 됩니다.</p></div></div>
+        <div class="w-gift"><img src="images/welcome/gift-perfume.jpg" alt="방향제 사용 방법" class="w-img clickable-img" onerror="this.outerHTML='<div class=&quot;w-ph&quot;>방향제 사용 방법 이미지 (images/welcome/gift-perfume.jpg)</div>'"><div class="b"><h3><span class="num">02</span>방향제</h3><p>송풍구에 거는 차량용 방향제입니다. 홀더 뚜껑을 돌려 열고 리필을 넣은 뒤 다시 닫아, 원하는 송풍구에 끼워주세요.</p></div></div>
+        <div class="w-gift"><img src="images/welcome/gift-key-gen8.jpg" alt="키케이스 GEN8 사용 방법" class="w-img clickable-img" onerror="this.outerHTML='<div class=&quot;w-ph&quot;>키케이스 GEN8 사용 방법 이미지 (images/welcome/gift-key-gen8.jpg)</div>'"><div class="b"><h3><span class="num">03</span>키케이스 GEN8</h3><p>GEN8 스마트키용 케이스입니다. 뒷면 볼트를 돌려 스트랩을 풀고 키를 끝까지 넣은 뒤, 키체인 고리를 엇갈려 끼워 다시 조립합니다.</p></div></div>
+        <div class="w-gift"><img src="images/welcome/gift-key-gen6.jpg" alt="키케이스 GEN6 사용 방법" class="w-img clickable-img" onerror="this.outerHTML='<div class=&quot;w-ph&quot;>키케이스 GEN6 사용 방법 이미지 (images/welcome/gift-key-gen6.jpg)</div>'"><div class="b"><h3><span class="num">04</span>키케이스 GEN6</h3><p>GEN6 스마트키용 케이스입니다. 아래쪽 메탈 고리를 내려 스트랩을 빼고 키를 넣은 다음, 스트랩을 케이스와 키에 함께 통과시켜 고정합니다.</p></div></div>
+        <div class="w-gift"><img src="images/welcome/gift-luggage-tag.jpg" alt="러기지택 사용 방법" class="w-img clickable-img" onerror="this.outerHTML='<div class=&quot;w-ph&quot;>러기지택 사용 방법 이미지 (images/welcome/gift-luggage-tag.jpg)</div>'"><div class="b"><h3><span class="num">05</span>러기지택</h3><p>여행 가방에 다는 네임택입니다. 스트랩을 풀어 뒷면 창에 명함을 끼우고 스트랩을 다시 채우면 완성입니다.</p></div></div>
+        <div class="w-gift"><img src="images/welcome/gift-registration-case.jpg" alt="자동차등록증 케이스 사용 방법" class="w-img clickable-img w-narrow" onerror="this.outerHTML='<div class=&quot;w-ph&quot;>자동차등록증 케이스 사용 방법 이미지 (images/welcome/gift-registration-case.jpg)</div>'"><div class="b"><h3><span class="num">06</span>자동차등록증 케이스</h3><p>왼쪽 포켓에는 명함, 오른쪽 내지 포켓에는 반으로 접은 자동차등록증을 넣어 글로브박스에 두시면 필요할 때 바로 꺼내실 수 있어요.</p></div></div>
+      </div>
+    </section>
+
+    <section class="consult-card">
+      <div class="consult-header">
+        <div class="consult-title-row"><span>📢</span><h3>출고 상담 안내</h3></div>
+        <p class="consult-subtext">웰컴 서비스와 출고 절차, 맞춤 견적은 편하게 문의해 주세요.</p>
+      </div>
+      <hr class="consult-divider">
+      <div class="consult-bottom-row">
+        <div class="advisor-details">
+          <span class="advisor-name">메르세데스-벤츠 포항전시장 <strong>김석현 과장</strong></span>
+          <a href="tel:01093790999" class="advisor-phone">📞 010-9379-0999</a>
+        </div>
+        <div class="consult-btn-group">
+          <a href="https://open.kakao.com/o/sfQJqYFi" target="_blank" class="c-btn c-btn-kakao">💬 카카오톡 문의</a>
+          <a href="tel:01093790999" class="c-btn c-btn-call">전화 문의</a>
+          <a href="sms:01093790999" class="c-btn c-btn-sms">문자 문의</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-disclaimer">
+        <p>※ 본 페이지는 포항전시장 세일즈 컨설턴트가 개인적으로 운영하는 안내 페이지이며, 메르세데스-벤츠 코리아 공식 사이트가 아닙니다.</p>
+        <p>※ 제공 품목과 사양은 제조사 및 운영 사정에 따라 변경될 수 있습니다. 이미지는 참고용입니다.</p>
+      </div>
+      <div class="footer-copyright">© 2026 Mercedes-Benz Korea. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="imageModal">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <img class="modal-content" id="modalImg" src="" alt="확대 이미지">
+  </div>
+
+  <script>
+    const modal=document.getElementById('imageModal'),mi=document.getElementById('modalImg');
+    document.addEventListener('click',e=>{const t=e.target.closest('img.clickable-img');if(t&&!t.classList.contains('hero-img')&&t.naturalWidth){mi.src=t.src;modal.classList.add('active');}});
+    modal.addEventListener('click',()=>modal.classList.remove('active'));
+  </script>
+</body>
+</html>
