@@ -197,6 +197,7 @@
     table.spec tr.grp td { background: #e0f2fe; color: var(--accent-blue); font-weight: 800; font-size: 0.78rem; text-align: left; letter-spacing: 0.5px; padding: 0.4rem 0.7rem; }
     table.spec td.na { color: #cbd5e1; }
     table.spec td.diff { font-weight: 700; color: var(--text-dark); }
+    table.spec td.hl, .safety span.hl { color: #dc2626; font-weight: 700; }
     .safety { padding: 0.8rem 1rem 1rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
     .safety span { font-size: 0.78rem; background: #f1f5f9; border: 1px solid var(--border-color); border-radius: 999px; padding: 0.2rem 0.65rem; color: var(--text-muted); }
     .sec-label { padding: 0.8rem 1rem 0; font-size: 0.8rem; font-weight: 800; color: var(--accent-blue); }
@@ -371,7 +372,6 @@
     function card(m, i) {
       var chip = '<span class="chip' + (m.my === 'MY27' ? ' my27' : '') + '">' + m.my + '</span>';
       if (m.cat === 'ev') chip += '<span class="chip ev">ELECTRIC</span>';
-      if (typeof SPEC_DETAIL !== 'undefined' && SPEC_DETAIL[m.name + '|' + m.my]) chip += '<span class="chip web">한눈에 보기</span>';
       var body;
       if (m.trims) {
         body = '<ul class="trims">' + m.trims.map(function (t) {
@@ -428,64 +428,94 @@
 
     function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]; }); }
 
-    // 옆 칸과 같은 값은 하나로 합침
-    function mergedCells(vals) {
-      var out = [];
-      vals.forEach(function (v) {
-        var last = out[out.length - 1];
-        if (last && last.v === v) last.n++; else out.push({ v: v, n: 1 });
-      });
-      return out;
+    // 값 펼치기: 문자열이면 전 트림 공통
+    function expand(v, n) { return Array.isArray(v) ? v : Array.apply(null, Array(n)).map(function () { return v; }); }
+    function expandRed(r, n) {
+      if (!r) return expand('0', n);
+      return r.length === n ? r.split('') : expand(r, n);
     }
-    function rowCells(vals) {
-      var cells = mergedCells(vals), multi = vals.length > 1 && cells.length > 1;
+
+    // 옆 칸과 같은 값은 하나로 합침
+    function rowCells(vals, reds) {
+      var cells = [];
+      vals.forEach(function (v, i) {
+        var red = reds ? reds[i] === '1' : false, last = cells[cells.length - 1];
+        if (last && last.v === v && last.red === red) last.n++; else cells.push({ v: v, n: 1, red: red });
+      });
+      var multi = vals.length > 1 && cells.length > 1;
       return cells.map(function (c) {
-        var cls = c.v === '-' ? ' class="na"' : (multi ? ' class="diff"' : '');
-        return '<td' + (c.n > 1 ? ' colspan="' + c.n + '"' : '') + cls + '>' + (c.v === '-' ? '–' : esc(c.v)) + '</td>';
+        var cls = c.v === '-' ? 'na' : ((multi ? 'diff' : '') + (c.red ? ' hl' : ''));
+        return '<td' + (c.n > 1 ? ' colspan="' + c.n + '"' : '') + (cls.trim() ? ' class="' + cls.trim() + '"' : '') + '>' +
+               (c.v === '-' ? '–' : esc(c.v)) + '</td>';
       }).join('');
     }
 
     // 트림명에서 공통 앞부분을 빼고 다른 부분만 (표 머리용)
-    function shortNames(trims) {
-      var names = trims.map(function (t) { return t[0]; });
-      if (names.length < 2) return names;
-      var words = names.map(function (x) { return x.split(' '); }), k = 0;
+    function commonPrefix(trims) {
+      var words = trims.map(function (t) { return t[0].split(' '); }), k = 0;
       while (words.every(function (w) { return w.length > k && w[k] === words[0][k]; })) k++;
-      if (!k) return names;
-      return words.map(function (w) { return w.slice(k).join(' ') || '기본'; });
+      return k;
+    }
+    function shortNames(trims) {
+      if (trims.length < 2) return trims.map(function (t) { return t[0]; });
+      var k = commonPrefix(trims);
+      if (!k) return trims.map(function (t) { return t[0]; });
+      return trims.map(function (t) { return t[0].split(' ').slice(k).join(' ') || '기본'; });
+    }
+    function sectionTitle(trims) {
+      if (trims.length === 1) return trims[0][0];
+      var k = commonPrefix(trims);
+      return k >= 1 ? trims[0][0].split(' ').slice(0, k).join(' ') + ' 라인업' : trims.map(function (t) { return t[0]; }).join(' · ');
     }
 
     function renderSection(sec) {
-      var n = sec.trims.length, h = '', sn = shortNames(sec.trims);
-      h += '<div class="spec-sec"><div class="spec-head"><h5>' + esc(sec.title) + '</h5>' +
-           (n > 1 ? '<small style="display:block;color:var(--text-muted)">' + sec.trims.map(function (t) { return esc(t[0]); }).join(' · ') + '</small>' : '') + '<small>제원표 기준일 ' + sec.date + '</small>' + (sec.note ? '<span class="sec-note">※ ' + esc(sec.note) + '</span>' : '') + '</div>';
-      var headCols = sec.trims.map(function (t, i) {
-        return '<th title="' + esc(t[0]) + '">' + esc(sn[i]) + '<span class="price">' + won(t[1]) + '</span></th>';
+      var tr = sec.tr, n = tr.length, h = '', sn = shortNames(tr);
+      h += '<div class="spec-sec"><div class="spec-head"><h5>' + esc(sectionTitle(tr)) + '</h5>' +
+           (n > 1 ? '<small style="display:block;color:var(--text-muted)">' + tr.map(function (t) { return esc(t[0]); }).join(' · ') + '</small>' : '') +
+           (sec.d ? '<small>제원표 기준일 ' + sec.d + '</small>' : '') + '</div>';
+      var headCols = tr.map(function (t, i) {
+        return '<th title="' + esc(t[0]) + '">' + esc(sn[i]) + '<span class="price">' + (t[1] ? won(t[1]) : '가격 미정') + '</span></th>';
       }).join('');
 
       // 제원
-      h += '<div class="spec-scroll"><table class="spec"><thead><tr><th class="lbl" style="background:#0f172a;color:#94a3b8">제원</th>' + headCols + '</tr></thead><tbody>';
-      var g = '';
-      sec.spec.forEach(function (r) {
-        if (r[0] !== g) { g = r[0]; h += '<tr class="grp"><td colspan="' + (n + 1) + '">' + esc(g) + '</td></tr>'; }
-        h += '<tr><td class="lbl">' + esc(r[1]) + '</td>' + rowCells(r[2]) + '</tr>';
-      });
-      h += '</tbody></table></div>';
-
-      // 옵션
-      h += '<div class="spec-scroll"><table class="spec">' + (n > 1 ? '<thead class="sub"><tr>' + sn.map(function (x) { return '<th>' + esc(x) + '</th>'; }).join('') + '</tr></thead>' : '') + '<tbody>';
-      g = '';
-      sec.opts.forEach(function (r) {
-        if (r[0] !== g) { g = r[0]; h += '<tr class="grp"><td colspan="' + n + '">' + esc(g) + '' + '</td></tr>'; }
-        h += '<tr>' + rowCells(r[1]) + '</tr>';
-      });
-      h += '</tbody></table></div>';
-
-      if (sec.safety) {
-        h += '<div class="sec-label">안전 옵션 · 전 트림 기본</div><div class="safety">' +
-             sec.safety.map(function (x) { return '<span>' + esc(x) + '</span>'; }).join('') + '</div>';
+      if (sec.s.length) {
+        h += '<div class="spec-scroll"><table class="spec"><thead><tr><th class="lbl" style="background:#0f172a;color:#94a3b8">제원</th>' + headCols + '</tr></thead><tbody>';
+        var g = null;
+        sec.s.forEach(function (r) {
+          if (r[0] !== g) { g = r[0]; if (g) h += '<tr class="grp"><td colspan="' + (n + 1) + '">' + esc(g) + '</td></tr>'; }
+          h += '<tr><td class="lbl">' + esc(r[1]) + '</td>' + rowCells(expand(r[2], n)) + '</tr>';
+        });
+        h += '</tbody></table></div>';
       }
-      h += '<a class="orig-link" href="specs/p' + pad(sec.page) + '.jpg" target="_blank" rel="noopener">원본 제원표 이미지 보기 ↗</a></div>';
+
+      // 옵션 (그룹별). 전 트림 공통 항목만 있는 '안전' 그룹은 칩으로
+      var groups = [];
+      sec.o.forEach(function (r) {
+        var last = groups[groups.length - 1];
+        if (!last || last.g !== r[0]) groups.push(last = { g: r[0], rows: [] });
+        last.rows.push(r);
+      });
+      var tableOpen = false;
+      function openTable() {
+        if (tableOpen) return;
+        h += '<div class="spec-scroll"><table class="spec">' + (n > 1 ? '<thead class="sub"><tr>' + sn.map(function (x) { return '<th>' + esc(x) + '</th>'; }).join('') + '</tr></thead>' : '') + '<tbody>';
+        tableOpen = true;
+      }
+      function closeTable() { if (tableOpen) { h += '</tbody></table></div>'; tableOpen = false; } }
+      groups.forEach(function (G) {
+        var uniform = G.rows.every(function (r) { return !Array.isArray(r[1]); });
+        if (/안전/.test(G.g) && uniform) {
+          closeTable();
+          h += '<div class="sec-label">' + esc(G.g) + (n > 1 ? ' · 전 트림 기본' : '') + '</div><div class="safety">' +
+               G.rows.map(function (r) { return '<span' + (r[2] ? ' class="hl"' : '') + '>' + esc(r[1]) + '</span>'; }).join('') + '</div>';
+          return;
+        }
+        openTable();
+        if (G.g) h += '<tr class="grp"><td colspan="' + n + '">' + esc(G.g) + '</td></tr>';
+        G.rows.forEach(function (r) { h += '<tr>' + rowCells(expand(r[1], n), expandRed(r[2], n)) + '</tr>'; });
+      });
+      closeTable();
+      h += '<a class="orig-link" href="specs/p' + pad(sec.p) + '.jpg" target="_blank" rel="noopener">원본 제원표 이미지 보기 ↗</a></div>';
       return h;
     }
 
@@ -511,7 +541,7 @@
       } else {
         sheetBody.innerHTML = imagesHtml(m) + cta;
       }
-      document.getElementById('sheetHint').textContent = detail ? '트림별로 다른 사양은 굵게 표시됩니다' : '이미지를 누르면 원본 크기로 크게 볼 수 있습니다';
+      document.getElementById('sheetHint').textContent = detail ? '트림별 차이는 굵게, 원본 강조 항목은 빨간색으로 표시됩니다' : '이미지를 누르면 원본 크기로 크게 볼 수 있습니다';
       sheetBody.scrollTop = 0;
       prevOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
