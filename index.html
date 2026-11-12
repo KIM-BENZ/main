@@ -1256,5 +1256,88 @@
 
   </main>
 
+  <!-- =========================================================
+    11월 전시장 방문 상담 캠페인 팝업 (메인페이지 index.html용)
+    - 이미지: images/nov-pouch.jpg 업로드 (MBK 광고 에셋 또는 파우치 사진)
+    - 12월 1일 0시부터 자동으로 안 뜸 / "오늘 하루 보지 않기" 지원
+  ========================================================== -->
+  <style>
+    .nv-pop-dim{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;
+      align-items:center;justify-content:center;z-index:9999;padding:16px}
+    .nv-pop-dim.show{display:flex}
+    .nv-pop{width:100%;max-width:380px;background:#fff;border-radius:16px;overflow:hidden;
+      box-shadow:0 20px 50px rgba(0,0,0,.35);font-family:inherit;animation:nvUp .35s ease}
+    @keyframes nvUp{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+    .nv-pop img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#111}
+    .nv-pop-body{padding:20px 20px 16px;color:#111}
+    .nv-pop-tag{display:inline-block;font-size:12px;font-weight:700;color:#0284c7;
+      background:#e0f2fe;border-radius:999px;padding:4px 10px;margin-bottom:10px}
+    .nv-pop h3{margin:0 0 8px;font-size:20px;line-height:1.35}
+    .nv-pop p{margin:0 0 12px;font-size:14px;line-height:1.6;color:#444}
+    .nv-pop ul{margin:0 0 14px;padding:12px 14px;list-style:none;background:#f5f5f7;
+      border-radius:10px;font-size:13px;line-height:1.7;color:#333}
+    .nv-pop ul b{color:#111}
+    .nv-pop-cta{display:block;text-align:center;background:#0284c7;color:#fff;text-decoration:none;
+      font-weight:700;font-size:15px;padding:13px;border-radius:10px}
+    .nv-pop-call{display:block;text-align:center;margin-top:8px;padding:11px;border:1px solid #e2e8f0;border-radius:10px;color:#0f172a;text-decoration:none;font-weight:700;font-size:14px}
+    .nv-pop-note{font-size:11px;color:#888;margin-top:8px;text-align:center}
+    .nv-pop-foot{display:flex;border-top:1px solid #eee}
+    .nv-pop-foot button{flex:1;background:none;border:0;padding:13px;font-size:13px;
+      color:#666;cursor:pointer;font-family:inherit}
+    .nv-pop-foot button+button{border-left:1px solid #eee;color:#111;font-weight:700}
+  </style>
+  
+  <div class="nv-pop-dim" id="nvPop" role="dialog" aria-modal="true" aria-label="11월 방문 상담 이벤트">
+    <div class="nv-pop">
+      <img src="images/nov-pouch.jpg" alt="메르세데스-벤츠 파우치">
+      <div class="nv-pop-body">
+        <span class="nv-pop-tag">11월 방문 상담 이벤트</span>
+        <h3>전시장 방문 상담하시고<br>벤츠 파우치 받아가세요</h3>
+        <p>포항전시장에서 상담과 견적을 받으신 고객님께 메르세데스-벤츠 파우치를 드립니다.</p>
+        <ul>
+          <li><b>기간</b> 2026. 11. 1(일) ~ 11. 30(월)</li>
+          <li><b>대상</b> 전시장 방문 상담 + 견적 발행 완료 고객</li>
+          <li><b>참여</b> 전시장 비치 QR 등록 후 상담 진행</li>
+        </ul>
+        <a class="nv-pop-cta" id="nvPopCta" href="#test-drive">방문 상담 예약하기</a>
+        <a class="nv-pop-call" href="tel:01093790999">📞 김석현 과장 010-9379-0999</a>
+        <div class="nv-pop-note">* 한정 수량으로 조기 소진될 수 있습니다.</div>
+      </div>
+      <div class="nv-pop-foot">
+        <button type="button" id="nvPopToday">오늘 하루 보지 않기</button>
+        <button type="button" id="nvPopClose">닫기</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+  (function(){
+    var pop = document.getElementById('nvPop');
+    var END = new Date('2026-12-01T00:00:00+09:00');   // 이 시각 이후 자동 미노출
+    var KEY = 'nvPopHide_202611';
+    var now = new Date();
+    if (now >= END) return;
+  
+    var today = now.toISOString().slice(0,10);
+    var hidden = null;
+    try { hidden = localStorage.getItem(KEY); } catch(e) {}
+    if (hidden === today) return;
+    try { if (sessionStorage.getItem('nvPopClosed_202611')) return; } catch(e) {}
+  
+    setTimeout(function(){ pop.classList.add('show'); }, 600);
+  
+    function close(){ pop.classList.remove('show'); try { sessionStorage.setItem('nvPopClosed_202611','1'); } catch(e) {} }
+    document.getElementById('nvPopClose').onclick = close;
+    document.getElementById('nvPopCta').onclick = close;
+    document.getElementById('nvPopToday').onclick = function(){
+      try { localStorage.setItem(KEY, today); } catch(e) {}
+      close();
+    };
+    pop.addEventListener('click', function(e){ if (e.target === pop) close(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  })();
+  </script>
+  <!-- ===================== 팝업 끝 ===================== -->
+
 </body>
 </html>
