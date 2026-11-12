@@ -37,7 +37,7 @@
   if (document.getElementById('kbNavBtn')) return;
 
   var css = ''
-    + '#kbNavBtn{position:fixed;top:12px;right:12px;z-index:9000;width:46px;height:46px;border-radius:12px;'
+    + '#kbNavBtn{position:fixed;top:12px;right:12px;z-index:999;width:46px;height:46px;border-radius:12px;'
     + 'border:1px solid rgba(255,255,255,.18);background:rgba(15,23,42,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);'
     + 'cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 4px 14px rgba(0,0,0,.18)}'
     + '#kbNavBtn span,#kbNavBtn span:before,#kbNavBtn span:after{display:block;width:20px;height:2px;background:#fff;border-radius:2px;position:relative;content:""}'
