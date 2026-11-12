@@ -203,6 +203,22 @@
     .sec-label { padding: 0.8rem 1rem 0; font-size: 0.8rem; font-weight: 800; color: var(--accent-blue); }
     .orig-link { display: block; text-align: right; padding: 0.6rem 1rem 0.8rem; font-size: 0.78rem; color: var(--accent-blue); text-decoration: none; font-weight: 700; }
 
+
+    .search-box { margin-bottom: 1rem; }
+    .search-box input {
+      width: 100%; padding: 0.8rem 1rem 0.8rem 2.6rem; font-size: 0.95rem; border-radius: 12px;
+      border: 1px solid var(--border-color); background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%2394a3b8' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 0.9rem center;
+      color: var(--text-dark); outline: none; transition: border-color 0.2s ease;
+    }
+    .search-box input:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(2,132,199,0.1); }
+    .my-switch { display: inline-flex; border: 1px solid var(--border-color); border-radius: 999px; overflow: hidden; }
+    .my-btn {
+      border: 0; background: #fff; color: var(--text-soft); font-size: 0.72rem; font-weight: 800;
+      padding: 0.2rem 0.65rem; cursor: pointer; letter-spacing: 0.5px;
+    }
+    .my-btn.on { background: var(--accent-blue); color: #fff; }
+    .tab[data-cat="amg"], .tab[data-cat="maybach"] { border-style: dashed; }
+
     footer {
       text-align: center; font-size: 0.8rem; color: var(--text-soft); padding: 0 1.5rem 2.5rem;
     }
@@ -249,6 +265,9 @@
   </div>
 
   <main class="container">
+    <div class="search-box">
+      <input type="search" id="search" placeholder="차종 검색 (예: E 300, GLC, 마이바흐)" autocomplete="off" aria-label="차종 검색">
+    </div>
     <div class="notice">
       표시 가격은 권장소비자가격(VAT 포함, 만원 단위)이며 연식·사양에 따라 변동될 수 있습니다.
       이번 달 할인과 최종 구매가는 <a href="promotion.html">이달의 프로모션</a>에서 확인하세요.
@@ -293,7 +312,7 @@
       { cat:'sedan', name:'S-Class', my:'MY26', pages:[46,47,48,49,55], trims:[
           ['S 350 d 4MATIC',15400],['S 450 4MATIC SWB',16100],['S 450 4MATIC',19300],['S 500 4MATIC',21500],
           ['S 580 4MATIC',26000],['AMG S 63 E PERFORMANCE',29900]] },
-      { cat:'sedan', name:'The new S-Class', my:'MY27', pages:[50,51,52,53,54], link:'https://kim-benz.github.io/S-CLASS/', trims:[
+      { cat:'sedan', name:'The new S-Class', group:'S-Class', my:'MY27', pages:[50,51,52,53,54], link:'https://kim-benz.github.io/S-CLASS/', trims:[
           ['S 350 d 4MATIC',15400],['S 450 4MATIC SWB',16240],['S 450 4MATIC EXCLUSIVE',17540],
           ['S 450 4MATIC AMG Line',19540],['S 500 4MATIC Long',22000],['S 580 4MATIC Long',27000]] },
       { cat:'sedan', name:'Mercedes-Maybach S-Class', my:'MY26', pages:[56], trims:[['Maybach S 580',31700],['Maybach S 680',40300]] },
@@ -356,9 +375,11 @@
     var CATS = [
       { id:'all', label:'전체' },
       { id:'sedan', label:'세단 · 해치백' },
-      { id:'suv', label:'SUV' },
+      { id:'suv', label:'SUV · MPV' },
       { id:'coupe', label:'쿠페 · 카브리올레' },
-      { id:'ev', label:'전기차' }
+      { id:'ev', label:'전기차' },
+      { id:'amg', label:'AMG', special:true },
+      { id:'maybach', label:'Maybach', special:true }
     ];
 
     function won(man) {
@@ -369,12 +390,53 @@
     }
     function pad(n) { return (n < 10 ? '0' : '') + n; }
 
-    function card(m, i) {
-      var chip = '<span class="chip' + (m.my === 'MY27' ? ' my27' : '') + '">' + m.my + '</span>';
+    /* 같은 차종의 연식(MY26·MY27)을 카드 하나로 묶기 */
+    var CARDS = [];
+    (function () {
+      var byKey = {};
+      MODELS.forEach(function (m, i) {
+        var key = m.cat + '|' + (m.group || m.name);
+        if (!byKey[key]) { byKey[key] = { cat: m.cat, variants: [] }; CARDS.push(byKey[key]); }
+        byKey[key].variants.push(i);
+      });
+      // 최신 연식이 먼저
+      CARDS.forEach(function (c) {
+        c.variants.sort(function (x, y) { return MODELS[y].my.localeCompare(MODELS[x].my); });
+        c.sel = 0;
+      });
+    })();
+
+    function isAmgTrim(m, t) { return /AMG/.test(m.name) || /^(Mercedes-)?AMG /.test(t[0]); }
+    function isMaybach(m) { return /Maybach/.test(m.name); }
+    function cardInTab(c, tab) {
+      return c.variants.some(function (i) {
+        var m = MODELS[i];
+        if (tab === 'amg') return (m.trims || []).some(function (t) { return isAmgTrim(m, t); });
+        if (tab === 'maybach') return isMaybach(m);
+        return m.cat === tab;
+      });
+    }
+
+    function hasAmg(i) { var m = MODELS[i]; return (m.trims || []).some(function (t) { return isAmgTrim(m, t); }); }
+    function pickVariant(c, ok) { if (!ok(c.variants[c.sel])) { var k = c.variants.findIndex(ok); if (k >= 0) c.sel = k; } }
+
+    function card(c, ci, tab) {
+      if (tab === 'amg') pickVariant(c, hasAmg);
+      var i = c.variants[c.sel], m = MODELS[i];
+      var chip = '';
+      if (c.variants.length > 1) {
+        chip = '<span class="my-switch">' + c.variants.map(function (vi, k) {
+          return '<button type="button" class="my-btn' + (k === c.sel ? ' on' : '') + '" data-c="' + ci + '" data-k="' + k + '">' + MODELS[vi].my + '</button>';
+        }).join('') + '</span>';
+      } else {
+        chip = '<span class="chip' + (m.my === 'MY27' ? ' my27' : '') + '">' + m.my + '</span>';
+      }
       if (m.cat === 'ev') chip += '<span class="chip ev">ELECTRIC</span>';
       var body;
       if (m.trims) {
-        body = '<ul class="trims">' + m.trims.map(function (t) {
+        var trims = tab === 'amg' ? m.trims.filter(function (t) { return isAmgTrim(m, t); }) : m.trims;
+        if (!trims.length) trims = m.trims;
+        body = '<ul class="trims">' + trims.map(function (t) {
           return '<li><span class="t-name">' + t[0] + (t[2] ? '<span class="t-note">' + t[2] + '</span>' : '') +
                  '</span><span class="t-price">' + won(t[1]) + '</span></li>';
         }).join('') + '</ul>';
@@ -385,8 +447,26 @@
       if (m.pages) btns += '<button type="button" class="card-btn" data-i="' + i + '"><span>제원 · 옵션표 보기</span><span>→</span></button>';
       if (m.link) btns += '<a class="card-btn' + (m.pages ? ' sub' : '') + '" href="' + m.link + '" target="_blank" rel="noopener noreferrer"><span>' +
                          (m.pages ? '상세 안내 페이지' : '안내 페이지 보기') + '</span><span>↗</span></a>';
-      return '<div class="card"><div class="card-top">' + chip + '</div><h3>' + m.name + '</h3>' + body + btns + '</div>';
+      return '<div class="card" data-card="' + ci + '"><div class="card-top">' + chip + '</div><h3>' + m.name + '</h3>' + body + btns + '</div>';
     }
+
+    /* 검색 */
+    var ALIAS = [[/클래스|클라스/g, 'class'], [/쿠페/g, 'coupe'], [/카브리올레|카브리오/g, 'cabriolet'], [/마이바흐/g, 'maybach'],
+                 [/지바겐|g바겐/g, 'gclass'], [/전기차|일렉트릭/g, 'electric'], [/하이브리드/g, '220'],
+                 [/에이/g, 'a'], [/씨|시/g, 'c'], [/이(?=class)/g, 'e'], [/에스/g, 's'], [/브이/g, 'v']];
+    function norm(t) {
+      t = String(t).toLowerCase().replace(/é/g, 'e');
+      ALIAS.forEach(function (a) { t = t.replace(a[0], a[1]); });
+      return t.replace(/[\s\-·()+]/g, '');
+    }
+    function cardText(c) {
+      return c.variants.map(function (i) {
+        var m = MODELS[i];
+        return m.name + ' ' + (m.group || '') + ' ' + (m.trims || []).map(function (t) { return t[0]; }).join(' ');
+      }).join(' ');
+    }
+    var searchEl = document.getElementById('search');
+    var query = '';
 
     var tabsEl = document.getElementById('tabs');
     var listEl = document.getElementById('list');
@@ -394,18 +474,30 @@
 
     function renderTabs() {
       tabsEl.innerHTML = CATS.map(function (c) {
-        var n = c.id === 'all' ? MODELS.length : MODELS.filter(function (m) { return m.cat === c.id; }).length;
-        return '<button type="button" class="tab' + (c.id === current ? ' active' : '') + '" data-cat="' + c.id + '">' +
+        var n = c.id === 'all' ? CARDS.length : CARDS.filter(function (x) { return cardInTab(x, c.id); }).length;
+        return '<button type="button" class="tab' + (c.id === current && !query ? ' active' : '') + '" data-cat="' + c.id + '">' +
                c.label + '<span class="cnt">' + n + '</span></button>';
       }).join('');
     }
 
     function renderList() {
-      var cats = current === 'all' ? CATS.slice(1) : CATS.filter(function (c) { return c.id === current; });
       var html = '';
+      if (query) {
+        var q = norm(query), items = [];
+        CARDS.forEach(function (c, ci) {
+          if (norm(cardText(c)).indexOf(q) < 0) return;
+          pickVariant(c, function (vi) { return norm(cardText({ variants: [vi] })).indexOf(q) >= 0; });
+          items.push(card(c, ci, 'all'));
+        });
+        html = items.length ? '<h2 class="section-title">검색 결과 ' + items.length + '개</h2><div class="grid">' + items.join('') + '</div>'
+                            : '<p class="empty">"' + esc(query) + '"에 맞는 차종이 없습니다.</p>';
+        listEl.innerHTML = html; return;
+      }
+      var cats = current === 'all' ? CATS.filter(function (c) { return c.id !== 'all' && !c.special; })
+                                    : CATS.filter(function (c) { return c.id === current; });
       cats.forEach(function (c) {
         var items = [];
-        MODELS.forEach(function (m, i) { if (m.cat === c.id) items.push(card(m, i)); });
+        CARDS.forEach(function (x, ci) { if (cardInTab(x, c.id)) items.push(card(x, ci, c.id)); });
         if (!items.length) return;
         html += '<h2 class="section-title">' + c.label + '</h2><div class="grid">' + items.join('') + '</div>';
       });
@@ -415,9 +507,25 @@
     tabsEl.addEventListener('click', function (e) {
       var b = e.target.closest('.tab'); if (!b) return;
       current = b.getAttribute('data-cat');
+      query = ''; searchEl.value = '';
       try { history.replaceState(null, '', current === 'all' ? location.pathname : '#' + current); } catch (err) {}
       renderTabs(); renderList();
       window.scrollTo({ top: document.querySelector('.tabs-wrap').offsetTop, behavior: 'smooth' });
+    });
+
+    searchEl.addEventListener('input', function () {
+      query = searchEl.value.trim();
+      renderTabs(); renderList();
+    });
+
+    // 연식 전환 (카드 하나만 다시 그림)
+    listEl.addEventListener('click', function (e) {
+      var b = e.target.closest('.my-btn'); if (!b) return;
+      var ci = +b.getAttribute('data-c'), c = CARDS[ci];
+      c.sel = +b.getAttribute('data-k');
+      var el = b.closest('.card'), tab = query ? 'all' : current;
+      var tmp = document.createElement('div'); tmp.innerHTML = card(c, ci, tab);
+      el.replaceWith(tmp.firstChild);
     });
 
     // 제원표 모달
