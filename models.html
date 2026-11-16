@@ -115,6 +115,13 @@
     .chip.ev { background: #d1fae5; color: var(--accent-ev); }
     .chip.web { background: #0f172a; color: #fff; }
 
+    /* 차량 이미지: images/models/ 폴더에 파일이 있을 때만 표시 (없으면 자동으로 숨김) */
+    .car-img { display: flex; align-items: center; justify-content: center; height: 150px; margin: -0.2rem 0 0.5rem; }
+    .car-img img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.35s ease; }
+    .card:hover .car-img img { transform: scale(1.04); }
+    .sheet-hero { display: flex; justify-content: center; padding: 0.2rem 0 0.8rem; }
+    .sheet-hero img { max-width: 100%; max-height: 200px; object-fit: contain; }
+
     .card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.7rem; letter-spacing: -0.2px; }
 
     .trims { list-style: none; border-top: 1px dashed var(--border-color); padding-top: 0.6rem; margin-bottom: 1rem; flex-grow: 1; }
@@ -315,7 +322,7 @@
       // 세단 · 해치백
       { cat:'sedan', name:'A-Class', my:'MY26', pages:[1], trims:[['A 220 Hatch',4870],['A 220 Sedan',5050]] },
       { cat:'sedan', name:'CLA', my:'MY26', pages:[4], trims:[['CLA 250 4MATIC AMG Line',6450]] },
-      { cat:'sedan', name:'CLA 하이브리드 (CLA 220)', my:'MY27', pages:[5], trims:[['CLA 220',5990],['CLA 220 AMG Line',6290]] },
+      { cat:'sedan', name:'CLA 하이브리드 (CLA 220)', img:'cla-hybrid', my:'MY27', pages:[5], trims:[['CLA 220',5990],['CLA 220 AMG Line',6290]] },
       { cat:'sedan', name:'C-Class', my:'MY26', pages:[11], trims:[['C 200 AVANTGARDE',6510],['C 200 AMG Line',6830]] },
       { cat:'sedan', name:'E-Class', my:'MY26', pages:[25,26,27,28,29,30], trims:[
           ['E 200 EXCLUSIVE',7750],['E 200 AMG Line',8100],['E 220 d 4MATIC EXCLUSIVE',8720],
@@ -360,7 +367,7 @@
       { cat:'suv', name:'Mercedes-Maybach GLS', my:'MY26', pages:[45], trims:[['Maybach GLS 600 4MATIC',29500],['Maybach GLS 600 MANUFAKTUR',33700]] },
       { cat:'suv', name:'G-Class', my:'MY26', pages:[63,62], trims:[
           ['G 450 d',19490],['G 450 d MANUFAKTUR',21910],['AMG G 63',26260],['AMG G 63 MANUFAKTUR',28980]] },
-      { cat:'suv', name:'신형 GLE · GLE 쿠페 · GLS', my:'MY27', link:'https://kim-benz.github.io/GLE_GLS/', soon:'가격 확정 후 안내 · 11월 말 출시 예상' },
+      { cat:'suv', name:'신형 GLE · GLE 쿠페 · GLS', img:'gle-gls', my:'MY27', link:'https://kim-benz.github.io/GLE_GLS/', soon:'가격 확정 후 안내 · 11월 말 출시 예상' },
       { cat:'suv', name:'The new V-Class', my:'MY27', link:'https://kim-benz.github.io/V_CLASS/', soon:'사전계약 진행 중 · 전용 안내 페이지' },
 
       // 쿠페 · 카브리올레
@@ -406,6 +413,23 @@
       return eok + '억' + (r ? ' ' + r : '원');
     }
     function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+    /* 차량 이미지: images/models/<차종-슬러그>.webp (없으면 .png → .jpg 순서로 시도, 모두 없으면 숨김)
+       슬러그 = 차종명(연식 카드는 group 이름)을 소문자·하이픈으로 변환. 예) 'A-Class' → a-class, 'GLC Coupé' → glc-coupe */
+    function imgSlug(m) {
+      return m.img || String(m.group || m.name).toLowerCase().replace(/é/g, 'e').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    }
+    function imgFail(el) {
+      var ext = el.getAttribute('data-ext') || 'webp';
+      var next = { webp: 'png', png: 'jpg' }[ext];
+      if (next) { el.setAttribute('data-ext', next); el.src = 'images/models/' + el.getAttribute('data-slug') + '.' + next; }
+      else if (el.parentNode && el.parentNode.parentNode) el.parentNode.parentNode.removeChild(el.parentNode);
+    }
+    function carImg(m, wrapCls) {
+      var slug = imgSlug(m);
+      return '<div class="' + wrapCls + '"><img src="images/models/' + slug + '.webp" data-slug="' + slug + '" data-ext="webp" alt="' +
+             esc(m.name) + '" loading="lazy" onerror="imgFail(this)"></div>';
+    }
 
     /* 같은 차종의 연식(MY26·MY27)을 카드 하나로 묶기 */
     var CARDS = [];
@@ -464,7 +488,7 @@
       if (m.pages) btns += '<button type="button" class="card-btn" data-i="' + i + '"><span>제원 · 옵션표 보기</span><span>→</span></button>';
       if (m.link) btns += '<a class="card-btn' + (m.pages ? ' sub' : '') + '" href="' + m.link + '" target="_blank" rel="noopener noreferrer"><span>' +
                          (m.pages ? '상세 안내 페이지' : '안내 페이지 보기') + '</span><span>↗</span></a>';
-      return '<div class="card" data-card="' + ci + '"><div class="card-top">' + chip + '</div><h3>' + m.name + '</h3>' + body + btns + '</div>';
+      return '<div class="card" data-card="' + ci + '">' + carImg(m, 'car-img') + '<div class="card-top">' + chip + '</div><h3>' + m.name + '</h3>' + body + btns + '</div>';
     }
 
     /* 검색 */
@@ -716,9 +740,9 @@
           return '<div data-sec-pane="' + k + '"' + (multi && k ? ' hidden' : '') + '><div class="sheet-page"><a href="' + src +
                  '" target="_blank" rel="noopener"><img src="' + src + '" alt="' + esc(m.name) + ' ' + m.my + ' 제원표" loading="lazy"></a></div></div>';
         }).join('');
-        sheetBody.innerHTML = bar + '<div data-pane="web">' + web + '</div><div data-pane="img" hidden>' + img + '</div>' + cta;
+        sheetBody.innerHTML = carImg(m, 'sheet-hero') + bar + '<div data-pane="web">' + web + '</div><div data-pane="img" hidden>' + img + '</div>' + cta;
       } else {
-        sheetBody.innerHTML = imagesHtml(m) + cta;
+        sheetBody.innerHTML = carImg(m, 'sheet-hero') + imagesHtml(m) + cta;
       }
       document.getElementById('sheetHint').textContent = detail ? '트림별 차이는 굵게, 원본 강조는 빨간색' : '이미지를 누르면 원본 크기로 크게 볼 수 있습니다';
       sheetBody.scrollTop = 0;
