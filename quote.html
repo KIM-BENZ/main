@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>벤츠 견적 시뮬레이션 | 메르세데스-벤츠 포항전시장 김석현 과장</title>
+<meta name="description" content="11월 프로모션 할인율과 MBF 금리를 반영한 메르세데스-벤츠 할부 견적 시뮬레이션 · 포항전시장 김석현 과장">
+<meta property="og:title" content="벤츠 견적 시뮬레이션 · 포항전시장 김석현 과장">
+<meta property="og:description" content="차종만 고르면 이번 달 할인·월 납입금·출고 전 납부금이 바로 계산됩니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --bg:#f8fafc; --card:#fff; --ink:#0f172a; --muted:#475569; --soft:#94a3b8;
+    --blue:#0284c7; --blue-d:#0369a1; --blue-l:#e0f2fe; --line:#e2e8f0;
+    --red:#dc2626; --green:#059669;
+    --shadow:0 4px 20px rgba(0,0,0,.05);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Pretendard',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  body{background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  header{background:#fff;border-bottom:1px solid var(--line);padding:.85rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
+  .brand h1{font-size:1.05rem;font-weight:800;letter-spacing:1.5px}
+  .brand .adv{font-size:.8rem;color:var(--muted)}
+  .brand .adv span{color:var(--blue);font-weight:700}
+  .brand a{text-decoration:none}
+  .hnav{display:flex;gap:1.4rem;align-items:center}
+  .hnav a{font-size:.86rem;font-weight:600;color:var(--muted);text-decoration:none}
+  .hnav a:hover{color:var(--ink)}
+  .hnav .kakao{background:#fee500;color:#191919;font-weight:700;padding:.4rem .85rem;border-radius:20px}
+
+  .hero{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);color:#fff;text-align:center;padding:2.6rem 1.5rem 2.4rem}
+  .hero .badge{display:inline-block;background:rgba(2,132,199,.2);color:#38bdf8;border:1px solid rgba(56,189,248,.3);padding:.3rem .85rem;border-radius:20px;font-size:.8rem;font-weight:700;margin-bottom:.8rem}
+  .hero h2{font-size:1.9rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
+  .hero p{color:#cbd5e1;font-size:.95rem;word-break:keep-all}
+
+  .wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 3rem;display:grid;grid-template-columns:1.05fr .95fr;gap:1.5rem;align-items:start}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:1.6rem}
+  .card h3{font-size:1rem;font-weight:800;margin-bottom:1.1rem;display:flex;align-items:center;gap:.5rem}
+  .card h3 .num{background:var(--ink);color:#fff;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center}
+
+  .seg{display:grid;grid-template-columns:1fr 1fr;background:#f1f5f9;border-radius:12px;padding:4px;margin-bottom:1.3rem}
+  .seg button{border:0;background:transparent;padding:.7rem .5rem;border-radius:9px;font-size:.92rem;font-weight:700;color:var(--muted);cursor:pointer;line-height:1.3}
+  .seg button small{display:block;font-size:.72rem;font-weight:500;color:var(--soft)}
+  .seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+  .seg button.on small{color:var(--blue)}
+
+  .field{margin-bottom:1.25rem}
+  .lbl{display:flex;justify-content:space-between;align-items:baseline;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:.45rem}
+  .lbl b{color:var(--blue);font-size:1rem;font-weight:800}
+  select,input[type=text]{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:.75rem .9rem;font-size:.95rem;font-weight:600;color:var(--ink);background:#fff;outline:none;appearance:none;-webkit-appearance:none}
+  select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.4rem;cursor:pointer}
+  select:focus,input[type=text]:focus{border-color:var(--blue)}
+  .cats{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.6rem}
+  .cats button{border:1.5px solid var(--line);background:#fff;border-radius:20px;padding:.35rem .8rem;font-size:.8rem;font-weight:700;color:var(--muted);cursor:pointer}
+  .cats button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.55rem}
+  .chip{font-size:.74rem;font-weight:700;padding:.22rem .6rem;border-radius:6px;background:#f1f5f9;color:var(--muted)}
+  .chip.blue{background:var(--blue-l);color:var(--blue-d)}
+  .chip.red{background:#fee2e2;color:var(--red)}
+  .chip.green{background:#d1fae5;color:var(--green)}
+  .optwrap{position:relative}
+  .optwrap span{position:absolute;right:1rem;top:50%;transform:translateY(-50%);color:var(--soft);font-weight:600;font-size:.9rem}
+  .optwrap input{padding-right:2.4rem;text-align:right}
+
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:6px;background:linear-gradient(to right,var(--blue) var(--p,50%),#e2e8f0 var(--p,50%));outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--blue);box-shadow:0 2px 6px rgba(0,0,0,.15);cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--blue);cursor:pointer}
+  .ticks{display:flex;justify-content:space-between;font-size:.7rem;color:var(--soft);margin-top:.3rem}
+  .months{display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem}
+  .months button{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:.6rem 0;font-weight:700;font-size:.9rem;color:var(--muted);cursor:pointer}
+  .months button.on{border-color:var(--blue);background:var(--blue-l);color:var(--blue-d)}
+  .hint{font-size:.74rem;color:var(--soft);margin-top:.4rem;word-break:keep-all}
+  .hint a{color:var(--blue);font-weight:700;cursor:pointer;text-decoration:underline}
+  .fin-only{transition:opacity .2s}
+  .ret{display:flex;align-items:center;gap:.45rem;margin-top:.7rem;font-size:.84rem;font-weight:600;color:var(--muted);cursor:pointer}
+  .ret input{width:17px;height:17px;accent-color:var(--blue)}
+  body.cash .fin-only{display:none}
+
+  .result{position:sticky;top:1rem;padding:0;overflow:hidden}
+  .r-top{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;padding:1.4rem 1.6rem}
+  .r-top .cat{font-size:.75rem;font-weight:700;color:#38bdf8;letter-spacing:.5px}
+  .r-top .name{font-size:1.2rem;font-weight:800;margin-top:.15rem;word-break:keep-all}
+  .r-top .my{font-size:.78rem;color:#94a3b8;margin-top:.1rem}
+  .r-body{padding:1.2rem 1.6rem 1.5rem}
+  .row{display:flex;justify-content:space-between;align-items:baseline;padding:.5rem 0;font-size:.9rem;color:var(--muted)}
+  .row b{color:var(--ink);font-weight:700}
+  .row.minus b{color:var(--red)}
+  .row.total{border-top:1.5px solid var(--ink);margin-top:.3rem;padding-top:.75rem;font-size:.98rem;color:var(--ink);font-weight:800}
+  .row.total b{font-size:1.15rem;font-weight:800}
+  .row small{color:var(--soft);font-size:.75rem;margin-left:.2rem}
+  .sep{height:1px;background:var(--line);margin:.4rem 0}
+  .pay{background:var(--blue-l);border-radius:14px;padding:1.1rem 1.2rem;margin-top:1rem;text-align:center}
+  .pay .t{font-size:.82rem;font-weight:700;color:var(--blue-d)}
+  .pay .v{font-size:2.1rem;font-weight:900;color:var(--ink);letter-spacing:-1px;line-height:1.2;margin:.15rem 0}
+  .pay .v small{font-size:1rem;font-weight:700;color:var(--muted);margin-left:.15rem}
+  .pay .s{font-size:.76rem;color:var(--muted)}
+  .due{display:flex;justify-content:space-between;align-items:center;background:#0f172a;color:#fff;border-radius:12px;padding:.85rem 1.1rem;margin-top:.6rem}
+  .due span{font-size:.82rem;color:#cbd5e1;font-weight:600}
+  .due span small{display:block;font-size:.7rem;color:#94a3b8;font-weight:500}
+  .due b{font-size:1.15rem;font-weight:800}
+  .btns{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1rem}
+  .btns a,.btns button{display:flex;align-items:center;justify-content:center;gap:.35rem;border:0;border-radius:11px;padding:.85rem;font-size:.9rem;font-weight:800;cursor:pointer;text-decoration:none}
+  .b-copy{background:var(--ink);color:#fff}
+  .b-copy.done{background:var(--green)}
+  .b-kakao{background:#fee500;color:#191919}
+  .b-tel{grid-column:1/-1;background:#fff;color:var(--ink);border:1.5px solid var(--line)!important}
+  .toast{font-size:.78rem;color:var(--green);text-align:center;margin-top:.5rem;min-height:1.1em;font-weight:600}
+
+  .notice{max-width:1100px;margin:0 auto 3rem;padding:0 1.5rem}
+  .notice div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.3rem;font-size:.78rem;color:var(--muted);word-break:keep-all}
+  .notice li{margin-left:1rem;margin-bottom:.25rem}
+  .notice a{color:var(--blue);font-weight:700}
+  footer{text-align:center;font-size:.75rem;color:var(--soft);padding:0 1rem 2.5rem}
+
+  /* 햄버거 메뉴 버튼(nav.js) 자리 확보 */
+  @media (min-width:901px){ header{padding-right:5rem} }
+
+  @media (max-width:900px){
+    header{justify-content:center;text-align:center;padding:.8rem 1rem}
+    .hnav{display:none!important}
+    .wrap{grid-template-columns:1fr;padding:1.2rem 1rem 2rem}
+    .result{position:static}
+    .hero{padding:2rem 1.2rem 1.8rem}
+    .hero h2{font-size:1.5rem}
+    .card{padding:1.3rem}
+    .r-body{padding:1.1rem 1.3rem 1.3rem}
+    .notice{padding:0 1rem}
+    .card.result{padding:0}
+    .due{gap:.6rem}
+    .due b{font-size:1.05rem;white-space:nowrap}
+    .b-tel{font-size:.84rem!important}
+    .row small{display:none}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <a href="https://kim-benz.github.io/main/"><h1>MERCEDES-BENZ</h1></a>
+    <div class="adv">포항전시장 <span>김석현 과장 (010-9379-0999)</span></div>
+  </div>
+  <nav class="hnav">
+    <a href="https://kim-benz.github.io/main/promotion.html">이달의 프로모션</a>
+    <a href="https://kim-benz.github.io/main/models.html">전 차종 제원</a>
+    <a href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener" class="kakao">카톡 상담</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="badge">2026 NOVEMBER · QUOTE SIMULATOR</span>
+  <h2>벤츠 견적 시뮬레이션</h2>
+  <p>차종만 고르면 11월 프로모션 할인과 MBF 금리가 자동으로 들어갑니다.</p>
+</section>
+
+<main class="wrap">
+  <section class="card">
+    <div class="seg" id="mode">
+      <button data-m="fin" class="on">할부 (금융 이용)<small>금융 추가할인 적용</small></button>
+      <button data-m="cash">현금 일시불<small>기본 할인 적용</small></button>
+    </div>
+
+    <h3><span class="num">1</span>차종 선택</h3>
+    <div class="field">
+      <div class="cats" id="cats"></div>
+      <select id="model"></select>
+      <div class="chips" id="chips"></div>
+    </div>
+
+    <div class="field">
+      <div class="lbl">옵션가 <span style="font-weight:500;color:var(--soft)">선택 사항</span></div>
+      <div class="optwrap"><input type="text" id="option" inputmode="numeric" placeholder="0"><span>원</span></div>
+    </div>
+
+    <div class="field">
+      <div class="lbl">추가 할인 <b id="extraV">없음</b></div>
+      <div class="months" id="extra">
+        <button data-v="0" class="on">없음</button><button data-v="1">+1%</button><button data-v="2">+2%</button><button data-v="3">+3%</button><button data-v="4">+4%</button>
+      </div>
+      <div class="hint">재구매 +1~2% · MOU 임직원 +2% · 인증중고차 동시매각 +1% · 타브랜드(GLC·GLE) +1% 등 해당되는 경우에만 선택하세요</div>
+    </div>
+
+    <div class="fin-only">
+      <h3 style="margin-top:1.6rem"><span class="num">2</span>할부 조건</h3>
+      <div class="field">
+        <div class="lbl">할부 개월수</div>
+        <div class="months" id="months">
+          <button data-m="12">12</button><button data-m="24">24</button><button data-m="36">36</button><button data-m="48">48</button><button data-m="60" class="on">60</button>
+        </div>
+      </div>
+      <div class="field">
+        <div class="lbl">선수금 비율 <b id="dpV">30%</b></div>
+        <input type="range" id="dp" min="0" max="80" step="1" value="30">
+        <div class="ticks"><span>0%</span><span>20%</span><span>40%</span><span>60%</span><span>80%</span></div>
+        <div class="optwrap" style="margin-top:.6rem"><input type="text" id="dpAmt" inputmode="numeric" placeholder="선수금 금액으로 직접 입력"><span>원</span></div>
+      </div>
+      <div class="field">
+        <div class="lbl">할부 금리 <b id="rateV">5.20%</b></div>
+        <input type="range" id="rate" min="0" max="9" step="0.01" value="5.2">
+        <div class="hint" id="rateHint"></div>
+        <label class="ret"><input type="checkbox" id="ret"> 벤츠 재구매 고객 (리텐션 금리 −0.40%p)</label>
+      </div>
+    </div>
+  </section>
+
+  <section class="card result">
+    <div class="r-top">
+      <div class="cat" id="rCat"></div>
+      <div class="name" id="rName"></div>
+      <div class="my" id="rMy"></div>
+    </div>
+    <div class="r-body">
+      <div class="row"><span>권장 소비자가</span><b id="rMsrp"></b></div>
+      <div class="row" id="rowOpt"><span>옵션가</span><b id="rOpt"></b></div>
+      <div class="row minus"><span>프로모션 할인 <small id="rDiscPct"></small></span><b id="rDisc"></b></div>
+      <div class="row minus" id="rowSup"><span>특별지원</span><b id="rSup"></b></div>
+      <div class="row minus" id="rowExtra"><span>추가 할인 <small id="rExtraPct"></small></span><b id="rExtra"></b></div>
+      <div class="row total"><span>최종 차량가</span><b id="rFinal"></b></div>
+
+      <div class="fin-only">
+        <div class="row" style="margin-top:.4rem"><span>선수금 <small id="rDpPct"></small></span><b id="rDown"></b></div>
+        <div class="row"><span>할부 원금 <small id="rLoanPct"></small></span><b id="rLoan"></b></div>
+      </div>
+
+      <div class="pay fin-only">
+        <div class="t">예상 월 납입금</div>
+        <div class="v"><span id="rMonthly"></span><small>원</small></div>
+        <div class="s" id="rPaySub"></div>
+      </div>
+      <div class="due">
+        <span id="dueLbl">출고 전 납부 금액<small>취등록세·공채 별도</small></span>
+        <b id="rDue"></b>
+      </div>
+
+      <div class="btns">
+        <button class="b-copy" id="btnCopy">견적 복사</button>
+        <a class="b-kakao" href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener">카톡 상담</a>
+        <a class="b-tel" href="tel:01093790999">📞 전화 상담 010-9379-0999</a>
+      </div>
+      <div class="toast" id="toast"></div>
+    </div>
+  </section>
+</main>
+
+<section class="notice"><div>
+  <ul>
+    <li>본 견적은 <b>참고용 시뮬레이션</b>이며, 실제 견적은 재고·옵션·등록지역·금융 심사 결과에 따라 달라질 수 있습니다.</li>
+    <li>할인율은 2026년 11월 프로모션 기준이며, <b>당월 출고 건에 한해</b> 적용됩니다. 할인 상세는 <a href="https://kim-benz.github.io/main/promotion.html">이달의 프로모션</a>에서 확인하세요.</li>
+    <li>할부 금리는 11월 MBF 차종별 금리(60개월·선수금 30% 기준)에 개월수·선수금에 따른 변동폭을 반영한 예상치이며, 실제 금리는 심사 결과에 따라 확정됩니다. 무이자 표시 차종은 선수금 조건 충족 시 무이자가 자동 적용됩니다.</li>
+    <li>취등록세·공채·등록대행료 등 등록비용은 계산에 포함되지 않았으며, 등록 지역에 따라 별도로 안내드립니다.</li>
+  </ul>
+</div></section>
+<footer>© 2026 메르세데스-벤츠 포항전시장 김석현 과장 · 010-9379-0999</footer>
+
+<script>
+const MODELS = [
+  ["컴팩트", "A 220 Hatch", "MY26", 4870, 10, 10, 0, ""],
+  ["컴팩트", "A 220 Sedan", "MY26", 5050, 5, 5, 0, ""],
+  ["컴팩트", "AMG A 45 S 4MATIC+", "MY26", 8140, 7, 11, 0, ""],
+  ["컴팩트", "AMG A 35 4MATIC", "MY26", 6860, 0, 0, 0, ""],
+  ["컴팩트", "CLA 250 4MATIC AMG Line", "MY26", 6450, 7, 7, 0, ""],
+  ["컴팩트", "AMG CLA 45 S 4MATIC+", "MY26", 9180, 5, 5, 0, ""],
+  ["컴팩트", "GLA 250 4MATIC AMG Line", "MY26", 7000, 9, 13, 0, ""],
+  ["컴팩트", "GLB 200 d", "MY26", 6430, 0, 0, 0, ""],
+  ["컴팩트", "GLB 250 4MATIC", "MY26", 7200, 13, 17, 0, ""],
+  ["컴팩트", "AMG GLB 35 4MATIC", "MY26", 7950, 9, 13, 0, ""],
+  ["컴팩트", "GLA 250 4MATIC AMG Line", "MY27", 7080, 9, 13, 0, ""],
+  ["컴팩트", "CLA 220 (가솔린)", "MY27", 5990, 0, 0, 0, ""],
+  ["컴팩트", "CLA 220 AMG Line (가솔린)", "MY27", 6290, 0, 0, 0, ""],
+  ["C · E-Class", "C 200 AVANTGARDE", "MY26", 6510, 10, 14, 0, ""],
+  ["C · E-Class", "C 200 AMG Line", "MY26", 6830, 10, 14, 0, ""],
+  ["C · E-Class", "C 200 Final Edition", "MY26", 6630, 10, 14, 0, ""],
+  ["C · E-Class", "E 200 EXCLUSIVE", "MY26", 7750, 15, 20, 0, ""],
+  ["C · E-Class", "E 200 AMG Line", "MY26", 8100, 15, 19, 0, ""],
+  ["C · E-Class", "E 200 AMG Line (RoF Edition · 옵션 93만원 포함)", "MY26", 8193, 15, 19, 0, ""],
+  ["C · E-Class", "E 200 AVANTGARDE", "MY26", 7750, 16, 16, 0, ""],
+  ["C · E-Class", "E 220 d 4MATIC EXCLUSIVE", "MY26", 8720, 12, 12, 0, ""],
+  ["C · E-Class", "E 300 4MATIC EXCLUSIVE", "MY26", 9480, 10, 14, 0, ""],
+  ["C · E-Class", "E 300 4MATIC AMG Line", "MY26", 9900, 10, 14, 0, ""],
+  ["C · E-Class", "E 300 4MATIC AMG Line (140주년 Edition)", "MY26", 10470, 10, 14, 0, ""],
+  ["C · E-Class", "E 350 e 4MATIC EXCLUSIVE", "MY26", 10000, 14, 14, 0, ""],
+  ["C · E-Class", "E 450 4MATIC AMG Line", "MY26", 11600, 11, 11, 0, ""],
+  ["C · E-Class", "E 450 4MATIC EXCLUSIVE", "MY26", 12960, 11, 11, 0, ""],
+  ["C · E-Class", "AMG E 53 HYBRID 4MATIC+", "MY26", 14300, 10, 10, 0, ""],
+  ["C · E-Class", "AMG E 53 HYBRID 4MATIC+ (상위 사양)", "MY26", 14840, 10, 10, 0, ""],
+  ["C · E-Class", "E 200 EXCLUSIVE", "MY27", 7750, 14, 18, 0, ""],
+  ["C · E-Class", "E 200 AMG Line", "MY27", 8100, 14, 17, 0, ""],
+  ["C · E-Class", "E 300 4MATIC EXCLUSIVE", "MY27", 9480, 8, 12, 0, ""],
+  ["C · E-Class", "E 300 4MATIC AMG Line", "MY27", 10010, 8, 12, 0, ""],
+  ["C · E-Class", "E 450 4MATIC AMG Line", "MY27", 11220, 10, 10, 0, ""],
+  ["C · E-Class", "E 450 4MATIC AMG Line (상위 사양)", "MY27", 11720, 10, 10, 0, ""],
+  ["C · E-Class", "E 450 4MATIC EXCLUSIVE", "MY27", 12950, 10, 10, 0, ""],
+  ["GLC", "GLC 220 d 4MATIC", "MY26", 8220, 10, 10, 0, ""],
+  ["GLC", "GLC 300 4MATIC AVANTGARDE", "MY26", 8250, 7, 11, 0, ""],
+  ["GLC", "GLC 300 4MATIC AMG Line", "MY26", 9250, 12, 16, 0, ""],
+  ["GLC", "GLC 300 4MATIC AMG Line (RoF Edition)", "MY26", 9376, 12, 16, 0, ""],
+  ["GLC", "GLC 300 4MATIC AMG Line (140주년 Edition)", "MY26", 9790, 12, 16, 0, ""],
+  ["GLC", "GLC 300 4MATIC Coupé AVANTGARDE", "MY26", 8660, 7, 11, 0, ""],
+  ["GLC", "GLC 300 4MATIC Coupé AMG Line", "MY26", 9690, 9, 13, 0, ""],
+  ["GLC", "GLC 300 4MATIC Coupé AMG Line (RoF Edition)", "MY26", 9816, 9, 13, 0, ""],
+  ["GLC", "GLC 300 4M Coupé AMG Line (140주년)", "MY26", 10360, 9, 13, 0, ""],
+  ["GLC", "Mercedes-AMG GLC 43 4MATIC", "MY26", 10360, 7, 7, 0, ""],
+  ["GLC", "Mercedes-AMG GLC 43 4MATIC Coupé", "MY26", 10830, 3, 3, 0, ""],
+  ["GLC", "GLC 300 4MATIC", "MY27", 7700, 7, 8, 0, ""],
+  ["GLC", "GLC 300 4MATIC AVANTGARDE", "MY27", 8250, 7, 8, 0, ""],
+  ["GLC", "GLC 300 4MATIC AMG Line", "MY27", 9550, 7, 8, 0, ""],
+  ["GLC", "GLC 300 4MATIC Coupé", "MY27", 8000, 7, 8, 0, ""],
+  ["GLC", "GLC 300 4MATIC Coupé AVANTGARDE", "MY27", 8660, 7, 8, 0, ""],
+  ["GLC", "GLC 300 4MATIC Coupé AMG Line", "MY27", 9790, 7, 8, 0, ""],
+  ["GLC", "GLC 300 4MATIC Coupé AMG Line 초기 생산분", "MY27", 9690, 7, 8, 0, ""],
+  ["GLE · GLS · G-Class", "GLE 350 4MATIC", "MY26", 11800, 10, 10, 0, ""],
+  ["GLE · GLS · G-Class", "GLE 300 d 4MATIC", "MY26", 11920, 8, 8, 0, ""],
+  ["GLE · GLS · G-Class", "GLE 450 4MATIC", "MY26", 12900, 12, 16, 0, ""],
+  ["GLE · GLS · G-Class", "GLE 450 4MATIC AMG Line", "MY26", 13900, 12, 16, 0, ""],
+  ["GLE · GLS · G-Class", "GLE 450 d 4MATIC Coupé", "MY26", 13400, 12, 12, 0, ""],
+  ["GLE · GLS · G-Class", "GLE 450 4MATIC Coupé", "MY26", 14250, 15, 19, 0, ""],
+  ["GLE · GLS · G-Class", "GLE 450 4MATIC AMG Line Coupé", "MY26", 14250, 15, 19, 0, ""],
+  ["GLE · GLS · G-Class", "Mercedes-AMG GLE 53 4MATIC+", "MY26", 16600, 8, 8, 0, ""],
+  ["GLE · GLS · G-Class", "Mercedes-AMG GLE 53 4MATIC+ Coupé", "MY26", 17000, 5, 5, 0, ""],
+  ["GLE · GLS · G-Class", "GLS 450 4MATIC AMG Line", "MY26", 15400, 8, 8, 0, ""],
+  ["GLE · GLS · G-Class", "GLS 450 d 4MATIC AMG Line", "MY26", 15400, 2, 2, 0, ""],
+  ["GLE · GLS · G-Class", "GLS 580 4MATIC AMG Line", "MY26", 19340, 9, 9, 0, ""],
+  ["GLE · GLS · G-Class", "Mercedes-AMG GLS 63 4MATIC+", "MY26", 21000, 1, 1, 0, ""],
+  ["GLE · GLS · G-Class", "Maybach GLS 600", "MY26", 29500, 5, 5, 0, ""],
+  ["GLE · GLS · G-Class", "Maybach GLS 600 MANUFAKTUR", "MY26", 33700, 5, 5, 0, ""],
+  ["GLE · GLS · G-Class", "G 450 d", "MY26", 19490, 0, 0, 0, ""],
+  ["GLE · GLS · G-Class", "G 450 d MANUFAKTUR", "MY26", 21910, 0, 0, 0, ""],
+  ["GLE · GLS · G-Class", "AMG G 63", "MY26", 26260, 0, 0, 0, ""],
+  ["GLE · GLS · G-Class", "AMG G 63 MANUFAKTUR", "MY26", 28980, 0, 0, 0, ""],
+  ["GLE · GLS · G-Class", "G 450 d", "MY27", 19970, 0, 0, 0, ""],
+  ["GLE · GLS · G-Class", "G 450 d MANUFAKTUR", "MY27", 22820, 0, 0, 0, ""],
+  ["GLE · GLS · G-Class", "AMG G 63", "MY27", 27500, 0, 0, 0, ""],
+  ["GLE · GLS · G-Class", "AMG G 63 MANUFAKTUR", "MY27", 30100, 0, 0, 0, ""],
+  ["S-Class · Maybach", "S 350 d 4MATIC", "MY26", 15500, 10, 10, 0, ""],
+  ["S-Class · Maybach", "S 450 4MATIC Sedan (SWB)", "MY26", 16200, 7, 11, 0, ""],
+  ["S-Class · Maybach", "S 450 4MATIC Long", "MY26", 19500, 10, 10, 0, ""],
+  ["S-Class · Maybach", "S 500 4MATIC Long", "MY26", 21700, 10, 10, 0, ""],
+  ["S-Class · Maybach", "S 580 4MATIC Long", "MY26", 26000, 10, 10, 0, ""],
+  ["S-Class · Maybach", "AMG S 63 E Performance", "MY26", 29900, 10, 10, 0, ""],
+  ["S-Class · Maybach", "Maybach S 580 4MATIC EW", "MY26", 31700, 9, 9, 0, ""],
+  ["S-Class · Maybach", "Maybach S 680 4MATIC EW", "MY26", 40300, 9, 9, 0, ""],
+  ["S-Class · Maybach", "S 350 d 4MATIC", "MY27", 15400, 0, 0, 0, ""],
+  ["S-Class · Maybach", "S 450 4MATIC", "MY27", 16240, 0, 0, 0, ""],
+  ["S-Class · Maybach", "S 450 4MATIC Long Exclusive", "MY27", 17540, 0, 0, 0, ""],
+  ["S-Class · Maybach", "S 450 4MATIC Long AMG Line", "MY27", 19540, 0, 0, 0, ""],
+  ["S-Class · Maybach", "S 500 4MATIC Long", "MY27", 22000, 0, 0, 0, ""],
+  ["S-Class · Maybach", "S 580 4MATIC Long", "MY27", 27000, 0, 0, 0, ""],
+  ["S-Class · Maybach", "Mercedes-Maybach S 580", "MY27", 31700, 0, 0, 0, ""],
+  ["S-Class · Maybach", "Mercedes-Maybach S 580 MANUFAKTUR", "MY27", 33600, 0, 0, 0, ""],
+  ["S-Class · Maybach", "Mercedes-Maybach S 680", "MY27", 40700, 0, 0, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "CLE 200 Coupé AMG Line", "MY26", 7670, 5, 5, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "CLE 200 Coupé (140주년 Edition)", "MY26", 8120, 5, 5, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "CLE 200 Cabriolet AMG Line", "MY26", 8310, 4, 4, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "CLE 200 Cabriolet (140주년 Edition)", "MY26", 8740, 4, 4, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "CLE 450 4MATIC Coupé AMG Line", "MY26", 9970, 9, 9, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "CLE 450 4MATIC Cabriolet AMG Line", "MY26", 10400, 6, 6, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG CLE 53 4M+ Coupé", "MY26", 10910, 3, 3, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG CLE 53 4M+ Cabriolet", "MY26", 11500, 3, 3, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG SL 43", "MY26", 16000, 9, 9, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG SL 63 4MATIC+", "MY26", 25000, 9, 9, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG GT 43 Coupé (C192 · 2-Door)", "MY26", 14950, 9, 9, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG GT 43 4MATIC+ (X290 · 4-Door)", "MY26", 16400, 9, 9, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG GT 55 4MATIC+ Coupé", "MY26", 21000, 3, 3, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG GT 63 S E Performance", "MY26", 28000, 4, 4, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Maybach SL 680", "MY26", 34400, 2, 2, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "CLE 200 Coupé", "MY27", 7760, 2, 2, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "CLE 450 4MATIC Coupé", "MY27", 10080, 2, 2, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "CLE 200 Cabriolet", "MY27", 8410, 2, 2, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "CLE 450 4MATIC Cabriolet", "MY27", 10520, 2, 2, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG CLE 53 4M+ Cabriolet", "MY27", 11660, 2, 2, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG CLE 53 4MATIC+ Coupé", "MY27", 11060, 2, 2, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG GT 43", "MY27", 14950, 8, 8, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG GT 55 4MATIC+", "MY27", 21260, 2, 2, 0, ""],
+  ["쿠페 · 카브리올레 · AMG GT", "Mercedes-AMG SL 43", "MY27", 16180, 8, 8, 0, ""],
+  ["전기차", "GLB 250+ electric", "MY27", 6990, 0, 0, 100, ""],
+  ["전기차", "CLA 200 electric Essential", "MY27", 5290, 0, 0, 100, "사전계약"],
+  ["전기차", "CLA 200 electric Advanced", "MY27", 5580, 0, 0, 100, "사전계약"],
+  ["전기차", "CLA 200 electric AMG Line", "MY27", 5890, 0, 0, 100, "사전계약"],
+  ["전기차", "CLA 250+ electric", "MY27", 6370, 0, 0, 100, "사전계약"],
+  ["전기차", "CLA 250+ AMG Line electric", "MY27", 6770, 0, 0, 100, "사전계약"],
+  ["전기차", "GLC 300 4MATIC AMG Line electric", "MY27", 9000, 0, 0, 0, "사전계약"],
+  ["전기차", "GLC 300 4MATIC AMG Line+ electric", "MY27", 9480, 0, 0, 0, "사전계약"],
+  ["전기차", "EQA 250 EW", "MY26", 7000, 0, 0, 0, "할인 종료"],
+  ["전기차", "EQA 250 AMG Line EW", "MY26", 7580, 0, 0, 0, "할인 종료"],
+  ["전기차", "EQA 250 Progressive EW", "MY27", 7080, 0, 0, 0, "할인 종료"],
+  ["전기차", "EQA 250 AMG Line EW", "MY27", 7670, 0, 0, 0, "할인 종료"],
+  ["전기차", "EQB 300 4M Progressive EW", "MY26", 7880, 0, 0, 0, "할인 종료"],
+  ["전기차", "EQB 300 4M AMG Line EW", "MY26", 8430, 0, 0, 0, "할인 종료"],
+  ["전기차", "EQE 350+ SUV EW", "MY26", 10600, 10, 10, 0, ""],
+  ["전기차", "EQE 350+ EW", "MY26", 11000, 10, 10, 0, ""],
+  ["전기차", "EQE 500 4M SUV EW", "MY26", 14100, 10, 10, 0, ""],
+  ["전기차", "EQS 450 4M SUV EW", "MY26", 16600, 10, 10, 0, ""],
+  ["전기차", "EQS 580 4MATIC SUV EW", "MY26", 19200, 10, 10, 0, ""],
+  ["전기차", "G 580 with EQ Tech EW", "MY26", 21610, 0, 0, 0, ""],
+  ["전기차", "Maybach EQS 680 SUV EW", "MY26", 23500, 0, 0, 0, ""],
+  ["전기차", "G 580 with EQ Tech EW", "MY27", 21900, 0, 0, 0, ""],
+  ["전기차", "G 580 with EQ Tech MANUFAKTUR EW", "MY27", 23850, 0, 0, 0, ""],
+];
+
+const PROMO_MONTH = '11월';
+/* ▼ 11월 MBF 모델별 일반 할부 금리 (60개월 · 선수금 30% 기준, MB Partner Communication Package) — 매달 갱신
+   [이름 패턴, 연식(없으면 전체), 금리, 무이자 안내]  ※ 위에서부터 먼저 맞는 줄 적용 */
+const RATE_RULES = [
+  [/electric/, '', 7.63],   // 신형 CLA·GLB·GLC electric: 표에 아직 없음 → EQ 일반 금리 준용
+  [/^C 200/, '', 5.33, '24'],
+  [/^E 200 AVANTGARDE/, '', 7.43],
+  [/^E 200 EXCLUSIVE/, 'MY26', 5.87, '24'],
+  [/^E 200 AMG Line/, 'MY26', 5.88, '24'],
+  [/^E 200 EXCLUSIVE/, 'MY27', 5.80, '24'],
+  [/^E 200 AMG Line/, 'MY27', 5.82, '24'],
+  [/^E 300/, 'MY26', 5.33, '24'],
+  [/^E 300/, 'MY27', 6.60],
+  [/^AMG E 53/, '', 4.26, '24/36'],
+  [/^S 450 4MATIC Sedan \(SWB\)/, 'MY26', 5.40, '24'],
+  [/^AMG S 63/, '', 4.26, '24/36'],
+  [/^GLC 300 4MATIC( Coupé)? AVANTGARDE/, 'MY26', 5.39, '24'],
+  [/^GLC 300 4M(ATIC)?( Coupé)? AMG Line/, 'MY26', 5.28, '24'],
+  [/^GLC 300 4MATIC Coupé/, 'MY27', 5.65, '24'],
+  [/^GLC 300/, 'MY27', 6.60],
+  [/^GLE 350/, '', 4.26, '24/36'],
+  [/^GLE 450 d/, '', 4.26, '24/36'],
+  [/^GLE 450/, '', 3.84, '24/36'],
+  [/^Mercedes-AMG GLE 53/, '', 4.26, '24/36'],
+  [/^GLS 450 d/, '', 7.43],
+  [/^GLS (450|580)/, '', 4.26, '24/36'],
+  [/^Maybach GLS 600/, '', 4.35, '24/36'],
+  [/^Mercedes-AMG GLS 63/, '', 4.47, '24/36'],
+  [/^AMG G 63/, '', 4.50, '24/36'],
+  [/^GLA 250/, '', 6.60],
+  [/^GLB 250 4MATIC/, '', 5.26, '24'],
+  [/^AMG GLB 35/, '', 4.08, '24/36'],
+  [/^AMG A 45/, '', 6.60],
+  [/^EQ[ES] (350|450|500|580)/, '', 4.19, '24/36'],
+  [/^(A |CLA|AMG A 35|AMG CLA|GLB 200|CLE|Mercedes-AMG (CLE|SL|GT)|Maybach SL|EQA|EQB|G 580|Maybach EQS)/, '', 7.63],
+];
+const RATE_DEFAULT = 7.43;   // 표에 별도 표기 없는 내연기관 모델 (E 220 d·E 450·S클래스·GLC 220 d·AMG GLC 43·G 450 d 등)
+const RETENTION_CUT = 0.40;  // 리텐션(벤츠 재구매) 금리 인하폭
+function rateInfo(m){
+  for (const [re, my, rate, zero] of RATE_RULES) {
+    if (re.test(m[1]) && (!my || my === m[2])) return { rate, zero: zero || '' };
+  }
+  return { rate: RATE_DEFAULT, zero: '' };
+}
+let retention = false;
+
+let dpManual = 0;   // 선수금 금액 직접 입력값 (0이면 % 슬라이더 사용)
+
+/* ▼ 차종별 무이자 조건 — 매달 갱신  zero: {개월수: 최소 선수금%},  apr36: 36개월·선수금 30% 특별금리(있을 때) */
+const ZERO_RATE = [
+  { re: /^E 200 /,                          zero: {24:74} },
+  { re: /^GLE 450 d 4MATIC Coupé/, my:'MY26', zero: {24:41, 36:56}, apr36: 2.99 },
+  { re: /^GLE 350/,                my:'MY26', zero: {24:42, 36:56}, apr36: 3.11 },
+  { re: /^GLS 580/,                my:'MY26', zero: {24:43, 36:57}, apr36: 3.16 },
+  { re: /^GLS 450 4MATIC/,         my:'MY26', zero: {24:43, 36:57}, apr36: 3.21 },
+  { re: /^Maybach GLS 600/,        my:'MY26', zero: {24:45, 36:59}, apr36: 3.37 },
+  { re: /^AMG E 53/,               my:'MY26', zero: {24:42, 36:56}, apr36: 3.13 },
+  { re: /^AMG S 63/,               my:'MY26', zero: {24:42, 36:56}, apr36: 3.13 },
+  { re: /^Mercedes-AMG GLE 53 4MATIC\+ Coupé/, my:'MY26', zero: {24:45, 36:59}, apr36: 3.39 },
+  { re: /^Mercedes-AMG GLE 53 4MATIC\+$/,      my:'MY26', zero: {24:44, 36:57}, apr36: 3.23 },
+  { re: /^Mercedes-AMG GLS 63/,    my:'MY26', zero: {24:48, 36:60}, apr36: 3.58 },
+];
+/* 별도 기준이 없는 '24개월 무이자' 차종(C 200·GLC 300·GLB 250 등)은 MBF 특별 금리표 기준 24개월 선수금 65% 이상 무이자 */
+const zeroRule = m => ZERO_RATE.find(z => z.re.test(m[1]) && (!z.my || z.my === m[2]))
+  || (rateInfo(m).zero === '24' ? { zero: {24:65} } : null);
+const zeroText = z => Object.entries(z.zero).map(([mo,dp]) => `${mo}개월 ${dp}%↑`).join(' · ');
+
+/* ▼ 개월수·선수금에 따른 금리 변동폭 (11월 MBF 특별 금리표, 선수금 10/20/30/40/50/65%)
+   차종 기준금리(60개월·30%)에 이 표의 차이만큼 더하거나 빼서 계산 */
+const RATE_TABLE = {
+  24:[4.47,4.03,3.45,2.69,1.16,0],
+  36:[5.06,4.76,4.36,3.84,3.11,1.19],
+  48:[5.38,5.15,4.86,4.46,3.89,2.43],
+  60:[5.63,5.44,5.20,4.87,4.41,3.22]
+};
+const DP_STEPS = [10,20,30,40,50,65];
+const MIN_RATE = 0.99;   // 무이자 조건이 아니면 이 아래로는 내려가지 않음
+function tableRate(months, dp){
+  const row = RATE_TABLE[months === 12 ? 24 : months];
+  /* 선수금 구간 사이는 직선 보간, 10% 미만·65% 초과는 양 끝 구간 기울기로 연장 */
+  const n = DP_STEPS.length;
+  let i = 1;
+  while (i < n - 1 && dp > DP_STEPS[i]) i++;
+  const t = (dp - DP_STEPS[i-1]) / (DP_STEPS[i] - DP_STEPS[i-1]);
+  return row[i-1] + (row[i] - row[i-1]) * t;
+}
+
+const $ = id => document.getElementById(id);
+const won = n => Math.round(n).toLocaleString('ko-KR') + '원';
+const man = n => {
+  const v = Math.round(n/10000);
+  return v.toLocaleString('ko-KR') + '만원';
+};
+const parseNum = s => parseInt(String(s).replace(/[^\d]/g,'')) || 0;
+
+let MODE = 'fin', CAT = '전체', rateTouched = false;
+const sel = $('model');
+
+/* 카테고리 버튼 */
+const cats = ['전체', ...new Set(MODELS.map(m => m[0]))];
+cats.forEach(c => {
+  const b = document.createElement('button');
+  b.textContent = c; b.dataset.c = c;
+  if (c === CAT) b.className = 'on';
+  $('cats').appendChild(b);
+});
+$('cats').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  CAT = b.dataset.c;
+  [...$('cats').children].forEach(x => x.classList.toggle('on', x === b));
+  fillSelect(); calc();
+});
+
+function fillSelect(){
+  const keep = sel.value;
+  sel.innerHTML = '';
+  const groups = {};
+  MODELS.forEach((m,i) => {
+    if (CAT !== '전체' && m[0] !== CAT) return;
+    (groups[m[0]] = groups[m[0]] || []).push(i);
+  });
+  Object.entries(groups).forEach(([g, idx]) => {
+    const og = document.createElement('optgroup'); og.label = g;
+    idx.forEach(i => {
+      const m = MODELS[i], o = document.createElement('option');
+      o.value = i;
+      o.textContent = `${m[1]} · ${m[2]} · ${m[3].toLocaleString()}만원`;
+      og.appendChild(o);
+    });
+    sel.appendChild(og);
+  });
+  if ([...sel.options].some(o => o.value === keep)) sel.value = keep;
+}
+
+function autoRate(m, dp){
+  const months = +document.querySelector('#months .on').dataset.m;
+  const z = zeroRule(m);
+  if (z && z.zero[months] && dp >= z.zero[months]) return 0;
+  /* 기준점: 36개월 이하 & 36개월 특별금리가 있으면 36/30%, 아니면 차종 기준금리 60/30% */
+  let r;
+  if (z && z.apr36 && months <= 36) r = z.apr36 + (tableRate(months, dp) - tableRate(36, 30));
+  else r = rateInfo(m).rate + (tableRate(months, dp) - tableRate(60, 30));
+  r = Math.max(MIN_RATE, r) - (retention ? RETENTION_CUT : 0);
+  return Math.round(Math.max(0, r) * 100) / 100;
+}
+
+function track(el){
+  el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min) * 100) + '%');
+}
+
+function calc(){
+  const m = MODELS[+sel.value];
+  const [cat, name, my, priceMan, base, fin, sup, note] = m;
+  const price = priceMan * 10000;
+  const opt = parseNum($('option').value);
+  const discPct = MODE === 'fin' ? fin : base;
+  const extraPct = +document.querySelector('#extra .on').dataset.v;
+  /* 할인액 = 권장가 × 할인율, 만원 단위 올림 (프로모션 가격표와 동일한 방식) */
+  const ceilMan = v => Math.ceil(Math.round(v) / 10000) * 10000;
+  const disc = ceilMan(price * discPct / 100);
+  const supAmt = sup * 10000;
+  const extra = extraPct ? ceilMan(price * (discPct + extraPct) / 100) - disc : 0;   // 합산 할인율 기준
+  const final = Math.max(0, price + opt - disc - supAmt - extra);
+
+  /* 차종 정보 칩 */
+  const chips = [];
+  if (fin > base) chips.push(`<span class="chip">현금 ${base}%</span><span class="chip blue">금융 이용 시 ${fin}% (+${fin-base}%)</span>`);
+  else if (base > 0) chips.push(`<span class="chip blue">${PROMO_MONTH} 할인 ${base}%</span>`);
+  if (sup) chips.push(`<span class="chip green">특별지원 ${sup}만원</span>`);
+  if (note) chips.push(`<span class="chip red">${note}</span>`);
+  const zr = zeroRule(m), ri = rateInfo(m);
+  if (zr) chips.push(`<span class="chip green">무이자: 선수금 ${zeroText(zr)}</span>`);
+  else if (ri.zero) chips.push(`<span class="chip green">${ri.zero}개월 무이자 가능 · 선수금 조건 상담</span>`);
+  if (!base && !fin && !sup && !note) chips.push(`<span class="chip">${PROMO_MONTH} 기본 할인 없음 · 상담 시 확인</span>`);
+  $('chips').innerHTML = chips.join('');
+
+  $('rCat').textContent = cat;
+  $('rName').textContent = name;
+  $('rMy').textContent = my + ' · 권장가 VAT 포함';
+  $('rMsrp').textContent = won(price);
+  $('rowOpt').style.display = opt ? '' : 'none';
+  $('rOpt').textContent = '+ ' + won(opt);
+  $('rDiscPct').textContent = `(${discPct}%${MODE==='fin' && fin>base ? ' · 금융' : ''})`;
+  $('rDisc').textContent = disc ? '- ' + won(disc) : '0원';
+  $('rowSup').style.display = sup ? '' : 'none';
+  $('rSup').textContent = '- ' + won(supAmt);
+  $('rowExtra').style.display = extraPct ? '' : 'none';
+  $('rExtraPct').textContent = `(${extraPct}%)`;
+  $('rExtra').textContent = '- ' + won(extra);
+  $('rFinal').textContent = won(final);
+
+  $('extraV').textContent = extraPct ? '+' + extraPct + '%' : '없음';
+  ['dp','rate'].forEach(id => track($(id)));
+
+  let copy = `[메르세데스-벤츠 포항전시장 견적]\n${name} (${my})\n권장 소비자가 ${man(price)}\n`;
+  if (opt) copy += `옵션가 ${man(opt)}\n`;
+  copy += `${PROMO_MONTH} 할인 ${discPct}% (-${man(disc)})\n`;
+  if (sup) copy += `특별지원 -${sup}만원\n`;
+  if (extraPct) copy += `추가 할인 ${extraPct}% (-${man(extra)})\n`;
+  copy += `최종 차량가 ${man(final)}\n`;
+
+  let dueAmt = 0;
+  if (MODE === 'fin'){
+    const months = +document.querySelector('#months .on').dataset.m;
+    let down;
+    if (dpManual) {
+      down = Math.min(dpManual, final);
+      $('dp').value = Math.round(down / final * 100);
+    } else {
+      down = Math.round(final * +$('dp').value / 100 / 10000) * 10000;
+    }
+    const dpExact = final ? down / final * 100 : 0;
+    const dpCheck = dpManual ? dpExact : +$('dp').value;   // 무이자·금리 판단용 (슬라이더는 선택값 그대로)
+    const dp = Math.round(dpExact * 100) / 100;
+    const z = zeroRule(m);
+    const zNeed = z && z.zero[months];
+    const zeroOn = zNeed && dpCheck >= zNeed;
+    if (!rateTouched) $('rate').value = autoRate(m, dpCheck);
+    const rate = +$('rate').value;
+    const loan = final - down;
+    const r = rate / 100 / 12;
+    const monthlyRaw = loan <= 0 ? 0 : (r === 0 ? loan / months : loan * r / (1 - Math.pow(1 + r, -months)));
+    const monthly = Math.floor(monthlyRaw / 10) * 10;   // 10원 미만 절사 (MBF 견적서 방식)
+    const interest = Math.max(0, monthlyRaw * months - loan);
+
+    $('dpV').textContent = dp + '%';
+    $('rateV').textContent = rate.toFixed(2) + '%';
+    $('rDpPct').textContent = `(${dp}%)`;
+    $('rDown').textContent = won(down);
+    $('rLoanPct').textContent = `(${Math.round((100-dp)*100)/100}%)`;
+    $('rLoan').textContent = won(loan);
+    $('rMonthly').textContent = Math.round(monthly).toLocaleString('ko-KR');
+    $('rPaySub').textContent = rate === 0 ? `${months}개월 · 무이자 · 총 이자 0원` : `${months}개월 · 연 ${rate.toFixed(2)}% · 원리금균등 · 총 이자 약 ${man(interest)}`;
+    $('dueLbl').innerHTML = '출고 전 납부 금액<small>선수금 · 취등록세·공채 별도</small>';
+    dueAmt = down;
+    $('rDue').textContent = won(dueAmt);
+    let hint;
+    if (rateTouched) hint = `직접 조정한 금리입니다. <a id="rateReset">${PROMO_MONTH} MBF 금리로 되돌리기</a>`;
+    else if (zeroOn) hint = `<b style="color:var(--green)">✓ ${months}개월 · 선수금 ${zNeed}% 이상 무이자 조건 적용</b> · 견적별 최종 확인`;
+    else hint = `${PROMO_MONTH} MBF 이 차종 기준금리 ${rateInfo(m).rate.toFixed(2)}% (60개월·선수금 30%)${z && z.apr36 ? ` · 36개월 특별금리 ${z.apr36.toFixed(2)}%` : ''} → 선수금·개월수 반영${retention?' · 리텐션 −0.40%p':''} · 실제 금리는 심사 후 확정`;
+    if (z && !zeroOn) {
+      const goMo = zNeed ? months : +Object.keys(z.zero)[0];
+      hint += `<br>이 차종은 선수금 <b>${zeroText(z)}</b>이면 무이자입니다. <a id="zeroGo" data-mo="${goMo}">${goMo}개월 무이자 조건으로 보기</a>`;
+    }
+    $('rateHint').innerHTML = hint;
+    const rr = $('rateReset'); if (rr) rr.onclick = () => { rateTouched = false; calc(); };
+    const zg = $('zeroGo'); if (zg) zg.onclick = () => {
+      const mo = +zg.dataset.mo;
+      [...$('months').children].forEach(x => x.classList.toggle('on', +x.dataset.m === mo));
+      dpManual = 0; $('dpAmt').value = '';
+      if (+$('dp').value < z.zero[mo]) $('dp').value = z.zero[mo];
+      rateTouched = false; calc();
+    };
+
+    copy += `선수금 ${dp}% ${man(down)} / 할부 ${man(loan)}\n${months}개월 · ${rate === 0 ? '무이자' : '금리 ' + rate.toFixed(2) + '%'}\n월 납입금 약 ${Math.round(monthly).toLocaleString('ko-KR')}원\n`;
+  } else {
+    dueAmt = final;
+    $('rDue').textContent = won(dueAmt);
+    $('dueLbl').innerHTML = '출고 전 납부 금액<small>차량가 · 취등록세·공채 별도</small>';
+    copy += `현금 일시불\n`;
+  }
+  copy += `출고 전 납부 약 ${man(dueAmt)} (취등록세·공채 별도)\n`;
+  copy += `\n* 참고용 시뮬레이션이며 실제 견적은 재고·옵션·등록지·금융 심사에 따라 달라질 수 있습니다.\n메르세데스-벤츠 포항전시장 김석현 과장\n010-9379-0999`;
+  window.__quote = copy;
+}
+
+/* 이벤트 */
+$('mode').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  MODE = b.dataset.m;
+  [...$('mode').children].forEach(x => x.classList.toggle('on', x === b));
+  document.body.classList.toggle('cash', MODE === 'cash');
+  calc();
+});
+sel.addEventListener('change', () => { dpManual = 0; $('dpAmt').value = ''; rateTouched = false; calc(); });
+$('months').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  [...$('months').children].forEach(x => x.classList.toggle('on', x === b));
+  rateTouched = false; calc();
+});
+$('dp').addEventListener('input', () => { dpManual = 0; $('dpAmt').value = ''; rateTouched = false; calc(); });
+$('dpAmt').addEventListener('input', e => {
+  const v = parseNum(e.target.value);
+  e.target.value = v ? v.toLocaleString('ko-KR') : '';
+  dpManual = v; rateTouched = false; calc();
+});
+$('rate').addEventListener('input', () => { rateTouched = true; calc(); });
+$('ret').addEventListener('change', e => { retention = e.target.checked; rateTouched = false; calc(); });
+$('extra').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  [...$('extra').children].forEach(x => x.classList.toggle('on', x === b));
+  calc();
+});
+$('option').addEventListener('input', e => {
+  const v = parseNum(e.target.value);
+  e.target.value = v ? v.toLocaleString('ko-KR') : '';
+  calc();
+});
+
+$('btnCopy').addEventListener('click', function(){
+  const btn = this, text = window.__quote || '';
+  const ok = () => {
+    btn.classList.add('done'); btn.textContent = '복사됨 ✓';
+    $('toast').textContent = '카톡이나 문자에 붙여넣어 보내주세요.';
+    clearTimeout(window.__t);
+    window.__t = setTimeout(() => { btn.classList.remove('done'); btn.textContent = '견적 복사'; $('toast').textContent = ''; }, 2600);
+  };
+  const fallback = () => {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); ok(); } catch(e) {}
+    ta.remove();
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok).catch(fallback);
+  else fallback();
+});
+
+/* 초기값: MY27 E 200 EXCLUSIVE */
+fillSelect();
+const def = MODELS.findIndex(m => m[1] === 'E 200 EXCLUSIVE' && m[2] === 'MY27');
+if (def >= 0) sel.value = def;
+calc();
+</script>
+<script src="https://kim-benz.github.io/main/nav.js"></script>
+</body>
+</html>

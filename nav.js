@@ -12,6 +12,7 @@
   var MENU = [
     { group: '이번 달 구매 조건', items: [
       { name: '이달의 프로모션', sub: '차종별 할인 · 최종가', url: MAIN + 'promotion.html' },
+      { name: '견적 시뮬레이션', sub: '할인 · 월 납입금 계산', url: MAIN + 'quote.html' },
       { name: '출고 웰컴 서비스', sub: '틴팅 · 블랙박스 · 기프트', url: MAIN + 'welcome.html' },
       { name: '보증 & 서비스', sub: '보증기간 · 고객 케어', url: MAIN + 'service.html' },
       { name: '전 차종 공식 가격표', sub: 'PDF', url: MAIN + 'pdf/price_list.pdf', ext: true }
