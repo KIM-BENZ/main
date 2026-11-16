@@ -119,6 +119,9 @@
     .car-img { display: flex; align-items: center; justify-content: center; height: 150px; margin: -0.2rem 0 0.5rem; }
     .car-img img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.35s ease; }
     .card:hover .car-img img { transform: scale(1.04); }
+    .car-img.photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+    .card:hover .car-img.photo img { transform: none; }
+    .sheet-hero.photo img { border-radius: 10px; }
     .sheet-hero { display: flex; justify-content: center; padding: 0.2rem 0 0.8rem; }
     .sheet-hero img { max-width: 100%; max-height: 200px; object-fit: contain; }
 
@@ -419,6 +422,8 @@
     function imgSlug(m) {
       return m.img || String(m.group || m.name).toLowerCase().replace(/é/g, 'e').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
     }
+    /* 배경이 있는 사진(전용 안내 페이지 대표 사진)은 카드 칸을 꽉 채워 표시 */
+    var PHOTO_IMG = ['the-all-new-electric-glb', 'the-all-new-electric-glc', 'gle-gls', 'the-new-v-class'];
     function imgFail(el) {
       var ext = el.getAttribute('data-ext') || 'webp';
       var next = { webp: 'png', png: 'jpg' }[ext];
@@ -427,6 +432,7 @@
     }
     function carImg(m, wrapCls) {
       var slug = imgSlug(m);
+      if (PHOTO_IMG.indexOf(slug) >= 0) wrapCls += ' photo';
       return '<div class="' + wrapCls + '"><img src="images/models/' + slug + '.webp" data-slug="' + slug + '" data-ext="webp" alt="' +
              esc(m.name) + '" loading="lazy" onerror="imgFail(this)"></div>';
     }
