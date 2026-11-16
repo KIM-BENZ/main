@@ -103,7 +103,11 @@
   .b-copy{background:var(--ink);color:#fff}
   .b-copy.done{background:var(--green)}
   .b-kakao{background:#fee500;color:#191919}
-  .b-tel{grid-column:1/-1;background:#fff;color:var(--ink);border:1.5px solid var(--line)!important}
+  .b-tel{background:#fff;color:var(--ink);border:1.5px solid var(--line)!important}
+  .b-img{background:var(--blue);color:#fff}
+  .b-img.done{background:var(--green)}
+  .imgsave{text-align:center;margin-top:.2rem}
+  .imgsave a{font-size:.76rem;color:var(--soft);font-weight:600}
   .toast{font-size:.78rem;color:var(--green);text-align:center;margin-top:.5rem;min-height:1.1em;font-weight:600}
 
   .notice{max-width:1100px;margin:0 auto 3rem;padding:0 1.5rem}
@@ -232,11 +236,13 @@
       </div>
 
       <div class="btns">
-        <button class="b-copy" id="btnCopy">견적 복사</button>
-        <a class="b-kakao" href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener">카톡 상담</a>
-        <a class="b-tel" href="tel:01093790999">📞 전화 상담 010-9379-0999</a>
+        <button class="b-copy" id="btnCopy">견적 복사 (글자)</button>
+        <button class="b-img" id="btnImg">이미지 복사</button>
+        <a class="b-kakao" href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener">💬 카톡 상담</a>
+        <a class="b-tel" href="tel:01093790999">📞 전화 상담</a>
       </div>
       <div class="toast" id="toast"></div>
+      <div class="imgsave"><a href="#" id="imgSave">견적 이미지 파일로 저장</a></div>
     </div>
   </section>
 </main>
@@ -597,6 +603,7 @@ function calc(){
   if (extraPct) copy += `추가 할인 ${extraPct}% (-${man(extra)})\n`;
   copy += `최종 차량가 ${man(final)}\n`;
 
+  const Q = { cat, name, my, price, opt, discPct, disc, sup: supAmt, extraPct, extra, final, mode: MODE };
   let dueAmt = 0;
   if (MODE === 'fin'){
     const months = +document.querySelector('#months .on').dataset.m;
@@ -620,6 +627,7 @@ function calc(){
     const monthlyRaw = loan <= 0 ? 0 : (r === 0 ? loan / months : loan * r / (1 - Math.pow(1 + r, -months)));
     const monthly = Math.floor(monthlyRaw / 10) * 10;   // 10원 미만 절사 (MBF 견적서 방식)
     const interest = Math.max(0, monthlyRaw * months - loan);
+    Object.assign(Q, { dp, down, loan, months, rate, monthly });
 
     $('dpV').textContent = dp + '%';
     $('rateV').textContent = rate.toFixed(2) + '%';
@@ -659,6 +667,8 @@ function calc(){
   }
   copy += `출고 전 납부 약 ${man(dueAmt)} (취등록세·공채 별도)\n`;
   copy += `\n* 참고용 시뮬레이션이며 실제 견적은 재고·옵션·등록지·금융 심사에 따라 달라질 수 있습니다.\n메르세데스-벤츠 포항전시장 김석현 과장\n010-9379-0999`;
+  Q.due = dueAmt;
+  window.__q = Q;
   window.__quote = copy;
 }
 
@@ -713,6 +723,148 @@ $('btnCopy').addEventListener('click', function(){
   if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok).catch(fallback);
   else fallback();
 });
+
+
+/* ================= 견적 이미지 (canvas로 견적서 그리기) ================= */
+const IMG_W = 720, S = 2;                 // CSS 720px, 2배 해상도
+const FONT = "'Pretendard',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif";
+function drawQuote(ctx, Q){
+  const P = 40, R = IMG_W - P;
+  const f = (w, s) => `${w} ${s}px ${FONT}`;
+  let y = 0;
+  const text = (s, x, yy, font, color, align='left') => {
+    if (!ctx) return; ctx.font = font; ctx.fillStyle = color; ctx.textAlign = align; ctx.fillText(s, x, yy);
+  };
+  const rect = (x, yy, w, h, color, r=0) => {
+    if (!ctx) return; ctx.fillStyle = color; ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(x, yy, w, h, r); else ctx.rect(x, yy, w, h); ctx.fill();
+  };
+  const row = (label, value, opt={}) => {
+    y += opt.gap || 40;
+    text(label, P, y, f(opt.bold ? 800 : 500, opt.size || 19), opt.labelColor || '#475569');
+    if (opt.sub) { if (ctx) { ctx.font = f(500, opt.size || 19); } const lw = ctx ? ctx.measureText(label).width : 0;
+      text(opt.sub, P + lw + 8, y, f(500, 15), '#94a3b8'); }
+    text(value, R, y, f(opt.bold ? 800 : 700, opt.vsize || opt.size || 19), opt.color || '#0f172a', 'right');
+  };
+  const wrap = (s, maxW, font) => {
+    if (!ctx) return [s];
+    ctx.font = font; const out = []; let line = '';
+    for (const word of s.split(' ')) {
+      const test = line ? line + ' ' + word : word;
+      if (ctx.measureText(test).width > maxW && line) { out.push(line); line = word; } else line = test;
+    }
+    out.push(line); return out;
+  };
+
+  /* 상단 헤더 */
+  rect(0, 0, IMG_W, 118, '#0f172a');
+  text('MERCEDES-BENZ', P, 50, f(800, 22), '#ffffff');
+  text('포항전시장 김석현 과장 · 010-9379-0999', P, 82, f(600, 16), '#7dd3fc');
+  const d = new Date();
+  text('견적 시뮬레이션', R, 50, f(700, 16), '#cbd5e1', 'right');
+  text(`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} 기준`, R, 82, f(500, 15), '#94a3b8', 'right');
+  y = 118;
+
+  /* 차종 */
+  y += 46; text(Q.cat, P, y, f(700, 16), '#0284c7');
+  for (const ln of wrap(Q.name, IMG_W - P*2, f(800, 30))) { y += 40; text(ln, P, y, f(800, 30), '#0f172a'); }
+  y += 30; text(`${Q.my} · ${Q.mode === 'fin' ? '할부 (금융 이용)' : '현금 일시불'}`, P, y, f(500, 16), '#64748b');
+  y += 22; rect(P, y, IMG_W - P*2, 1, '#e2e8f0');
+
+  /* 가격 */
+  const W = n => Math.round(n).toLocaleString('ko-KR') + '원';
+  row('권장 소비자가', W(Q.price), { gap: 46 });
+  if (Q.opt) row('옵션가', '+ ' + W(Q.opt));
+  row('프로모션 할인', Q.disc ? '- ' + W(Q.disc) : '0원', { sub: `${Q.discPct}%`, color: '#dc2626' });
+  if (Q.sup) row('특별지원', '- ' + W(Q.sup), { color: '#dc2626' });
+  if (Q.extraPct) row('추가 할인', '- ' + W(Q.extra), { sub: `${Q.extraPct}%`, color: '#dc2626' });
+  y += 24; rect(P, y, IMG_W - P*2, 2, '#0f172a');
+  row('최종 차량가', W(Q.final), { gap: 42, bold: true, size: 21, vsize: 26, labelColor: '#0f172a' });
+
+  if (Q.mode === 'fin') {
+    y += 22; rect(P, y, IMG_W - P*2, 1, '#e2e8f0');
+    row('선수금', W(Q.down), { gap: 44, sub: `${Q.dp}%` });
+    row('할부 원금', W(Q.loan), { sub: `${Math.round((100 - Q.dp) * 100) / 100}%` });
+    row('할부 조건', Q.rate === 0 ? `${Q.months}개월 · 무이자` : `${Q.months}개월 · 연 ${Q.rate.toFixed(2)}%`);
+
+    /* 월 납입금 */
+    y += 30; rect(P, y, IMG_W - P*2, 130, '#e0f2fe', 18);
+    text('예상 월 납입금', IMG_W/2, y + 38, f(700, 17), '#0369a1', 'center');
+    text(Math.round(Q.monthly).toLocaleString('ko-KR') + '원', IMG_W/2, y + 92, f(900, 46), '#0f172a', 'center');
+    text(Q.rate === 0 ? '무이자 · 총 이자 0원' : '원리금균등 상환', IMG_W/2, y + 118, f(500, 14), '#475569', 'center');
+    y += 130;
+  }
+  /* 출고 전 납부 */
+  y += Q.mode === 'fin' ? 14 : 30; rect(P, y, IMG_W - P*2, 72, '#0f172a', 14);
+  text('출고 전 납부 금액', P + 24, y + 33, f(700, 17), '#e2e8f0');
+  text(Q.mode === 'fin' ? '선수금 · 취등록세·공채 별도' : '차량가 · 취등록세·공채 별도', P + 24, y + 56, f(500, 13), '#94a3b8');
+  text(W(Q.due), R - 24, y + 46, f(800, 24), '#ffffff', 'right');
+  y += 72;
+
+  /* 안내 */
+  y += 36; text('※ 본 견적은 참고용 시뮬레이션이며, 실제 견적은 재고·옵션·등록지·금융 심사에 따라', P, y, f(500, 13), '#94a3b8');
+  y += 20; text('    달라질 수 있습니다. 할인은 당월 출고 기준입니다.', P, y, f(500, 13), '#94a3b8');
+  y += 34; rect(0, y, IMG_W, 1, '#e2e8f0');
+  y += 32; text('정확한 견적·상담', P, y, f(600, 15), '#475569');
+  text('김석현 과장  010-9379-0999', R, y, f(800, 17), '#0f172a', 'right');
+  y += 28;
+  return y;
+}
+async function makeQuoteBlob(){
+  try { await document.fonts.load(`800 30px Pretendard`); await document.fonts.load(`500 16px Pretendard`); } catch(e) {}
+  const Q = window.__q;
+  const tmp = document.createElement('canvas'); tmp.width = IMG_W; tmp.height = 3000;
+  const H = Math.ceil(drawQuote(tmp.getContext('2d'), Q));   // 높이 먼저 계산
+  const cv = document.createElement('canvas');
+  cv.width = IMG_W * S; cv.height = H * S;
+  const ctx = cv.getContext('2d');
+  ctx.scale(S, S); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, IMG_W, H);
+  ctx.textBaseline = 'alphabetic';
+  drawQuote(ctx, Q);
+  return new Promise(res => cv.toBlob(res, 'image/png'));
+}
+const fileName = () => `벤츠견적_${(window.__q.name || '').replace(/[^\w가-힣+]+/g,'_')}.png`;
+const isTouch = matchMedia('(pointer:coarse)').matches;
+$('btnImg').textContent = isTouch ? '이미지로 공유' : '이미지 복사';
+
+function flash(btn, label, msg){
+  const old = btn.dataset.label || btn.textContent; btn.dataset.label = old;
+  btn.classList.add('done'); btn.textContent = label; $('toast').textContent = msg;
+  clearTimeout(window.__t2);
+  window.__t2 = setTimeout(() => { btn.classList.remove('done'); btn.textContent = old; $('toast').textContent = ''; }, 2800);
+}
+function download(blob){
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = fileName();
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+}
+$('btnImg').addEventListener('click', async function(){
+  const btn = this;
+  try {
+    if (isTouch) {
+      const blob = await makeQuoteBlob();
+      const file = new File([blob], fileName(), { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try { await navigator.share({ files: [file], title: '벤츠 견적' }); }
+        catch (e) { if (e.name !== 'AbortError') throw e; }
+        return;
+      }
+      download(blob); flash(btn, '저장됨 ✓', '견적 이미지를 저장했습니다. 카톡에서 사진으로 보내주세요.');
+      return;
+    }
+    if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+      /* Safari 호환: Promise 형태로 전달 */
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': makeQuoteBlob() })]);
+      flash(btn, '복사됨 ✓', '카톡 PC나 문자 창에 Ctrl+V로 붙여넣으세요.');
+    } else {
+      download(await makeQuoteBlob()); flash(btn, '저장됨 ✓', '이미지 복사를 지원하지 않는 브라우저라 파일로 저장했습니다.');
+    }
+  } catch (e) {
+    try { download(await makeQuoteBlob()); flash(btn, '저장됨 ✓', '이미지 복사가 안 되어 파일로 저장했습니다.'); } catch (e2) {}
+  }
+});
+$('imgSave').addEventListener('click', async e => { e.preventDefault(); download(await makeQuoteBlob()); });
 
 /* 초기값: MY27 E 200 EXCLUSIVE */
 fillSelect();
