@@ -16,18 +16,19 @@
     }
 
     :root {
-      --bg-main: #f8fafc;
-      --bg-card: #ffffff;
-      --text-dark: #0f172a;
-      --text-muted: #475569;
-      --accent-blue: #0284c7;
-      --accent-hover: #0369a1;
-      --accent-green: #059669;
-      --accent-green-hover: #047857;
-      --accent-gold: #d97706;
-      --border-color: #e2e8f0;
-      --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.05);
-      --shadow-hover: 0 12px 30px rgba(2, 132, 199, 0.12);
+      --bg-main: #08080a;
+      --bg-card: #1a1c20;
+      --bg-panel: #121316;
+      --text-dark: #ffffff;
+      --text-muted: #a0a5aa;
+      --accent-blue: #00adef;
+      --accent-hover: #0095cf;
+      --accent-green: #00adef;
+      --accent-green-hover: #0095cf;
+      --accent-gold: #f59e0b;
+      --border-color: #262930;
+      --shadow-light: none;
+      --shadow-hover: 0 12px 30px rgba(0, 173, 239, 0.12);
     }
 
     * {
@@ -839,6 +840,90 @@
         display: flex;
       }
     }
+    /* =========================================================
+       다크 모드 오버라이드 (welcome / service / 차종 페이지와 통일)
+       ========================================================= */
+    body { background-color: #08080a; }
+    header { background-color: rgba(8, 8, 10, 0.95); position: sticky; top: 0; z-index: 100; box-shadow: none; }
+    .header-brand .advisor-info span { font-weight: 600; }
+    .header-nav-btn:hover { color: #ffffff; }
+    .hero-main { background: linear-gradient(rgba(8, 8, 10, 0.7), rgba(8, 8, 10, 0.92)), url('images/hero-main.jpg'); background-size: cover; background-position: center; }
+    .hero-main .hero-badge { background-color: rgba(0, 173, 239, 0.12); color: #00adef; border: 1px solid rgba(0, 173, 239, 0.3); }
+    .hero-main p { color: #a0a5aa; }
+    .hub-card { border-radius: 12px; }
+    .hub-card:hover { transform: translateY(-4px); }
+    .hub-card-img { background-color: #121316; }
+    .hub-card-btn { background-color: #121316; color: #ffffff; }
+    .hub-card:hover .hub-card-btn { background-color: #00adef; border-color: #00adef; color: #ffffff; }
+
+    /* 바로가기 타일 */
+    .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-bottom: 2.5rem; }
+    .quick-tile {
+      display: flex; align-items: center; gap: 0.9rem;
+      background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px;
+      padding: 1rem 1.1rem; text-decoration: none; color: inherit;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+      scroll-margin-top: 80px;
+    }
+    .quick-tile:hover { border-color: var(--accent-blue); transform: translateY(-2px); }
+    .qt-ico { font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
+    .qt-text { display: flex; flex-direction: column; min-width: 0; }
+    .qt-text b { font-size: 0.95rem; font-weight: 700; color: #ffffff; }
+    .qt-text small { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* 프로필 */
+    .profile-card-container { background-color: var(--bg-panel); border-radius: 12px; }
+    .ribbon-badge { background: linear-gradient(135deg, #00adef, #0095cf); box-shadow: 0 4px 10px rgba(0, 173, 239, 0.25); }
+    .profile-photo-wrapper { box-shadow: none; }
+    .profile-cta {
+      grid-column: 1 / -1; border-top: 1px solid var(--border-color); padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .profile-cta-addr { font-size: 0.88rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.25rem; }
+    .profile-cta-addr strong { color: #ffffff; margin-right: 0.3rem; }
+    .profile-cta-addr a { color: var(--accent-blue); font-weight: 700; text-decoration: none; }
+    .btn-action.btn-sms { background-color: var(--bg-card); color: #ffffff; border: 1px solid var(--border-color); }
+
+    /* 폼 탭 */
+    .forms-wrapper { display: block; max-width: 680px; margin: 0 auto 2.5rem; }
+    .form-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem; }
+    .form-tab {
+      padding: 0.95rem 0.5rem; border-radius: 10px; border: 1px solid var(--border-color);
+      background-color: var(--bg-card); color: var(--text-muted);
+      font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: inherit;
+      transition: all 0.2s ease;
+    }
+    .form-tab:hover { border-color: var(--accent-blue); color: #ffffff; }
+    .form-tab.active { background-color: rgba(0, 173, 239, 0.12); border-color: var(--accent-blue); color: var(--accent-blue); }
+    .form-section { display: none; background-color: var(--bg-panel); border: 1px solid var(--border-color); border-radius: 12px; height: auto; scroll-margin-top: 80px; }
+    .form-section.active { display: flex; }
+    .form-section.service-theme { border-color: var(--border-color); }
+    .service-theme .section-title span { color: var(--accent-blue); }
+    .service-theme .form-control:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 3px rgba(0, 173, 239, 0.15); }
+    .form-control { background-color: #1a1c20; color: #ffffff; border-color: #262930; font-family: inherit; }
+    .form-control::placeholder { color: #6b7078; }
+    .form-control:focus { background-color: #1a1c20; box-shadow: 0 0 0 3px rgba(0, 173, 239, 0.15); }
+    select.form-control option { background-color: #1a1c20; color: #ffffff; }
+    .terms-box { background-color: #1a1c20; color: var(--text-muted); }
+    .radio-label, .checkbox-label { color: #e5e7eb; }
+    .form-group input[type="checkbox"], .form-group input[type="radio"], .checkbox-label input, .radio-label input { accent-color: #00adef; }
+
+    /* 햄버거/플로팅 */
+    .quick-btn.qb-blue, .quick-btn.qb-green { background-color: rgba(0, 173, 239, 0.92); }
+    .quick-btn.qb-green { background-color: rgba(26, 28, 32, 0.95); border-color: #00adef; }
+
+    @media (max-width: 900px) {
+      .quick-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; margin-bottom: 2rem; }
+      .quick-tile { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 0.9rem; }
+      .profile-cta { flex-direction: column; align-items: stretch; }
+      .profile-cta .action-buttons { margin-top: 0; flex-wrap: nowrap; }
+      .profile-cta .btn-action { flex: 1 1 auto; white-space: nowrap; padding: 0.7rem 0.4rem; }
+      .container { padding: 2rem 1rem; }
+      .hub-card-img, .hub-card.wide .hub-card-img { height: 160px; min-height: 0; }
+      .hub-card-body { padding: 1.1rem 1.2rem 1.2rem; }
+      .hub-card-desc { margin-bottom: 1rem; }
+      .hub-grid { gap: 1rem; margin-bottom: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -978,75 +1063,31 @@
 
     </div>
 
-    <!-- 전 차종 제원·가격표 배너 -->
-    <div class="price-banner">
-      <div class="price-banner-text">
-        <span class="tag">ALL MODELS · SPEC & PRICE</span>
-        <h3>🚘 전 차종 제원 · 가격표</h3>
-        <p>세단·SUV·쿠페·전기차 전 라인업의 트림별 가격과 제원·옵션표를 한눈에 확인하세요.</p>
-      </div>
-      <a href="models.html" class="btn-pdf">
-        전 차종 보기 →
+    <!-- 바로가기 (슬림 타일) -->
+    <div class="quick-grid">
+      <a href="models.html" class="quick-tile">
+        <span class="qt-ico">🚘</span>
+        <span class="qt-text"><b>전 차종 제원 · 가격</b><small>트림별 제원·옵션표</small></span>
       </a>
-    </div>
-
-    <!-- 견적 시뮬레이션 배너 -->
-    <div class="price-banner" style="border-color: var(--accent-green);">
-      <div class="price-banner-text">
-        <span class="tag" style="color: var(--accent-green);">QUOTE SIMULATOR</span>
-        <h3>🧮 견적 시뮬레이션</h3>
-        <p>차종만 고르면 이번 달 프로모션 할인과 벤츠 파이낸셜 금리가 자동 적용되어, 최종 차량가와 월 납입금을 바로 확인할 수 있습니다.</p>
-      </div>
-      <a href="quote.html" class="btn-pdf" style="background-color: var(--accent-green);">
-        내 견적 계산하기 →
+      <a href="quote.html" class="quick-tile">
+        <span class="qt-ico">🧮</span>
+        <span class="qt-text"><b>견적 시뮬레이션</b><small>월 납입금 바로 계산</small></span>
       </a>
-    </div>
-
-    <!-- 신차 출고 웰컴 서비스 배너 -->
-    <div class="price-banner" style="border-color: var(--accent-gold);">
-      <div class="price-banner-text">
-        <span class="tag" style="color: var(--accent-gold);">WELCOME SERVICE</span>
-        <h3>🎁 신차 출고 웰컴 서비스</h3>
-        <p>출고 고객님께 드리는 틴팅 3종 중 택1, 벤츠 전용 블랙박스 STARVIEW PRO, 웰컴 기프트 박스를 확인하세요.</p>
-      </div>
-      <a href="welcome.html" class="btn-pdf" style="background-color: var(--accent-gold);">
-        웰컴 서비스 보기 →
+      <a href="welcome.html" class="quick-tile">
+        <span class="qt-ico">🎁</span>
+        <span class="qt-text"><b>신차 출고 웰컴 서비스</b><small>틴팅 · 블랙박스 · 기프트</small></span>
       </a>
-    </div>
-
-    <!-- 0. 포항전시장 오시는 길 -->
-    <div class="price-banner">
-      <div class="price-banner-text">
-        <span class="tag">SHOWROOM & LOCATION</span>
-        <h3>📍 포항전시장 오시는 길 & 안내</h3>
-        <p>메르세데스-벤츠 포항전시장 위치(새천년대로 210), 운영 시간 및 프라이빗 주차 서비스를 안내해 드립니다.</p>
-      </div>
-      <a href="https://naver.me/xAf1U2G5" target="_blank" rel="noopener noreferrer" class="btn-pdf">
-        네이버 지도로 위치 확인하기 →
+      <a href="service.html" class="quick-tile">
+        <span class="qt-ico">🛡️</span>
+        <span class="qt-text"><b>보증 &amp; 고객 케어</b><small>보증기간 · 긴급출동</small></span>
       </a>
-    </div>
-
-    <!-- 1. 보증 & 고객 케어 안내 배너 -->
-    <div class="price-banner" style="border-color: var(--accent-green);">
-      <div class="price-banner-text">
-        <span class="tag" style="color: var(--accent-green);">WARRANTY & CARE</span>
-        <h3>🛡️ 벤츠 공식 보증기간 & 고객 케어 서비스</h3>
-        <p>차종별 보증기간, 24시간 긴급출동, 픽업&딜리버리, 공항 서비스 혜택을 확인하세요.</p>
-      </div>
-      <a href="service.html" class="btn-pdf" style="background-color: var(--accent-green);">
-        서비스 안내 보기 →
+      <a id="price-section" href="pdf/price_list.pdf" target="_blank" class="quick-tile">
+        <span class="qt-ico">📄</span>
+        <span class="qt-text"><b>공식 가격표 PDF</b><small>전 차종 출고가</small></span>
       </a>
-    </div>
-
-    <!-- 2. 슬림 가격표 다운로드 배너 -->
-    <div id="price-section" class="price-banner">
-      <div class="price-banner-text">
-        <span class="tag">OFFICIAL DOCUMENT</span>
-        <h3>📄 메르세데스-벤츠 전 차종 공식 가격표</h3>
-        <p>최신 차종별 공식 출고가 및 기본 사양 가격표를 PDF로 확인하실 수 있습니다.</p>
-      </div>
-      <a href="pdf/price_list.pdf" target="_blank" class="btn-pdf">
-        가격표 PDF 다운로드 ↓
+      <a href="https://naver.me/xAf1U2G5" target="_blank" rel="noopener noreferrer" class="quick-tile">
+        <span class="qt-ico">📍</span>
+        <span class="qt-text"><b>오시는 길</b><small>새천년대로 210 · 네이버 지도</small></span>
       </a>
     </div>
 
@@ -1105,13 +1146,28 @@
           </ul>
         </div>
       </div>
+      <div class="profile-cta">
+        <div class="profile-cta-addr">
+          <div><strong>📍 포항전시장</strong> 경북 포항시 남구 새천년대로 210 (중앙모터스)</div>
+          <a href="https://naver.me/xAf1U2G5" target="_blank" rel="noopener noreferrer">네이버 지도에서 보기 →</a>
+        </div>
+        <div class="action-buttons">
+          <a href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener noreferrer" class="btn-action btn-kakao-action">💬 카카오톡</a>
+          <a href="tel:01093790999" class="btn-action btn-phone">📞 전화</a>
+          <a href="sms:01093790999" class="btn-action btn-sms">문자</a>
+        </div>
+      </div>
     </div>
 
-    <!-- 4. 신청 폼 2종 -->
+    <!-- 4. 신청 폼 (탭) -->
     <div class="forms-wrapper">
+      <div class="form-tabs" role="tablist">
+        <button type="button" class="form-tab active" data-target="test-drive" role="tab">🏎️ 시승 · 견적 신청</button>
+        <button type="button" class="form-tab" data-target="service-care" role="tab">🛠️ 서비스 예약</button>
+      </div>
       
       <!-- 4.1 시승 & 맞춤 견적 신청 폼 (상담용: mbdnpnjp) -->
-      <section id="test-drive" class="form-section">
+      <section id="test-drive" class="form-section active">
         <div class="section-title">
           <span>PRIVATE VIP SERVICE</span>
           <h3>🏎️ 시승 & 맞춤 견적 신청</h3>
@@ -1253,37 +1309,7 @@
 
     </div>
 
-    <!-- 5. 하단 실시간 상담 박스 & 전시장 위치 정보 -->
-    <div class="contact-box">
-      <div class="contact-notice">
-        <h3>📢 맞춤형 견적, 시승 및 서비스 상담 안내</h3>
-        <p>전국 최고의 조건과 사후관리 토탈 케어를 친절하게 도와드리겠습니다.</p>
-      </div>
-      <div class="contact-main">
-        <div class="advisor-detail">
-          <span class="showroom">메르세데스-벤츠 포항전시장</span>
-          <span class="name">김석현 과장</span>
-          <a href="tel:01093790999" class="phone">📞 010-9379-0999</a>
-        </div>
-        <div class="action-buttons">
-          <a href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener noreferrer" class="btn-action btn-kakao-action">💬 카카오톡 문의</a>
-          <a href="tel:01093790999" class="btn-action btn-phone">전화 문의</a>
-          <a href="sms:01093790999" class="btn-action btn-sms">문자 문의</a>
-        </div>
-      </div>
-      
-      <!-- 전시장 상세 주소 & 네이버 지도 연결 -->
-      <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.88rem; color: var(--text-muted);">
-        <div>
-          <strong style="color: var(--text-dark);">📍 전시장 주소:</strong> 경북 포항시 남구 새천년대로 210 (중앙모터스 메르세데스-벤츠 포항전시장)
-        </div>
-        <a href="https://naver.me/xAf1U2G5" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue); font-weight: 700; text-decoration: none;">
-          네이버 지도에서 보기 →
-        </a>
-      </div>
-    </div>
-
-  </main>
+    </main>
 
   <!-- =========================================================
     11월 전시장 방문 상담 캠페인 팝업 (메인페이지 index.html용)
@@ -1316,6 +1342,20 @@
       color:#666;cursor:pointer;font-family:inherit}
     @media (max-height:700px){.nv-pop img{aspect-ratio:16/9}.nv-pop p{margin-bottom:8px}.nv-pop ul{margin-bottom:10px;padding:10px 12px}}
     .nv-pop-foot button+button{border-left:1px solid #eee;color:#111;font-weight:700}
+    .nv-pop{background:#1a1c20;color:#fff}
+    .nv-pop-body{color:#fff}
+    .nv-pop h3{color:#fff}
+    .nv-pop p{color:#a0a5aa}
+    .nv-pop-tag{background:rgba(0,173,239,.14);color:#00adef}
+    .nv-pop ul{background:#121316;color:#d1d5db}
+    .nv-pop ul b{color:#fff}
+    .nv-pop-cta{background:#00adef}
+    .nv-pop-call{border-color:#262930;color:#fff}
+    .nv-pop-note{color:#6b7078}
+    .nv-pop-foot{background:#1a1c20;border-top-color:#262930}
+    .nv-pop-foot button{color:#a0a5aa}
+    .nv-pop-foot button+button{border-left-color:#262930;color:#fff}
+    .nv-pop img{background:linear-gradient(#1a1c20,#121316)}
   </style>
   
   <div class="nv-pop-dim" id="nvPop" role="dialog" aria-modal="true" aria-label="11월 방문 상담 이벤트">
@@ -1369,6 +1409,30 @@
   })();
   </script>
   <!-- ===================== 팝업 끝 ===================== -->
+
+  <script>
+  (function(){
+    var tabs = document.querySelectorAll('.form-tab');
+    var secs = document.querySelectorAll('.form-section');
+    function activate(id){
+      tabs.forEach(function(t){ t.classList.toggle('active', t.dataset.target === id); });
+      secs.forEach(function(sec){ sec.classList.toggle('active', sec.id === id); });
+    }
+    tabs.forEach(function(t){ t.addEventListener('click', function(){ activate(t.dataset.target); }); });
+    function go(id, smooth){
+      activate(id);
+      var el = document.getElementById('test-drive').parentNode;
+      el.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+    }
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('a[href]'); if (!a) return;
+      var h = a.getAttribute('href'), m = h.match(/#(test-drive|service-care)$/);
+      if (m && (h.charAt(0) === '#' || h.indexOf('index.html') === 0)) { e.preventDefault(); go(m[1], true); }
+    });
+    var m = location.hash.match(/#(test-drive|service-care)$/);
+    if (m) setTimeout(function(){ go(m[1], false); }, 50);
+  })();
+  </script>
 
   <!-- 공통 햄버거 메뉴 (전체 사이트맵) -->
   <script src="https://kim-benz.github.io/main/nav.js"></script>
