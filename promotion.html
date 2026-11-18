@@ -498,7 +498,7 @@ details.grp[open] .g-chev::before{transform:translate(-50%,-30%) rotate(-135deg)
     <p class="note">※ 모든 가격은 VAT 포함, 권장소비자가격은 만원 단위 절삭, 할인금액은 천원 단위에서 올림 산출 기준입니다. (옵션·재고·고객 조건에 따라 실제 견적과 차이가 있을 수 있습니다.)</p>
     <div class="ctrl">
       <label class="search"><span class="sr">차종 검색</span><input id="q" type="search" placeholder="차종 검색 (예: GLE 450, E 200)" autocomplete="off"></label>
-      <div class="seg" role="group" aria-label="연식 필터"><button type="button" class="on" data-my="27">MY27</button><button type="button" data-my="26">MY26</button><button type="button" data-my="all">전체 연식</button></div>
+      <div class="seg" role="group" aria-label="연식 필터"><button type="button" class="on" data-my="all">전체 연식</button><button type="button" data-my="27">MY27</button><button type="button" data-my="26">MY26</button></div>
     </div>
     <div class="chips" role="group" aria-label="차종 분류"><button type="button" class="chip on" data-cat="all">전체</button><button type="button" class="chip" data-cat="compact">A·CLA·GLA·GLB</button><button type="button" class="chip" data-cat="ce">C·E</button><button type="button" class="chip" data-cat="coupe">CLE·GT·SL</button><button type="button" class="chip" data-cat="s">S·마이바흐</button><button type="button" class="chip" data-cat="glc">GLC</button><button type="button" class="chip" data-cat="big">GLE·GLS·G</button><button type="button" class="chip" data-cat="ev">전기차</button></div>
     <div class="ctrl-row"><span id="cntAll" class="muted"></span><span><button type="button" class="lnk" id="openAll">모두 펼치기</button><button type="button" class="lnk" id="closeAll">모두 접기</button></span></div>
@@ -743,7 +743,7 @@ details.grp[open] .g-chev::before{transform:translate(-50%,-30%) rotate(-135deg)
 (function(){
   var q=document.getElementById('q');
   var groups=[].slice.call(document.querySelectorAll('details.grp'));
-  var state={my:'27',cat:'all'};
+  var state={my:'all',cat:'all'};
   function apply(){
     var term=(q.value||'').trim().toLowerCase();
     var shown=0,total=0;
