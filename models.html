@@ -275,6 +275,61 @@
       .sheet-body { padding: 0.6rem; }
       .sheet-ctrl { top: -0.6rem; margin: -0.6rem -0.6rem 0.8rem; padding: 0.6rem 0.6rem 0.6rem; }
     }
+
+    /* ===== 다크 톤 (허브·웰컴·프로모션과 동일 팔레트) ===== */
+    :root {
+      color-scheme: dark;
+      --bg-main: #08080a;
+      --bg-card: #15171b;
+      --text-dark: #e9ebee;
+      --text-muted: #a0a5aa;
+      --text-soft: #7b8088;
+      --accent-blue: #00adef;
+      --accent-hover: #38bdf8;
+      --accent-gold: #fbbf24;
+      --accent-ev: #34d399;
+      --border-color: #23262d;
+      --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.35);
+      --shadow-hover: 0 12px 30px rgba(0, 173, 239, 0.18);
+    }
+    header { background-color: #0d0e11; }
+    .tabs-wrap { background: rgba(8, 8, 10, 0.92); }
+    .tab { background: #15171b; border-color: #2e323a; }
+    .tab.active { color: #04202c; }
+    .notice { background: #15171b; }
+    .chip { background: rgba(0, 173, 239, 0.16); color: #7dd3fc; }
+    .chip.my27 { background: rgba(245, 158, 11, 0.16); color: #fcd34d; }
+    .chip.ev { background: rgba(34, 197, 94, 0.16); color: #86efac; }
+    .chip.web { background: rgba(255, 255, 255, 0.12); color: #fff; }
+    .car-img:not(.photo) { background: radial-gradient(ellipse at 50% 88%, rgba(0, 173, 239, 0.15), transparent 68%); border-radius: 10px; }
+    .car-img:not(.photo) img { filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.55)); }
+    .card-btn { background: #20232a; border-color: #2e323a; }
+    .card:hover .card-btn, .card-btn:focus-visible { color: #04202c; }
+    .card-btn.sub { background: #15171b; }
+    .card:hover .card-btn.sub { background: #15171b; color: var(--accent-blue); }
+    .search-box input { background-color: #15171b; border-color: #2e323a; }
+    .search-box input::placeholder { color: var(--text-soft); }
+    .my-btn { background: #15171b; }
+    .my-btn.on { color: #04202c; }
+    .cta-call { color: #04202c; }
+    .view-switch button.on { background: #fff; color: #0f172a; }
+
+    /* 제원표 모달 */
+    .spec-sec { background: #15171b; border: 1px solid #23262d; color: var(--text-dark); }
+    table.spec th, table.spec td { border-bottom-color: #23262d; }
+    table.spec td + td, table.spec th + th { border-left-color: #23262d; }
+    table.spec .lbl { background: #111317; }
+    table.spec thead th { background: #0d0e11; }
+    table.spec thead.sub th { background: #1a1c20; }
+    table.spec tr.grp td { background: rgba(0, 173, 239, 0.14); }
+    table.spec td.na { color: #4b5059; }
+    table.spec td.hl, .safety span.hl { color: #f87171; }
+    .safety span { background: #1a1c20; }
+    .sheet-dim { background: #08080a; }
+    .sheet-bar { background: #0d0e11; }
+    .sheet-ctrl { background: rgba(8, 8, 10, 0.97); }
+    .hero { background-image: linear-gradient(rgba(8, 8, 10, 0.78), rgba(8, 8, 10, 0.92)), url('images/hero-main.jpg'); }
+    .hero p { color: #c3c7cc; }
   </style>
 </head>
 <body>
