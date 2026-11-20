@@ -668,11 +668,12 @@ details.grp[open] .g-chev::before{transform:translate(-50%,-30%) rotate(-135deg)
     .nv-pop{width:100%;max-width:380px;background:#fff;border-radius:16px;overflow:hidden;
       box-shadow:0 20px 50px rgba(0,0,0,.35);font-family:inherit;animation:nvUp .35s ease}
     @keyframes nvUp{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
-    .nv-pop img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#111}
-    .nv-pop-body{padding:20px 20px 16px;color:#111}
+    .nv-pop{display:flex;flex-direction:column;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px)}
+    .nv-pop img{display:block;width:100%;aspect-ratio:3/2;object-fit:contain;background:linear-gradient(#f7f7f9,#dadadc);flex-shrink:0}
+    .nv-pop-body{padding:16px 18px 14px;color:#111;overflow-y:auto;min-height:0;flex:1 1 auto}
     .nv-pop-tag{display:inline-block;font-size:12px;font-weight:700;color:#0284c7;
       background:#e0f2fe;border-radius:999px;padding:4px 10px;margin-bottom:10px}
-    .nv-pop h3{margin:0 0 8px;font-size:20px;line-height:1.35}
+    .nv-pop h3{margin:0 0 6px;font-size:19px;line-height:1.35}
     .nv-pop p{margin:0 0 12px;font-size:14px;line-height:1.6;color:#444}
     .nv-pop ul{margin:0 0 14px;padding:12px 14px;list-style:none;background:#f5f5f7;
       border-radius:10px;font-size:13px;line-height:1.7;color:#333}
@@ -681,14 +682,82 @@ details.grp[open] .g-chev::before{transform:translate(-50%,-30%) rotate(-135deg)
       font-weight:700;font-size:15px;padding:13px;border-radius:10px}
     .nv-pop-call{display:block;text-align:center;margin-top:8px;padding:11px;border:1px solid #e2e8f0;border-radius:10px;color:#0f172a;text-decoration:none;font-weight:700;font-size:14px}
     .nv-pop-note{font-size:11px;color:#888;margin-top:8px;text-align:center}
-    .nv-pop-foot{display:flex;border-top:1px solid #eee}
+    .nv-pop-foot{display:flex;border-top:1px solid #eee;flex-shrink:0;background:#fff}
     .nv-pop-foot button{flex:1;background:none;border:0;padding:13px;font-size:13px;
       color:#666;cursor:pointer;font-family:inherit}
+    @media (max-height:700px){.nv-pop img{aspect-ratio:16/9}.nv-pop p{margin-bottom:8px}.nv-pop ul{margin-bottom:10px;padding:10px 12px}}
     .nv-pop-foot button+button{border-left:1px solid #eee;color:#111;font-weight:700}
+    .nv-pop{background:#1a1c20;color:#fff}
+    .nv-pop-body{color:#fff}
+    .nv-pop h3{color:#fff}
+    .nv-pop p{color:#a0a5aa}
+    .nv-pop-tag{background:rgba(0,173,239,.14);color:#00adef}
+    .nv-pop ul{background:#121316;color:#d1d5db}
+    .nv-pop ul b{color:#fff}
+    .nv-pop-cta{background:#00adef}
+    .nv-pop-call{border-color:#262930;color:#fff}
+    .nv-pop-note{color:#6b7078}
+    .nv-pop-foot{background:#1a1c20;border-top-color:#262930}
+    .nv-pop-foot button{color:#a0a5aa}
+    .nv-pop-foot button+button{border-left-color:#262930;color:#fff}
+    .nv-pop img{background:linear-gradient(#1a1c20,#121316)}
+    /* 슬라이드 (다음 장이 살짝 비쳐 보이는 방식) */
+    .nv-viewport{display:flex;overflow:hidden;min-height:0;flex:1 1 auto;position:relative;touch-action:pan-y;padding:12px 0 0}
+    .nv-track{display:flex;width:100%;gap:10px;transition:transform .35s ease;padding:0 0 0 12px;box-sizing:border-box}
+    .nv-slide{flex:0 0 calc(86% - 12px);min-width:0;display:flex;flex-direction:column;overflow-y:auto;
+      background:#121316;border-radius:12px;border:1px solid #262930}
+    .nv-slide .nv-pop-body{overflow:visible;flex:none}
+    .nv-slide img{border-radius:12px 12px 0 0}
+    .nv-slide img.nv-cover{aspect-ratio:3/2;object-fit:cover}
+    .nv-slide .nv-pop ul,.nv-slide ul{background:#1a1c20}
+    .nv-slide h3{font-size:17px}
+    .nv-slide img.nv-tall{aspect-ratio:10/9;object-fit:cover;object-position:center 40%}
+    .nv-arrow{display:none}
+    @media (hover:hover){
+      .nv-arrow{display:block;position:absolute;top:110px;width:34px;height:34px;border-radius:50%;border:0;
+        background:rgba(0,0,0,.55);color:#fff;font-size:18px;line-height:1;cursor:pointer;z-index:2}
+      .nv-arrow.prev{left:8px}.nv-arrow.next{right:8px}
+    }
+    .nv-slide h3,.nv-slide p,.nv-slide li{word-break:keep-all}
+    @media (max-height:720px){
+      .nv-slide img,.nv-slide img.nv-cover{aspect-ratio:16/9}
+      .nv-slide img.nv-tall{aspect-ratio:16/9}
+      .nv-slide .nv-pop-body{padding:12px 14px 12px}
+      .nv-slide h3{font-size:16px}
+      .nv-slide p{font-size:13px;margin-bottom:8px}
+      .nv-slide ul{font-size:12px;padding:8px 10px;margin-bottom:10px}
+      .nv-slide .nv-pop-cta{padding:11px;font-size:14px}
+      .nv-slide .nv-pop-call{padding:9px;font-size:13px;margin-top:6px}
+      .nv-dots{padding:6px 0}
+    }
+    .nv-dots{display:flex;justify-content:center;gap:6px;padding:10px 0 10px;flex-shrink:0}
+    .nv-dots i{width:7px;height:7px;border-radius:50%;background:#3a3e46;transition:background .2s}
+    .nv-dots i.on{background:#00adef}
   </style>
   
-  <div class="nv-pop-dim" id="nvPop" role="dialog" aria-modal="true" aria-label="11월 방문 상담 이벤트">
+  <div class="nv-pop-dim" id="nvPop" role="dialog" aria-modal="true" aria-label="전시장 안내 및 11월 방문 상담 이벤트">
     <div class="nv-pop">
+     <div class="nv-viewport" id="nvView">
+      <button type="button" class="nv-arrow prev" id="nvPrev" aria-label="이전">‹</button>
+      <button type="button" class="nv-arrow next" id="nvNext" aria-label="다음">›</button>
+      <div class="nv-track" id="nvTrack">
+      <!-- 슬라이드 1: GLC EV 전시 안내  -->
+      <div class="nv-slide">
+      <img class="nv-cover" src="images/glc-hero.jpg" alt="The All-New Electric GLC">
+      <div class="nv-pop-body">
+        <span class="nv-pop-tag">NEW · 포항전시장 전시 중</span>
+        <h3>The All-New Electric GLC<br>전시장에 전시되었습니다</h3>
+        <p>화면으로만 보시던 GLC EV, 포항전시장에서 직접 보시고 상담받아 보세요.</p>
+        <ul>
+          <li><b>장소</b> 메르세데스-벤츠 포항전시장</li>
+          <li><b>상담</b> 방문 전 연락 주시면 더 편하게 안내해 드립니다</li>
+        </ul>
+        <a class="nv-pop-cta" href="https://kim-benz.github.io/GLC_EV/" target="_blank" rel="noopener noreferrer">GLC EV 가이드 보기</a>
+        <a class="nv-pop-call" href="tel:01093790999">📞 김석현 과장 010-9379-0999</a>
+      </div>
+      </div>
+      <!-- 슬라이드 2: 11월 방문 상담 이벤트 -->
+      <div class="nv-slide">
       <img src="images/nov-pouch.jpg" alt="메르세데스-벤츠 파우치">
       <div class="nv-pop-body">
         <span class="nv-pop-tag">11월 방문 상담 이벤트</span>
@@ -703,6 +772,10 @@ details.grp[open] .g-chev::before{transform:translate(-50%,-30%) rotate(-135deg)
         <a class="nv-pop-call" href="tel:01093790999">📞 김석현 과장 010-9379-0999</a>
         <div class="nv-pop-note">* 한정 수량으로 조기 소진될 수 있습니다.</div>
       </div>
+      </div>
+      </div>
+     </div>
+     <div class="nv-dots" id="nvDots"><i class="on"></i><i></i></div>
       <div class="nv-pop-foot">
         <button type="button" id="nvPopToday">오늘 하루 보지 않기</button>
         <button type="button" id="nvPopClose">닫기</button>
@@ -728,11 +801,35 @@ details.grp[open] .g-chev::before{transform:translate(-50%,-30%) rotate(-135deg)
   
     function close(){ pop.classList.remove('show'); try { sessionStorage.setItem('nvPopClosed_202611','1'); } catch(e) {} }
     document.getElementById('nvPopClose').onclick = close;
-    document.getElementById('nvPopCta').onclick = close;   // 홈으로 이동 시 홈 팝업 중복 방지
+    document.getElementById('nvPopCta').onclick = close;
     document.getElementById('nvPopToday').onclick = function(){
       try { localStorage.setItem(KEY, today); } catch(e) {}
       close();
     };
+    var view = document.getElementById('nvView');
+    var idx = 0, N = 2, track = document.getElementById('nvTrack'),
+        dots = document.querySelectorAll('#nvDots i');
+    function go(i){
+      idx = (i + N) % N;
+      var last = track.lastElementChild, shift = 0;
+      if (idx > 0) shift = last.offsetLeft + last.offsetWidth - (view.clientWidth - 12);
+      track.style.transform = 'translateX(' + (-shift) + 'px)';
+      dots.forEach(function(d,k){ d.classList.toggle('on', k === idx); });
+    }
+    document.getElementById('nvPrev').onclick = function(){ go(idx-1); };
+    document.getElementById('nvNext').onclick = function(){ go(idx+1); };
+    var sx = null;
+    view.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
+    view.addEventListener('touchend', function(e){
+      if (sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx; sx = null;
+      if (Math.abs(dx) > 40) go(dx < 0 ? idx+1 : idx-1);
+    });
+    document.addEventListener('keydown', function(e){
+      if (!pop.classList.contains('show')) return;
+      if (e.key === 'ArrowLeft') go(idx-1);
+      if (e.key === 'ArrowRight') go(idx+1);
+    });
     pop.addEventListener('click', function(e){ if (e.target === pop) close(); });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
   })();
