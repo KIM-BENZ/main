@@ -1422,6 +1422,13 @@
     .nv-slide .nv-pop ul,.nv-slide ul{background:#1a1c20}
     .nv-slide h3{font-size:17px}
     .nv-slide img.nv-tall{aspect-ratio:10/9;object-fit:cover;object-position:center 40%}
+    .nv-duo{display:flex;gap:2px;border-radius:12px 12px 0 0;overflow:hidden;flex-shrink:0}
+    .nv-duo a{flex:1;position:relative;display:block}
+    .nv-slide .nv-duo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:0}
+    .nv-duo span{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 7px;font-size:12px;font-weight:700;color:#fff;
+      text-align:center;background:linear-gradient(transparent,rgba(0,0,0,.75))}
+    .nv-cta2{display:flex;gap:6px}
+    .nv-cta2 .nv-pop-cta{flex:1;font-size:14px;padding:12px 4px;white-space:nowrap}
     .nv-arrow{display:none}
     @media (hover:hover){
       .nv-arrow{display:block;position:absolute;top:110px;width:34px;height:34px;border-radius:50%;border:0;
@@ -1432,6 +1439,8 @@
     @media (max-height:720px){
       .nv-slide img,.nv-slide img.nv-cover{aspect-ratio:16/9}
       .nv-slide img.nv-tall{aspect-ratio:16/9}
+      .nv-slide .nv-duo img{aspect-ratio:1/1}
+      .nv-slide .nv-cta2 .nv-pop-cta{font-size:13px;padding:11px 2px}
       .nv-slide .nv-pop-body{padding:12px 14px 12px}
       .nv-slide h3{font-size:16px}
       .nv-slide p{font-size:13px;margin-bottom:8px}
@@ -1445,24 +1454,30 @@
     .nv-dots i.on{background:#00adef}
   </style>
   
-  <div class="nv-pop-dim" id="nvPop" role="dialog" aria-modal="true" aria-label="전시장 안내 및 11월 방문 상담 이벤트">
+  <div class="nv-pop-dim" id="nvPop" role="dialog" aria-modal="true" aria-label="GLC EV·CLA EV 전시 안내 및 11월 방문 상담 이벤트">
     <div class="nv-pop">
      <div class="nv-viewport" id="nvView">
       <button type="button" class="nv-arrow prev" id="nvPrev" aria-label="이전">‹</button>
       <button type="button" class="nv-arrow next" id="nvNext" aria-label="다음">›</button>
       <div class="nv-track" id="nvTrack">
-      <!-- 슬라이드 1: GLC EV 전시 안내  -->
+      <!-- 슬라이드 1: GLC EV · CLA EV 전시 안내 -->
       <div class="nv-slide">
-      <img class="nv-cover" src="images/glc-hero.jpg" alt="The All-New Electric GLC">
+      <div class="nv-duo">
+        <a href="https://kim-benz.github.io/GLC_EV/" target="_blank" rel="noopener noreferrer"><img src="images/glc-hero.jpg" alt="The All-New Electric GLC"><span>Electric GLC</span></a>
+        <a href="https://kim-benz.github.io/CLA/" target="_blank" rel="noopener noreferrer"><img src="https://kim-benz.github.io/CLA/images/hero-main.jpg" alt="The All-New Electric CLA"><span>Electric CLA</span></a>
+      </div>
       <div class="nv-pop-body">
         <span class="nv-pop-tag">NEW · 포항전시장 전시 중</span>
-        <h3>The All-New Electric GLC<br>전시장에 전시되었습니다</h3>
-        <p>화면으로만 보시던 GLC EV, 포항전시장에서 직접 보시고 상담받아 보세요.</p>
+        <h3>Electric GLC · Electric CLA<br>전시장에 전시되었습니다</h3>
+        <p>화면으로만 보시던 GLC EV와 CLA EV, 포항전시장에서 함께 보시고 비교 상담받아 보세요.</p>
         <ul>
           <li><b>장소</b> 메르세데스-벤츠 포항전시장</li>
           <li><b>상담</b> 방문 전 연락 주시면 더 편하게 안내해 드립니다</li>
         </ul>
-        <a class="nv-pop-cta" href="https://kim-benz.github.io/GLC_EV/" target="_blank" rel="noopener noreferrer">GLC EV 가이드 보기</a>
+        <div class="nv-cta2">
+          <a class="nv-pop-cta" href="https://kim-benz.github.io/GLC_EV/" target="_blank" rel="noopener noreferrer">GLC EV 가이드</a>
+          <a class="nv-pop-cta" href="https://kim-benz.github.io/CLA/" target="_blank" rel="noopener noreferrer">CLA EV 가이드</a>
+        </div>
         <a class="nv-pop-call" href="tel:01093790999">📞 김석현 과장 010-9379-0999</a>
       </div>
       </div>
@@ -1521,8 +1536,9 @@
         dots = document.querySelectorAll('#nvDots i');
     function go(i){
       idx = (i + N) % N;
-      var last = track.lastElementChild, shift = 0;
-      if (idx > 0) shift = last.offsetLeft + last.offsetWidth - (view.clientWidth - 12);
+      var sl = track.children[idx], last = track.lastElementChild, shift = 0;
+      if (idx === N - 1) shift = last.offsetLeft + last.offsetWidth - (view.clientWidth - 12);
+      else if (idx > 0) shift = sl.offsetLeft - (view.clientWidth - sl.offsetWidth) / 2;
       track.style.transform = 'translateX(' + (-shift) + 'px)';
       dots.forEach(function(d,k){ d.classList.toggle('on', k === idx); });
     }
