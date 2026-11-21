@@ -22,7 +22,8 @@
       { name: 'Electric GLB', sub: '사전계약', url: 'https://kim-benz.github.io/GLB_EV/' },
       { name: 'Electric CLA', sub: '신차 가이드', url: 'https://kim-benz.github.io/CLA/' },
       { name: 'Electric GLC', sub: '', url: 'https://kim-benz.github.io/GLC_EV/' },
-      { name: '신형 GLE · GLS', sub: '11월 말 출시 예상', url: 'https://kim-benz.github.io/GLE_GLS/' },
+      { name: '신형 GLE · GLE 쿠페', sub: '출시', url: 'https://kim-benz.github.io/GLE_GLS/' },
+      { name: '신형 GLS', sub: '출시 예정', url: 'https://kim-benz.github.io/GLE_GLS/#gls' },
       { name: 'V-Class', sub: '사전계약', url: 'https://kim-benz.github.io/V_CLASS/' },
       { name: 'S-Class', sub: '런칭', url: 'https://kim-benz.github.io/S-CLASS/' }
     ]},
