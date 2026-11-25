@@ -297,6 +297,75 @@ details.grp[open] .g-chev::before{transform:translate(-50%,-30%) rotate(-135deg)
 }
 
 /* ---------- 인쇄 ---------- */
+
+/* ===== 밝은 톤 시안 (LIGHT) ===== */
+:root{
+  --bg:#f4f6f9; --surface:#ffffff; --card:#ffffff; --card2:#f8fafc; --line:#e3e8ef; --line2:#d3dae4;
+  --text:#0f172a; --silver:#475569; --mute:#64748b;
+  --accent:#0284c7; --accent-d:rgba(2,132,199,.10);
+  --amber:#d97706; --red:#dc2626; --green:#16a34a; --purple:#7c3aed;
+}
+body{background:var(--bg);color:var(--text)}
+.hero::before{background:linear-gradient(180deg,rgba(8,8,10,.62) 0%,rgba(8,8,10,.18) 42%,rgba(8,8,10,.35) 75%,rgba(8,8,10,.55) 100%)}
+.hero h1{color:#fff}.hero-sub{color:#e8ebef}.hero-top{color:#e2e8f0}.hero-top a,.hero-eyebrow{color:#7dd3fc}
+.subnav{background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(15,23,42,.05)}
+.subnav a{color:var(--silver)}
+.subnav a:hover{color:var(--accent);border-color:var(--accent)}
+.badge{color:#334155;background:#fff;border-color:var(--line2)}
+.timing{background:#fef2f2;border-color:#fecaca}
+.c-blue{color:#0284c7}.c-red{color:#dc2626}.c-green{color:#16a34a}.c-amber{color:#b45309}.c-purple{color:#7c3aed}
+.lead{color:#334155}
+.fcard,.f-body,details.grp,details.pc,.tbl-scroll,.rate,.ctrl,.search input{box-shadow:0 1px 3px rgba(15,23,42,.06)}
+.fcard.top{border-color:rgba(2,132,199,.55);box-shadow:0 0 0 1px rgba(2,132,199,.15),0 10px 30px -16px rgba(2,132,199,.35)}
+.f-photo,.g-photo{background:radial-gradient(ellipse at 50% 80%,rgba(2,132,199,.10),transparent 68%),linear-gradient(180deg,#f8fafc,#eef2f6)}
+.f-photo img,.g-photo img{filter:drop-shadow(0 12px 14px rgba(15,23,42,.18))}
+.f-rank{color:#334155;background:#eef2f6}
+.fcard.top .f-rank{background:var(--accent);color:#fff}
+.f-hl{color:#92400e;background:#fffbeb}
+.f-body ul,.pc-detail{color:#334155}
+.f-body li strong,.pc-detail strong{color:#0f172a}
+.tag-blue{background:#e0f2fe;color:#0369a1}.tag-green{background:#dcfce7;color:#15803d}
+.tag-red{background:#fee2e2;color:#b91c1c}.tag-purple{background:#ede9fe;color:#6d28d9}
+.tag-orange{background:#fef3c7;color:#b45309}.tag-gray{background:#f1f5f9;color:#475569}
+th{background:#f1f5f9;color:#475569}
+td{color:#334155}
+td strong,td.model-name{color:#0f172a}
+.highlight-text,.highlight-text strong{color:#b45309!important}
+.jc-text{color:#0284c7}
+.ew-badge{background:#dcfce7;color:#15803d}
+table.plain tbody tr:nth-child(even){background:#f8fafc}
+tr.r-my27{background:#fffbeb}
+tr.r-pre{background:#f0fdf4}
+tr.r-hot{background:#e0f2fe}
+tr.r-hot td[data-label="기본 할인"],tr.r-hot td[data-label="실구매가"]{color:#0369a1}
+.timing.upd{background:#f0f9ff;border-color:#bae6fd}
+.timing.upd .timing-tag,.notice-h i,.btn-call,.btn-phone,.seg button.on{color:#fff}
+tbody tr:hover{background:#f1f5f9}
+.rate span{color:#6d28d9}.rate em{color:#475569}.rate em strong{color:#0f172a}
+.welcome-link{background:linear-gradient(135deg,#ffffff,#f1f5f9);border-color:var(--line2)}
+.welcome-link u{color:#0284c7}
+.must{background:#fef2f2;border-color:#fecaca}
+.must-h{color:#b91c1c}.must ul{color:#334155}
+.search input{color:#0f172a;background:#fff}
+.chip.on{background:#0f172a;color:#fff;border-color:#0f172a}
+details.grp>summary:hover{background:#f8fafc}
+.pill{color:#475569;background:#f1f5f9}.pill b{color:#0f172a}
+.pill.hot{background:#fef3c7;color:#b45309}
+.notice{background:#f0f9ff;border-color:#bae6fd}
+.notice-d{color:#334155}.notice-d strong{color:#0f172a}
+.notice-n{color:#166534;background:#f0fdf4}.notice-n strong{color:#14532d}
+.contact{background:linear-gradient(135deg,#ffffff,#f1f5f9)}
+.btn-contact{background:#fff;color:#0f172a}
+.btn-kakao{background:#fee500;color:#191919}
+.btn-call{background:var(--accent);border-color:var(--accent)}
+.profile-card-container{box-shadow:0 4px 20px rgba(15,23,42,.06)}
+.profile-name,.contact-item .val,.info-block h4,.career-list strong,.profile-cta-addr strong{color:#0f172a}
+.btn-sms{background:#fff;color:#0f172a}
+@media (max-width:720px){
+  table.price tr.r-my27{background:#fffbeb}
+  table.price tr.r-pre{background:#f0fdf4}
+  table.price tr.r-hot{background:#e0f2fe;border-color:#7dd3fc}
+}
 @media print{
   :root{--bg:#fff;--surface:#fff;--card:#fff;--card2:#fff;--line:#cbd5e1;--line2:#cbd5e1;--text:#0f172a;--silver:#475569;--mute:#64748b}
   body{background:#fff;color:#0f172a}
