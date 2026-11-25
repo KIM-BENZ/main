@@ -20,6 +20,7 @@
     { group: '신차 · 모델', items: [
       { name: '전 차종 제원 · 가격표', sub: '세단 · SUV · 쿠페 · 전기차', url: MAIN + 'models.html' },
       { name: 'Electric GLB', sub: '사전계약', url: 'https://kim-benz.github.io/GLB_EV/' },
+      { name: 'Electric GLA', sub: '출시 예정', url: 'https://kim-benz.github.io/GLA_EV/' },
       { name: 'Electric CLA', sub: '신차 가이드', url: 'https://kim-benz.github.io/CLA/' },
       { name: 'Electric GLC', sub: '', url: 'https://kim-benz.github.io/GLC_EV/' },
       { name: '신형 GLE · GLE 쿠페', sub: '출시', url: 'https://kim-benz.github.io/GLE_GLS/' },
