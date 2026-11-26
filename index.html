@@ -896,6 +896,25 @@
     header { background-color: rgba(8, 8, 10, 0.95); position: sticky; top: 0; z-index: 100; box-shadow: none; }
     .header-brand .advisor-info span { font-weight: 600; }
     .header-nav-btn:hover { color: #ffffff; }
+    /* 상단 SNS 아이콘 */
+    .header-sns { display: flex; align-items: center; gap: 0.5rem; margin-left: 1.2rem; }
+    .sns-btn {
+      width: 34px; height: 34px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+      color: #ffffff; text-decoration: none; transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .sns-btn:hover { transform: translateY(-1px); opacity: 0.9; }
+    .sns-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+    .sns-yt { background-color: #ff0000; }
+    @media (max-width: 900px) {
+      header { padding-left: 4.6rem !important; padding-right: 3.6rem !important; }
+      .header-sns { position: absolute; left: 0.6rem; top: 50%; transform: translateY(-50%); margin-left: 0; gap: 0.35rem; }
+      .sns-btn { width: 30px; height: 30px; }
+      .sns-btn svg { width: 15px; height: 15px; }
+    }
+    @media (max-width: 380px) {
+      header .header-brand .advisor-info { font-size: 0.7rem; }
+      header .header-brand .advisor-info span { white-space: nowrap; }
+    }
     .hero-main { background: linear-gradient(rgba(8, 8, 10, 0.7), rgba(8, 8, 10, 0.92)), url('images/hero-main.jpg'); background-size: cover; background-position: center; }
     .hero-main .hero-badge { background-color: rgba(0, 173, 239, 0.12); color: #00adef; border: 1px solid rgba(0, 173, 239, 0.3); }
     .hero-main p { color: #a0a5aa; }
@@ -992,6 +1011,10 @@
       <a href="#price-section" class="header-nav-btn">공식 가격표</a>
       <a href="http://pf.kakao.com/_hTPGX/chat" target="_blank" rel="noopener noreferrer" class="header-nav-btn btn-kakao">카톡 상담</a>
     </nav>
+    <div class="header-sns">
+      <a href="https://www.instagram.com/benz.kimsh/" target="_blank" rel="noopener noreferrer" class="sns-btn sns-ig" aria-label="인스타그램 @benz.kimsh" title="인스타그램 @benz.kimsh"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg></a>
+      <a href="https://www.youtube.com/@benzkimsh" target="_blank" rel="noopener noreferrer" class="sns-btn sns-yt" aria-label="유튜브 @benzkimsh" title="유튜브 @benzkimsh"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1-5.8 3.1z"/></svg></a>
+    </div>
   </header>
 
   <!-- 📱 모바일 전용 바로가기 플로팅 버튼 -->
