@@ -69,7 +69,11 @@
     + '.kb-item.cur{color:#38bdf8}'
     + '.kb-foot{display:flex;gap:8px;padding:14px 20px calc(14px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,255,255,.08)}'
     + '.kb-foot a{flex:1;text-align:center;padding:12px 0;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}'
-    + '.kb-call{background:#0284c7;color:#fff}.kb-kakao{background:#fee500;color:#191919}';
+    + '.kb-call{background:#0284c7;color:#fff}.kb-kakao{background:#fee500;color:#191919}'
+    + '.kb-sns{display:flex;gap:8px;padding:12px 20px 0;border-top:1px solid rgba(255,255,255,.08)}'
+    + '.kb-sns a{flex:1;text-align:center;padding:10px 0;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.15)}'
+    + '.kb-sns a:hover{border-color:#7ed6ff;color:#7ed6ff}'
+    + '.kb-sns+.kb-foot{border-top:0}';
 
   var st = document.createElement('style');
   st.textContent = css;
@@ -104,6 +108,8 @@
     '<div class="kb-head"><a class="kb-home" href="' + MAIN + '"><b>MERCEDES-BENZ</b><small>포항전시장 김석현 과장 · 홈</small></a>'
     + '<button type="button" class="kb-close" aria-label="메뉴 닫기">×</button></div>'
     + '<div class="kb-body">' + html + '</div>'
+    + '<div class="kb-sns"><a href="https://www.instagram.com/benz.kimsh/" target="_blank" rel="noopener noreferrer">📷 인스타그램</a>'
+    + '<a href="https://www.youtube.com/@benzkimsh" target="_blank" rel="noopener noreferrer">▶ 유튜브</a></div>'
     + '<div class="kb-foot"><a class="kb-call" href="tel:' + PHONE + '">📞 전화 상담</a>'
     + '<a class="kb-kakao" href="' + KAKAO + '" target="_blank" rel="noopener noreferrer">💬 카톡 상담</a></div>';
 
